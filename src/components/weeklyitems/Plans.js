@@ -22,7 +22,8 @@ class Plans extends Component {
             <TextInputGroup
               name="plan"
               type={type}
-              placeholder="Add a Weekly Plan"
+              w
+              placeholder="Write a blog post by end of this week"
               value={name}
             />
           </form>

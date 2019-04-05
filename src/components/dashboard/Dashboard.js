@@ -1,13 +1,8 @@
 import React, { Component } from "react";
+import TasksProgressBar from "./TasksProgressBar";
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
   render() {
-    return (
-      <div>
-        <h1>Dashboard</h1>
-      </div>
-    );
+    return <TasksProgressBar />;
   }
 }
-
-export default Dashboard;

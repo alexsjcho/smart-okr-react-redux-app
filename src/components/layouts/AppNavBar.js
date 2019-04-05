@@ -4,30 +4,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const AppNavBar = props => {
   const { branding } = props;
 
-  let navStyles = {
-    backgroundColor: "#e3f2fd"
-  };
-
   return (
-    <nav
-      className="navbar navbar-expand-lg mb-3 py-0 navbar-light"
-      style={navStyles}>
-      <div className="container">
-        <a href="/" className="navbar-brand">
-          {" "}
-          {branding}{" "}
-        </a>
-        <div>
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                {" "}
-                Home
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-3 py-0">
+      <a className="p-2 text-dark" href="/">
+        {branding}
+      </a>
+      <a className="p-2 text-dark" href="/">
+        Blog
+      </a>
+      <a className="p-2 text-dark" href="/">
+        Schedule Time
+      </a>
+      <a className="p-2 text-dark" href="/">
+        GitHub Repo
+      </a>
+      <a className="p-2 text-dark" href="/">
+        Product Roadmap Sheet
+      </a>
     </nav>
   );
 };
