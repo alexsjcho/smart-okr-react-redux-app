@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import AppNavBar from "./layouts/AppNavBar";
 import Objectives from "./objectives/Objectives";
