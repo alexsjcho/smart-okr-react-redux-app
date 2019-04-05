@@ -14,16 +14,17 @@ class App extends Component {
     return (
       <React.Fragment>
         <AppNavBar />
+        <div className="container">
+          <Dashboard />
 
-        <Dashboard />
+          <Objectives />
 
-        <Objectives />
+          <Plans />
 
-        <Plans />
+          <Accomplishments />
 
-        <Accomplishments />
-
-        <Challenges />
+          <Challenges />
+        </div>
       </React.Fragment>
     );
   }
