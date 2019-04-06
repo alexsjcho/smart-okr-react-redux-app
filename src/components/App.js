@@ -13,17 +13,17 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <AppNavBar />
         <div className="container">
-          <Dashboard />
-
+          <AppNavBar />
+          <div className="container">
+            <Dashboard />
+          </div>
           <Objectives />
-
-          <Plans />
-
-          <Accomplishments />
-
-          <Challenges />
+          <div className="container">
+            <Plans />
+            <Accomplishments />
+            <Challenges />
+          </div>
         </div>
       </React.Fragment>
     );

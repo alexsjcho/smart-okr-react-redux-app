@@ -3,29 +3,42 @@ import TextInputGroup from "../shared/TextInputGroup";
 
 class Challenges extends Component {
   state = {
-    challenges: ""
+    challenges: "",
+    showCardInfo: true
   };
 
   render() {
-    const { name, type } = this.state;
+    const { name, type } = this.props;
+    const { showCardInfo } = this.state;
+
     return (
-      <div className="card mb-3">
-        <h1>Challenges</h1>
+      <div className="card card-body mb-3">
+        <h3>
+          Challenges <i className="fas fa-sort-down" />
+        </h3>
         <div className="card-header">
           {" "}
-          <input
-            type="submit"
-            value="Add A Challange"
-            className="btn btn-outline-warning"
-          />
-          <form>
-            <TextInputGroup
-              name="challenge"
-              type={type}
-              placeholder="Didn't get enough sleep..."
-              value={name}
-            />
-          </form>
+          <i
+            onClick={() =>
+              this.setState({ showCardInfo: !this.state.showCardInfo })
+            }
+            className="fas fa-plus"
+          />{" "}
+          {showCardInfo ? (
+            <form>
+              <input
+                type="submit"
+                value="Add Challange"
+                className="btn btn-outline-warning"
+              />
+              <TextInputGroup
+                name="challenge"
+                type={type}
+                placeholder="Didn't get enough sleep..."
+                value={name}
+              />
+            </form>
+          ) : null}
         </div>
       </div>
     );

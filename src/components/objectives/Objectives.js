@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import TextInputGroup from "../shared/TextInputGroup";
+import KeyResults from "../keyresults/KeyResults";
 
 class Objectives extends Component {
   state = {
@@ -8,42 +9,43 @@ class Objectives extends Component {
     keyresult: ""
   };
 
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
   render() {
-    const { name, type } = this.state;
+    const { name, type, onChange } = this.state;
+
+    //Check for Errors
+    if (name === "") {
+      this.setState({ errors: { name: "Item is required" } });
+    }
+
     return (
-      <div className="card mb-3">
-        <h1>OKRs</h1>
+      <div className="card card-body mb-3">
+        <h1>
+          OKRs <i className="fas fa-sort-down" />
+        </h1>
         <div className="card-header">
-          {" "}
-          <input
-            type="submit"
-            value="Add Objective"
-            className="btn btn-primary btn-inline-block"
-          />
           <form>
+            <ul className="list-group">
+              <li className="list-group-item">
+                <i className="fas fa-plus" />{" "}
+                <input
+                  type="submit"
+                  value="Add Objective"
+                  className="btn btn-primary btn-inline-block"
+                />
+              </li>
+            </ul>
             <TextInputGroup
               name="objectives"
               type={type}
               placeholder="Overachieve quota this quarter!"
               value={name}
+              onChange={onChange}
             />
           </form>
         </div>
-        <div className="card-body">
-          <input
-            type="submit"
-            value="Add Key Result"
-            className="btn btn-info"
-          />
-          <form>
-            <TextInputGroup
-              name="keyresults"
-              placeholder="Complete 10 customer demos per week!"
-              value={name}
-              type={type}
-            />
-          </form>
-        </div>
+        <KeyResults />
       </div>
     );
   }

@@ -10,16 +10,7 @@ const AppNavBar = props => {
         {branding}
       </a>
       <a className="p-2 text-dark" href="/">
-        Blog
-      </a>
-      <a className="p-2 text-dark" href="/">
-        Schedule Time
-      </a>
-      <a className="p-2 text-dark" href="/">
-        GitHub Repo
-      </a>
-      <a className="p-2 text-dark" href="/">
-        Product Roadmap Sheet
+        Logout
       </a>
     </nav>
   );

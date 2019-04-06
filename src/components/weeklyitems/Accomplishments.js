@@ -9,13 +9,16 @@ class Accomplishments extends Component {
   render() {
     const { name, type } = this.state;
     return (
-      <div className="card mb-3">
-        <h1>Accomplishments</h1>
+      <div className="card card-body mb-3">
+        <h3>
+          Accomplishments <i className="fas fa-sort-down" />
+        </h3>
         <div className="card-header">
           {" "}
+          <i className="fas fa-plus" />{" "}
           <input
             type="submit"
-            value="Add Objective"
+            value="Add Accomplishment"
             className="btn btn-outline-success"
           />
           <form>
