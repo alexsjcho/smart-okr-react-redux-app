@@ -11,6 +11,10 @@ class Objectives extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
+  onSubmit = e => {
+    e.preventDefault();
+  };
+
   render() {
     const { name, type, onChange } = this.state;
 
@@ -25,7 +29,7 @@ class Objectives extends Component {
           OKRs <i className="fas fa-sort-down" />
         </h1>
         <div className="card-header">
-          <form>
+          <form onSubmit={this.onSubmit}>
             <ul className="list-group">
               <li className="list-group-item">
                 <i className="fas fa-plus" />{" "}
