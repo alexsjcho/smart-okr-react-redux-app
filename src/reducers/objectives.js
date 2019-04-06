@@ -1,11 +1,29 @@
-import { CREATE_OBJECTIVES } from "../actions/objectives";
+import { SET_OBJECTIVE, SET_KEY_RESULT } from "../actions/objectives";
 
-export default function polls(state = {}, action) {
+const initialState = {
+  objective: {
+    name: null,
+    keyResults: []
+  }
+};
+
+export default function polls(state = initialState, action) {
   switch (action.type) {
-    case CREATE_OBJECTIVES:
+    case SET_OBJECTIVE:
       return {
         ...state,
-        ...action.objectives
+        objective: {
+          ...state.objective,
+          name: action.payload
+        }
+      };
+    case SET_KEY_RESULT:
+      return {
+        ...state,
+        objective: {
+          ...state.objective,
+          keyResults: [...state.objective.keyResults, action.payload]
+        }
       };
     default:
       return state;

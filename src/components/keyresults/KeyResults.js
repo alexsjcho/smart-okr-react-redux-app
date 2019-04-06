@@ -9,6 +9,7 @@ class KeyResults extends Component {
 
   render() {
     const { name, type } = this.state;
+    const { onChange } = this.props;
     return (
       <div className="card-body">
         <form>
@@ -28,6 +29,7 @@ class KeyResults extends Component {
             placeholder="Complete 10 customer demos per week!"
             value={name}
             type={type}
+            onChange={onChange}
           />
         </form>
       </div>

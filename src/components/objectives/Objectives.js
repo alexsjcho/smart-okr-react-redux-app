@@ -1,22 +1,48 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import TextInputGroup from "../shared/TextInputGroup";
 import KeyResults from "../keyresults/KeyResults";
 
+import { setObjective, setKeyResult } from "../../actions/objectives.js";
+
+const mapStateToProps = ({ objectives: { objective } }) => ({
+  objective
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setObjective }, dispatch);
+
 class Objectives extends Component {
-  state = {
-    objectives: "",
-    keyresult: ""
+  state = {};
+
+  onChange = e => {
+    console.log("test onchange");
+
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
-
   onSubmit = e => {
+    const {
+      setObjective,
+      objective: { name }
+    } = this.props;
     e.preventDefault();
+    if (name) {
+      setKeyResult(this.state.keyResult);
+    } else {
+      setObjective(this.state.objective);
+    }
   };
 
   render() {
     const { name, type, onChange } = this.state;
+    const {
+      objective: { name: objectiveName }
+    } = this.props;
 
     //Check for Errors
     if (name === "") {
@@ -41,18 +67,21 @@ class Objectives extends Component {
               </li>
             </ul>
             <TextInputGroup
-              name="objectives"
+              name="objective"
               type={type}
               placeholder="Overachieve quota this quarter!"
               value={name}
-              onChange={onChange}
+              onChange={this.onChange}
             />
           </form>
         </div>
-        <KeyResults />
+        {objectiveName ? <KeyResults onChange={this.onChange} /> : null}
       </div>
     );
   }
 }
 
-export default Objectives;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Objectives);

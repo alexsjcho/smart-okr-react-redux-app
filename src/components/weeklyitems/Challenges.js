@@ -14,18 +14,18 @@ class Challenges extends Component {
     return (
       <div className="card card-body mb-3">
         <h3>
-          Challenges <i className="fas fa-sort-down" />
-        </h3>
-        <div className="card-header">
-          {" "}
+          Challenges{" "}
           <i
+            className="fas fa-sort-down"
             onClick={() =>
               this.setState({ showCardInfo: !this.state.showCardInfo })
             }
-            className="fas fa-plus"
-          />{" "}
+          />
+        </h3>
+        <div className="card-header">
           {showCardInfo ? (
             <form>
+              <i className="fas fa-plus" />{" "}
               <input
                 type="submit"
                 value="Add Challange"

@@ -1,8 +1,12 @@
-export const CREATE_OBJECTIVES = "CREATE_OBJECTIVES";
+export const SET_OBJECTIVE = "SET_OBJECTIVE";
+export const SET_KEY_RESULT = "SET_KEY_RESULT";
 
-export function createObjectives(objectives) {
-  return {
-    type: CREATE_OBJECTIVES,
-    objectives
-  };
-}
+export const setObjective = objective => ({
+  type: SET_OBJECTIVE,
+  payload: objective
+});
+
+export const setKeyResult = keyResult => ({
+  type: SET_KEY_RESULT,
+  payload: keyResult
+});
