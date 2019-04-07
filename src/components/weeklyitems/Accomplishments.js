@@ -26,7 +26,7 @@ class Accomplishments extends Component {
         {showCardInfo ? (
           <div className="card-header">
             {" "}
-            <i className="fas fa-plus" />{" "}
+            <i className="fas fa-grin-squint-tears" />
             <input
               type="submit"
               value="Add Accomplishment"

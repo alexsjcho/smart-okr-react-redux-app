@@ -25,7 +25,7 @@ class Challenges extends Component {
         <div className="card-header">
           {showCardInfo ? (
             <form>
-              <i className="fas fa-plus" />{" "}
+              <i className="fas fa-frown-open" />
               <input
                 type="submit"
                 value="Add Challange"

@@ -18,7 +18,7 @@ class KeyResults extends Component {
             <form>
               <ul className="list-group">
                 <li className="list-group-item">
-                  <i className="fas fa-plus" />{" "}
+                  <i className="fas fa-ruler" />
                   <input
                     type="submit"
                     value="Add Key Result"
@@ -41,7 +41,7 @@ class KeyResults extends Component {
           <form onSubmit={onSubmit}>
             <ul className="list-group">
               <li className="list-group-item">
-                <i className="fas fa-plus" />{" "}
+                <i className="fas fa-ruler" />
                 <input
                   type="submit"
                   value="Add Key Result"
