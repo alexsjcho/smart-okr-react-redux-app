@@ -12,14 +12,15 @@ const mapStateToProps = ({ objectives: { objective } }) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setObjective }, dispatch);
+  bindActionCreators({ setObjective, setKeyResult }, dispatch);
 
 class Objectives extends Component {
-  state = {};
+  state = {
+    objective: "",
+    keyResult: ""
+  };
 
   onChange = e => {
-    console.log("test onchange");
-
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -28,6 +29,7 @@ class Objectives extends Component {
   onSubmit = e => {
     const {
       setObjective,
+      setKeyResult,
       objective: { name }
     } = this.props;
     e.preventDefault();
@@ -36,14 +38,19 @@ class Objectives extends Component {
     } else {
       setObjective(this.state.objective);
     }
+    this.setState({
+      objective: "",
+      keyResult: ""
+    });
   };
 
   render() {
-    const { name, type, onChange } = this.state;
+    const { name, type, keyResult } = this.state;
     const {
-      objective: { name: objectiveName }
+      objective: { name: objectiveName, keyResults }
     } = this.props;
 
+    console.log("keyResults", keyResults);
     //Check for Errors
     if (name === "") {
       this.setState({ errors: { name: "Item is required" } });
@@ -75,7 +82,14 @@ class Objectives extends Component {
             />
           </form>
         </div>
-        {objectiveName ? <KeyResults onChange={this.onChange} /> : null}
+        {objectiveName ? (
+          <KeyResults
+            keyResults={keyResults}
+            keyResultValue={keyResult}
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+          />
+        ) : null}
       </div>
     );
   }

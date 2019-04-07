@@ -8,6 +8,7 @@ const initialState = {
 };
 
 export default function polls(state = initialState, action) {
+  console.log("action", action);
   switch (action.type) {
     case SET_OBJECTIVE:
       return {

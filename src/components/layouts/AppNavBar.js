@@ -15,7 +15,7 @@ const AppNavBar = props => {
         </Link>
 
         <Switch>
-          <Link to="/" className="nav-link text-dark  ">
+          <Link to="/" className="nav-link text-dark">
             Instructions{" "}
             <Route exact path="/instructions" component={Instructions} />
           </Link>
