@@ -11,7 +11,6 @@ class KeyResults extends Component {
   render() {
     const { name, type } = this.state;
     const { onChange, keyResults, onSubmit, keyResultValue } = this.props;
-    console.log("keyResultValue", keyResultValue);
     return (
       <Fragment>
         {keyResults.map(keyResult => (

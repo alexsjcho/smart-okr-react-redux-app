@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
-import NotFound from "../shared/NotFound";
-import Instructions from "./Instructions";
+// import NotFound from "../shared/NotFound";
+// import Instructions from "./Instructions";
 
 const AppNavBar = props => {
   const { branding } = props;
@@ -14,13 +14,13 @@ const AppNavBar = props => {
           {branding}
         </Link>
 
-        <Switch>
+        {/* <Switch>
           <Link to="/" className="nav-link text-dark">
             Instructions{" "}
             <Route exact path="/instructions" component={Instructions} />
           </Link>
           <Route component={NotFound} />
-        </Switch>
+        </Switch> */}
 
         <a className="p-2 text-dark" href="/">
           Logout

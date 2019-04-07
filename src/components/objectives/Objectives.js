@@ -1,14 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
 import KeyResults from "../keyresults/KeyResults";
 
 import { setObjective, setKeyResult } from "../../actions/objectives.js";
 
-const mapStateToProps = ({ objectives: { objective } }) => ({
-  objective
+const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
+  objective,
+  objectivesList
 });
 
 const mapDispatchToProps = dispatch =>
@@ -45,52 +47,90 @@ class Objectives extends Component {
   };
 
   render() {
-    const { name, type, keyResult } = this.state;
+    const { name, type, keyResult, objective } = this.state;
     const {
+      objectivesList,
       objective: { name: objectiveName, keyResults }
     } = this.props;
 
-    console.log("keyResults", keyResults);
     //Check for Errors
     if (name === "") {
       this.setState({ errors: { name: "Item is required" } });
     }
 
     return (
-      <div className="card card-body mb-3">
-        <h1>
-          OKRs <i className="fas fa-sort-down" />
-        </h1>
-        <div className="card-header">
-          <form onSubmit={this.onSubmit}>
-            <ul className="list-group">
-              <li className="list-group-item">
-                <i className="fas fa-plus" />{" "}
-                <input
-                  type="submit"
-                  value="Add Objective"
-                  className="btn btn-primary btn-inline-block"
+      <Fragment>
+        {objectivesList.map(obj => (
+          <div key={uuid()} className="card card-body mb-3">
+            <h1>
+              OKRs <i className="fas fa-sort-down" />
+            </h1>
+            <div className="card-header">
+              <form onSubmit={this.onSubmit}>
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    <i className="fas fa-plus" />{" "}
+                    <input
+                      type="submit"
+                      value="Add Objective"
+                      className="btn btn-primary btn-inline-block"
+                    />
+                  </li>
+                </ul>
+                <TextInputGroup
+                  name="objective"
+                  type={type}
+                  placeholder="Overachieve quota this quarter!"
+                  value={obj.name}
+                  onChange={this.onChange}
                 />
-              </li>
-            </ul>
-            <TextInputGroup
-              name="objective"
-              type={type}
-              placeholder="Overachieve quota this quarter!"
-              value={name}
+              </form>
+            </div>
+            {obj.name ? (
+              <KeyResults
+                keyResults={obj.keyResults}
+                keyResultValue={keyResult}
+                onSubmit={this.onSubmit}
+                onChange={this.onChange}
+              />
+            ) : null}
+          </div>
+        ))}
+        <div className="card card-body mb-3">
+          <h1>
+            OKRs <i className="fas fa-sort-down" />
+          </h1>
+          <div className="card-header">
+            <form onSubmit={this.onSubmit}>
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <i className="fas fa-plus" />{" "}
+                  <input
+                    type="submit"
+                    value="Add Objective"
+                    className="btn btn-primary btn-inline-block"
+                  />
+                </li>
+              </ul>
+              <TextInputGroup
+                name="objective"
+                type={type}
+                placeholder="Overachieve quota this quarter!"
+                value={objective}
+                onChange={this.onChange}
+              />
+            </form>
+          </div>
+          {objectiveName ? (
+            <KeyResults
+              keyResults={keyResults}
+              keyResultValue={keyResult}
+              onSubmit={this.onSubmit}
               onChange={this.onChange}
             />
-          </form>
+          ) : null}
         </div>
-        {objectiveName ? (
-          <KeyResults
-            keyResults={keyResults}
-            keyResultValue={keyResult}
-            onSubmit={this.onSubmit}
-            onChange={this.onChange}
-          />
-        ) : null}
-      </div>
+      </Fragment>
     );
   }
 }
