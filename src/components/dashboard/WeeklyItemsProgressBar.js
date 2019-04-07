@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
-class TasksProgressBar extends Component {
+class WeeklyItemsProgressBar extends Component {
   render() {
     return (
       <div className="col-xl-3 col-md-6 mb-4">
@@ -9,24 +10,39 @@ class TasksProgressBar extends Component {
             <div className="row no-gutters align-items-center">
               <div className="col mr-2">
                 <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                  Tasks
+                  Weekly Items
                 </div>
                 <div className="row no-gutters align-items-center">
                   <div className="col-auto">
                     <div
                       className="h5 mb-0 mr-3 "
                       style={{ fontWeight: "bold-text-gray-800" }}>
-                      50%
+                      65%
                     </div>
                   </div>
                   <div className="col">
-                    <div className="progress progress-sm mr-2">
-                      <div
-                        className="progress-bar bg-info"
-                        role="progressbar"
-                        style={{ width: "50%" }}
+                    <ProgressBar>
+                      <ProgressBar
+                        animated
+                        striped
+                        variant="success"
+                        now={35}
+                        key={1}
                       />
-                    </div>
+                      <ProgressBar
+                        animated
+                        variant="warning"
+                        now={20}
+                        key={2}
+                      />
+                      <ProgressBar
+                        animated
+                        striped
+                        variant="danger"
+                        now={10}
+                        key={3}
+                      />
+                    </ProgressBar>
                   </div>
                 </div>
               </div>
@@ -41,4 +57,4 @@ class TasksProgressBar extends Component {
   }
 }
 
-export default TasksProgressBar;
+export default WeeklyItemsProgressBar;

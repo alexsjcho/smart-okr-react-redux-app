@@ -5,8 +5,8 @@ import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
 import KeyResults from "../keyresults/KeyResults";
-
 import { setObjective, setKeyResult } from "../../actions/objectives.js";
+import ObjectiveProgressBar from "./ObjectiveProgressBar";
 
 const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
   objective,
@@ -65,6 +65,7 @@ class Objectives extends Component {
             <h1>
               <i className="fas fa-bullseye" /> KRs{" "}
               <i className="fas fa-sort-down" />
+              <ObjectiveProgressBar />
             </h1>
 
             <div className="card-header">
@@ -103,6 +104,7 @@ class Objectives extends Component {
           <h1>
             <i className="fas fa-bullseye" /> KRs{" "}
             <i className="fas fa-sort-down" />
+            <ObjectiveProgressBar />
           </h1>
           <div className="card-header">
             <form onSubmit={this.onSubmit}>

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
+import KeyResultProgressBar from "./KeyResultProgressBar";
 
 class KeyResults extends Component {
   state = {
@@ -14,7 +15,8 @@ class KeyResults extends Component {
     return (
       <Fragment>
         {keyResults.map(keyResult => (
-          <div key={uuid()} className="card-body">
+          <div striped animated key={uuid()} className="card-body">
+            <KeyResultProgressBar />
             <form>
               <ul className="list-group">
                 <li className="list-group-item">
@@ -38,6 +40,7 @@ class KeyResults extends Component {
           </div>
         ))}
         <div className="card-body">
+          <KeyResultProgressBar />
           <form onSubmit={onSubmit}>
             <ul className="list-group">
               <li className="list-group-item">
