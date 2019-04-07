@@ -14,7 +14,7 @@ class Plans extends Component {
     return (
       <div className="card card-body mb-3">
         <h4>
-          <i className="fas fa-expand" /> Plans{" "}
+          <i className="fas fa-edit" /> Plans{" "}
           <i
             className="fas fa-sort-down"
             onClick={() =>
