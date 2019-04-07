@@ -1,5 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import TextInputGroup from "../shared/TextInputGroup";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import uuid from "uuid";
+
+import { createPlans } from "../../actions/plans.js";
+import AddPlan from "./AddPlan";
+
+const mapStateToProps = ({ plans: { plans } }) => ({
+  plans
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ createPlans }, dispatch);
 
 class Plans extends Component {
   state = {
@@ -7,44 +20,78 @@ class Plans extends Component {
     showCardInfo: true
   };
 
+  onChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  onSubmit = e => {
+    const {
+      addPlan,
+      plan: { name }
+    } = this.props;
+    e.preventDefault();
+    if (name) {
+      addPlan(this.state.plan);
+    }
+    this.setState({
+      plan: ""
+    });
+  };
+
   render() {
-    const { name, type } = this.state;
-    const { showCardInfo } = this.state;
+    const { showCardInfo, type, plan } = this.state;
+    const { plansList, planName } = this.props;
 
     return (
-      <div className="card card-body mb-3">
-        <h4>
-          <i className="fas fa-edit" /> Plans{" "}
-          <i
-            className="fas fa-sort-down"
-            onClick={() =>
-              this.setState({ showCardInfo: !this.state.showCardInfo })
-            }
-          />
-        </h4>
-
-        {showCardInfo ? (
-          <div className="card-header">
-            {" "}
-            <input
-              type="submit"
-              value="Add Weekly Plan"
-              className="btn btn-outline-primary"
+      <Fragment>
+        <div key={uuid()} className="card card-body mb-3">
+          <h4>
+            <i className="fas fa-edit" /> Plans{" "}
+            <i
+              className="fas fa-sort-down"
+              onClick={() =>
+                this.setState({ showCardInfo: !this.state.showCardInfo })
+              }
             />
-            <form>
-              <TextInputGroup
-                name="plan"
-                type={type}
-                w
-                placeholder="Write a blog post by end of this week"
-                value={name}
+          </h4>
+
+          {showCardInfo ? (
+            <div className="card-header">
+              {" "}
+              <input
+                type="submit"
+                value="Add Weekly Plan"
+                className="btn btn-outline-primary"
               />
-            </form>
-          </div>
+              <form onSubmit={this.onSubmit}>
+                <TextInputGroup
+                  name="plan"
+                  type={type}
+                  value={plan}
+                  onChange={this.onChange}
+                  placeholder="Write a blog post by end of this week"
+                />
+              </form>
+            </div>
+          ) : null}
+        </div>
+
+        {planName ? (
+          <AddPlan
+            planName={planName}
+            planValue={plan}
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+          />
         ) : null}
-      </div>
+      </Fragment>
     );
   }
 }
 
-export default Plans;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Plans);

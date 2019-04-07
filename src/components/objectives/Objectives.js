@@ -83,9 +83,9 @@ class Objectives extends Component {
                 <TextInputGroup
                   name="objective"
                   type={type}
-                  placeholder="Overachieve quota this quarter!"
                   value={obj.name}
                   onChange={this.onChange}
+                  placeholder="Overachieve quota this quarter!"
                 />
               </form>
             </div>

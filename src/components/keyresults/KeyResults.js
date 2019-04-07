@@ -55,10 +55,10 @@ class KeyResults extends Component {
 
             <TextInputGroup
               name="keyResult"
-              placeholder="Enter new Key Result!"
               value={keyResultValue}
               type={type}
               onChange={onChange}
+              placeholder="Enter new Key Result!"
             />
           </form>
         </div>

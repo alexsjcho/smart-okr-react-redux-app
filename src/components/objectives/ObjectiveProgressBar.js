@@ -6,8 +6,7 @@ const ObjectiveProgressBar = () => {
   return (
     <div>
       <ProgressBar
-        animated
-        striped
+        //  animated striped properties added if Objective has a Key Result with an added tool
         variant="primary"
         now={now}
         label={`${now}%`}
