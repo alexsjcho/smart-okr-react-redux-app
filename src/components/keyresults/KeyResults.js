@@ -9,7 +9,7 @@ class KeyResults extends Component {
   };
 
   render() {
-    const { name, type } = this.state;
+    const { type } = this.state;
     const { onChange, keyResults, onSubmit, keyResultValue } = this.props;
     return (
       <Fragment>

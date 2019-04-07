@@ -65,6 +65,7 @@ class Objectives extends Component {
             <h1>
               OKRs <i className="fas fa-sort-down" />
             </h1>
+
             <div className="card-header">
               <form onSubmit={this.onSubmit}>
                 <ul className="list-group">
@@ -96,6 +97,7 @@ class Objectives extends Component {
             ) : null}
           </div>
         ))}
+
         <div className="card card-body mb-3">
           <h1>
             OKRs <i className="fas fa-sort-down" />

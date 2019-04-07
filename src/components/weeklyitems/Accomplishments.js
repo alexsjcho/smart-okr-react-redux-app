@@ -4,32 +4,44 @@ import TextInputGroup from "../shared/TextInputGroup";
 
 class Accomplishments extends Component {
   state = {
-    accomplishments: ""
+    accomplishments: "",
+    showCardInfo: true
   };
   render() {
     const { name, type } = this.state;
+    const { showCardInfo } = this.state;
+
     return (
       <div className="card card-body mb-3">
-        <h3>
-          Accomplishments <i className="fas fa-sort-down" />
-        </h3>
-        <div className="card-header">
-          {" "}
-          <i className="fas fa-plus" />{" "}
-          <input
-            type="submit"
-            value="Add Accomplishment"
-            className="btn btn-outline-success"
+        <h4>
+          Accomplishments{" "}
+          <i
+            className="fas fa-sort-down"
+            onClick={() =>
+              this.setState({ showCardInfo: !this.state.showCardInfo })
+            }
           />
-          <form>
-            <TextInputGroup
-              name="objectives"
-              type={type}
-              placeholder="Built a React CRUD app in a week!"
-              value={name}
+        </h4>
+
+        {showCardInfo ? (
+          <div className="card-header">
+            {" "}
+            <i className="fas fa-plus" />{" "}
+            <input
+              type="submit"
+              value="Add Accomplishment"
+              className="btn btn-outline-success"
             />
-          </form>
-        </div>
+            <form>
+              <TextInputGroup
+                name="objectives"
+                type={type}
+                placeholder="Built a React CRUD app in a week!"
+                value={name}
+              />
+            </form>
+          </div>
+        ) : null}
       </div>
     );
   }

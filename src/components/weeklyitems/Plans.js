@@ -3,34 +3,46 @@ import TextInputGroup from "../shared/TextInputGroup";
 
 class Plans extends Component {
   state = {
-    plan: ""
+    plan: "",
+    showCardInfo: true
   };
 
   render() {
     const { name, type } = this.state;
+    const { showCardInfo } = this.state;
+
     return (
       <div className="card card-body mb-3">
-        <h3>
-          Plans <i className="fas fa-sort-down" />
-        </h3>
-        <div className="card-header">
-          {" "}
-          <i className="fas fa-plus" />{" "}
-          <input
-            type="submit"
-            value="Add Weekly Plan"
-            className="btn btn-outline-primary"
+        <h4>
+          Plans{" "}
+          <i
+            className="fas fa-sort-down"
+            onClick={() =>
+              this.setState({ showCardInfo: !this.state.showCardInfo })
+            }
           />
-          <form>
-            <TextInputGroup
-              name="plan"
-              type={type}
-              w
-              placeholder="Write a blog post by end of this week"
-              value={name}
+        </h4>
+
+        {showCardInfo ? (
+          <div className="card-header">
+            {" "}
+            <i className="fas fa-plus" />{" "}
+            <input
+              type="submit"
+              value="Add Weekly Plan"
+              className="btn btn-outline-primary"
             />
-          </form>
-        </div>
+            <form>
+              <TextInputGroup
+                name="plan"
+                type={type}
+                w
+                placeholder="Write a blog post by end of this week"
+                value={name}
+              />
+            </form>
+          </div>
+        ) : null}
       </div>
     );
   }

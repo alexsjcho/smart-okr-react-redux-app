@@ -13,7 +13,7 @@ class Challenges extends Component {
 
     return (
       <div className="card card-body mb-3">
-        <h3>
+        <h4>
           Challenges{" "}
           <i
             className="fas fa-sort-down"
@@ -21,7 +21,7 @@ class Challenges extends Component {
               this.setState({ showCardInfo: !this.state.showCardInfo })
             }
           />
-        </h3>
+        </h4>
         <div className="card-header">
           {showCardInfo ? (
             <form>
