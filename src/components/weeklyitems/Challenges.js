@@ -14,7 +14,7 @@ class Challenges extends Component {
     return (
       <div className="card card-body mb-3">
         <h4>
-          Challenges{" "}
+          <i className="fas fa-frown-open" /> Challenges{" "}
           <i
             className="fas fa-sort-down"
             onClick={() =>
@@ -25,7 +25,6 @@ class Challenges extends Component {
         <div className="card-header">
           {showCardInfo ? (
             <form>
-              <i className="fas fa-frown-open" />
               <input
                 type="submit"
                 value="Add Challange"

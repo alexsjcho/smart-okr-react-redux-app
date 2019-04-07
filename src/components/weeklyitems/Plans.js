@@ -14,8 +14,9 @@ class Plans extends Component {
     return (
       <div className="card card-body mb-3">
         <h4>
-          Plans{" "}
+          <i className="fas fa-expand" /> Plans{" "}
           <i
+            className="fas fa-sort-down"
             onClick={() =>
               this.setState({ showCardInfo: !this.state.showCardInfo })
             }
@@ -25,7 +26,6 @@ class Plans extends Component {
         {showCardInfo ? (
           <div className="card-header">
             {" "}
-            <i className="fas fa-expand" />
             <input
               type="submit"
               value="Add Weekly Plan"

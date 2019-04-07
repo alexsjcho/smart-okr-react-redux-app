@@ -14,7 +14,7 @@ class Accomplishments extends Component {
     return (
       <div className="card card-body mb-3">
         <h4>
-          Accomplishments{" "}
+          <i className="fas fa-grin-squint-tears" /> Accomplishments{" "}
           <i
             className="fas fa-sort-down"
             onClick={() =>
@@ -26,7 +26,6 @@ class Accomplishments extends Component {
         {showCardInfo ? (
           <div className="card-header">
             {" "}
-            <i className="fas fa-grin-squint-tears" />
             <input
               type="submit"
               value="Add Accomplishment"
