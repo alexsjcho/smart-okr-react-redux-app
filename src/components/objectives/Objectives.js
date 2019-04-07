@@ -63,7 +63,8 @@ class Objectives extends Component {
         {objectivesList.map(obj => (
           <div key={uuid()} className="card card-body mb-3">
             <h1>
-              OKRs <i className="fas fa-sort-down" />
+              <i className="fas fa-bullseye" /> KRs{" "}
+              <i className="fas fa-sort-down" />
             </h1>
 
             <div className="card-header">
@@ -100,7 +101,8 @@ class Objectives extends Component {
 
         <div className="card card-body mb-3">
           <h1>
-            OKRs <i className="fas fa-sort-down" />
+            <i className="fas fa-bullseye" /> KRs{" "}
+            <i className="fas fa-sort-down" />
           </h1>
           <div className="card-header">
             <form onSubmit={this.onSubmit}>
