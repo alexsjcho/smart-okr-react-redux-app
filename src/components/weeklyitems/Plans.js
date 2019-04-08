@@ -42,7 +42,7 @@ class Plans extends Component {
 
   render() {
     const { showCardInfo, type, plan } = this.state;
-    const { plansList, planName } = this.props;
+    const { planName } = this.props;
 
     return (
       <Fragment>

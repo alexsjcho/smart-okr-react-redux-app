@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // import NotFound from "../shared/NotFound";
-// import Instructions from "./Instructions";
+import Home from "../landingpage/Home";
 
 const AppNavBar = props => {
   const { branding } = props;
@@ -10,21 +10,12 @@ const AppNavBar = props => {
   return (
     <Router>
       <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-3 py-0">
-        <Link to="/" className="nav-link navbar-brand">
-          {branding}
-        </Link>
+        <div className="nav-link navbar-brand"> {branding} </div>
 
-        {/* <Switch>
-          <Link to="/" className="nav-link text-dark">
-            Instructions{" "}
-            <Route exact path="/instructions" component={Instructions} />
-          </Link>
-          <Route component={NotFound} />
-        </Switch> */}
-
-        <a className="p-2 text-dark" href="/">
-          Logout
-        </a>
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          {/* <Route component={NotFound} /> */}
+        </Switch>
       </nav>
     </Router>
   );

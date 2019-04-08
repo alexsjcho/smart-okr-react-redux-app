@@ -33,7 +33,7 @@ class Objective extends Component {
   };
 
   render() {
-    const { type, keyResult, objective } = this.state;
+    const { type } = this.state;
 
     const {
       objective: { name: objectiveName, keyResults },

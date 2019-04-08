@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch =>
 
 class ObjectivesList extends Component {
   onSubmit = submitValue => {
-    const { setObjective, setKeyResult } = this.props;
+    const { setObjective } = this.props;
     //if (name) {
     // setKeyResult(submitValue);
     //} else {
