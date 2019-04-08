@@ -1,11 +1,7 @@
 import { SET_OBJECTIVE, SET_KEY_RESULT } from "../actions/objectives";
 
 const initialState = {
-  objectivesList: [],
-  objective: {
-    name: null,
-    keyResults: []
-  }
+  objectivesList: []
 };
 
 export default function polls(state = initialState, action) {
@@ -18,14 +14,20 @@ export default function polls(state = initialState, action) {
           { name: action.payload, keyResults: [] }
         ]
       };
-    case SET_KEY_RESULT:
+    case SET_KEY_RESULT: {
+      const objective = state.objectivesList[action.payload.objectiveId];
+
+      objective.keyResults = [
+        ...objective.keyResults,
+        action.payload.keyResult
+      ];
+
       return {
         ...state,
-        objective: {
-          ...state.objective,
-          keyResults: [...state.objective.keyResults, action.payload]
-        }
+        objectivesList: [...state.objectivesList, objective]
       };
+    }
+
     default:
       return state;
   }

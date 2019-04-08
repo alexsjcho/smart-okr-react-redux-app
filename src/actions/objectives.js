@@ -6,7 +6,7 @@ export const setObjective = objective => ({
   payload: objective
 });
 
-export const setKeyResult = keyResult => ({
+export const setKeyResult = (keyResult, objectiveId) => ({
   type: SET_KEY_RESULT,
-  payload: keyResult
+  payload: { keyResult, objectiveId }
 });
