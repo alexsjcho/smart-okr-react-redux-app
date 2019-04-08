@@ -3,11 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 import AppNavBar from "./layouts/AppNavBar";
-import ObjectivesList from "./objectives/ObjectivesList";
 import Dashboard from "./dashboard/Dashboard";
-import Accomplishments from "./weeklyitems/Accomplishments";
+import ObjectivesList from "./objectives/ObjectivesList";
 import PlanList from "./weeklyitems/PlanList";
 import ChallengeList from "./weeklyitems/ChallengeList";
+import AchievementList from "./weeklyitems/AchievementList";
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
           <ObjectivesList />
           <div className="container">
             <PlanList />
-            <Accomplishments />
+            <AchievementList />
             <ChallengeList />
           </div>
         </div>
