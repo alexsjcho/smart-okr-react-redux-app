@@ -8,6 +8,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Plans from "./weeklyitems/Plans";
 import Accomplishments from "./weeklyitems/Accomplishments";
 import Challenges from "./weeklyitems/Challenges";
+import KeyResult from "./keyresults/KeyResult";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <div className="container">
             <Dashboard />
           </div>
+          <KeyResult />
           <ObjectivesList />
           <div className="container">
             <Plans />

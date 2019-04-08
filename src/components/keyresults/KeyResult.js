@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import TextInputGroup from "../shared/TextInputGroup";
 
 import KeyResultProgressBar from "./KeyResultProgressBar";
+import KeyResultsMetrics from "./KeyResultsMetrics";
 
 class KeyResult extends Component {
   constructor(props) {
@@ -48,6 +49,8 @@ class KeyResult extends Component {
                 value="Add Key Result"
                 className="btn btn-info"
               />
+              {/* This KRM will corelate with KRProgressBar  */}
+              <KeyResultsMetrics />
             </li>
           </ul>
 
