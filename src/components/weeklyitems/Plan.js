@@ -1,24 +1,15 @@
 import React, { Component, Fragment } from "react";
-import TextInputGroup from "../shared/TextInputGroup";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import uuid from "uuid";
 
-import { createPlans } from "../../actions/plans.js";
-import AddPlan from "./AddPlan";
+import TextInputGroup from "../shared/TextInputGroup";
 
-const mapStateToProps = ({ plans: { plans } }) => ({
-  plans
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ createPlans }, dispatch);
-
-class Plans extends Component {
-  state = {
-    plan: "",
-    showCardInfo: true
-  };
+class Plan extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      plan: ""
+    };
+  }
 
   onChange = e => {
     this.setState({
@@ -26,23 +17,18 @@ class Plans extends Component {
     });
   };
 
-  onSubmit = e => {
-    const {
-      addPlan,
-      plan: { name }
-    } = this.props;
+  handleSubmit = e => {
+    const { onSubmit } = this.props;
     e.preventDefault();
-    if (name) {
-      addPlan(this.state.plan);
-    }
+    onSubmit(this.state.plan);
     this.setState({
       plan: ""
     });
   };
 
   render() {
-    const { showCardInfo, type, plan } = this.state;
-    const { planName } = this.props;
+    const { type, showCardInfo } = this.state;
+    const { plan } = this.props;
 
     return (
       <Fragment>
@@ -68,7 +54,7 @@ class Plans extends Component {
               {/* Create Link Modal for editing*/}
               <i className="fas fa-pencil-alt " />
               <i className="fas fa-trash-alt " />
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <TextInputGroup
                   name="plan"
                   type={type}
@@ -80,21 +66,14 @@ class Plans extends Component {
             </div>
           ) : null}
         </div>
-
-        {planName ? (
-          <AddPlan
-            planName={planName}
-            planValue={plan}
-            onSubmit={this.onSubmit}
-            onChange={this.onChange}
-          />
-        ) : null}
       </Fragment>
     );
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Plans);
+Plan.defaultProps = {
+  type: "",
+  name: ""
+};
+
+export default Plan;

@@ -5,9 +5,9 @@ import "./App.css";
 import AppNavBar from "./layouts/AppNavBar";
 import ObjectivesList from "./objectives/ObjectivesList";
 import Dashboard from "./dashboard/Dashboard";
-import Plans from "./weeklyitems/Plans";
 import Accomplishments from "./weeklyitems/Accomplishments";
-import Challenges from "./weeklyitems/Challenges";
+import PlanList from "./weeklyitems/PlanList";
+import ChallengeList from "./weeklyitems/ChallengeList";
 
 class App extends Component {
   render() {
@@ -20,9 +20,9 @@ class App extends Component {
           </div>
           <ObjectivesList />
           <div className="container">
-            <Plans />
+            <PlanList />
             <Accomplishments />
-            <Challenges />
+            <ChallengeList />
           </div>
         </div>
       </React.Fragment>
