@@ -64,7 +64,10 @@ class Plans extends Component {
                 type="submit"
                 value="Add Weekly Plan"
                 className="btn btn-outline-primary"
-              />
+              />{" "}
+              {/* Create Link Modal for editing*/}
+              <i className="fas fa-pencil-alt " />
+              <i className="fas fa-trash-alt " />
               <form onSubmit={this.onSubmit}>
                 <TextInputGroup
                   name="plan"

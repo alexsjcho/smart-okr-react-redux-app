@@ -48,6 +48,9 @@ class KeyResult extends Component {
                 value="Add Key Result"
                 className="btn btn-info"
               />
+              {/* Create Link Modal for editing*/}
+              <i className="fas fa-pencil-alt " />
+              <i className="fas fa-trash-alt " />
             </li>
           </ul>
 

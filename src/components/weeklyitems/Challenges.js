@@ -30,6 +30,9 @@ class Challenges extends Component {
                 value="Add Challange"
                 className="btn btn-outline-warning"
               />
+              {/* Create Link Modal for editing*/}
+              <i className="fas fa-pencil-alt " />
+              <i className="fas fa-trash-alt " />
               <TextInputGroup
                 name="challenge"
                 type={type}

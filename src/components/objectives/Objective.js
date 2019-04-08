@@ -58,6 +58,9 @@ class Objective extends Component {
                   value="Add Objective"
                   className="btn btn-primary btn-inline-block"
                 />
+                {/* Create Link Modal for editing*/}
+                <i className="fas fa-pencil-alt " />
+                <i className="fas fa-trash-alt " />
               </li>
             </ul>
             <TextInputGroup

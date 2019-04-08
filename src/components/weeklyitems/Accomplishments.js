@@ -31,6 +31,9 @@ class Accomplishments extends Component {
               value="Add Accomplishment"
               className="btn btn-outline-success"
             />
+            {/* Create Link Modal for editing*/}
+            <i className="fas fa-pencil-alt " />
+            <i className="fas fa-trash-alt " />
             <form>
               <TextInputGroup
                 name="objectives"
