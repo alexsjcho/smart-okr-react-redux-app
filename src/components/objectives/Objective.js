@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ObjectiveProgressBar from "./ObjectiveProgressBar";
 import TextInputGroup from "../shared/TextInputGroup";
 import KeyResultsList from "../keyresults/KeyResultsList";
+import ObjectiveCategory from "./ObjectiveCategory";
 
 class Objective extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class Objective extends Component {
           <form onSubmit={this.handleSubmit}>
             <ul className="list-group">
               <li className="list-group-item">
-                <i className="fas fa-plus" />{" "}
+                <i className="fas fa-plus" />
                 <input
                   type="submit"
                   value="Add Objective"
@@ -61,6 +62,7 @@ class Objective extends Component {
                 {/* Create Link Modal for editing*/}
                 <i className="fas fa-pencil-alt " />
                 <i className="fas fa-trash-alt " />
+                <ObjectiveCategory />
               </li>
             </ul>
             <TextInputGroup
