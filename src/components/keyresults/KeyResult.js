@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import TextInputGroup from "../shared/TextInputGroup";
 
 import KeyResultProgressBar from "./KeyResultProgressBar";
+import KeyResultsMetrics from "./KeyResultsMetrics";
 
 class KeyResult extends Component {
   constructor(props) {
@@ -48,9 +49,12 @@ class KeyResult extends Component {
                 value="Add Key Result"
                 className="btn btn-info"
               />
+
               {/* Create Link Modal for editing*/}
               <i className="fas fa-pencil-alt " />
               <i className="fas fa-trash-alt " />
+
+              <KeyResultsMetrics />
             </li>
           </ul>
 
