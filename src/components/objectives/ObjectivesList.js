@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import uuid from "uuid";
 
-import { setObjective, setKeyResult } from "../../actions/objectives.js";
+import {
+  setObjective,
+  setKeyResult,
+  setWeeklyPlan
+} from "../../actions/objectives.js";
 import Objective from "./Objective";
 
 const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
@@ -11,7 +15,7 @@ const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setObjective, setKeyResult }, dispatch);
+  bindActionCreators({ setObjective, setKeyResult, setWeeklyPlan }, dispatch);
 
 class ObjectivesList extends Component {
   onSubmit = submitValue => {

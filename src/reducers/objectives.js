@@ -1,4 +1,8 @@
-import { SET_OBJECTIVE, SET_KEY_RESULT } from "../actions/objectives";
+import {
+  SET_OBJECTIVE,
+  SET_KEY_RESULT,
+  SET_WEEKLY_PLAN
+} from "../actions/objectives";
 
 const initialState = {
   objectivesList: []
@@ -31,6 +35,21 @@ export default function polls(state = initialState, action) {
         objectivesList: [...state.objectivesList]
       };
     }
+
+    case SET_WEEKLY_PLAN: {
+      const objective = state.objectivesList[action.payload.objectiveId];
+
+      objective.weeklyPlans = [
+        ...objective.weeklyPlans,
+        action.payload.weeklyPlan
+      ];
+
+      return {
+        ...state,
+        objectivesList: [...state.objectivesList]
+      };
+    }
+    //Plan
 
     default:
       return state;
