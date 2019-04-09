@@ -20,23 +20,11 @@ const mapDispatchToProps = dispatch =>
 class ObjectivesList extends Component {
   onSubmit = submitValue => {
     const { setObjective } = this.props;
-    //if (name) {
-    // setKeyResult(submitValue);
-    //} else {
-    //
-    //}
-
     setObjective(submitValue);
   };
 
   render() {
     const { objectivesList, ...props } = this.props;
-
-    // //Check for Errors
-    // if (name === "") {
-    //   this.setState({ errors: { name: "Item is required" } });
-    // }
-
     console.log("objectivesList", objectivesList);
 
     return (

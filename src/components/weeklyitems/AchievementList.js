@@ -3,23 +3,39 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 // import uuid from "uuid";
 
-import { createAchievements } from "../../actions/achievements.js";
+import { setWeeklyAchievement } from "../../actions/objectives.js";
 import Achievement from "./Achievement";
 
 const mapStateToProps = ({
-  achievements: { achivement, achievementList }
+  achievements: { achivement, achievementsList }
 }) => ({
-  achievementList
+  achievementsList
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ createAchievements }, dispatch);
+  bindActionCreators({ setWeeklyAchievement }, dispatch);
 
 class AchievementList extends Component {
+  onSubmit = submitValue => {
+    const { setWeeklyAchievement } = this.props;
+    setWeeklyAchievement(submitValue);
+  };
+
   render() {
+    const { achievementsList, ...props } = this.props;
     return (
       <Fragment>
-        <Achievement />
+        {/* {achievementsList.map((achievement, i) => (
+          <Achievement
+            objectiveId={i}
+            key={uuid()}
+            achievement={achievement}
+            onSubmit={this.onSubmit}
+            {...props}
+          />
+        ))} */}
+
+        <Achievement onSubmit={this.onSubmit} {...props} />
       </Fragment>
     );
   }

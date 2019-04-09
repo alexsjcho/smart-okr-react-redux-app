@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+
 import TextInputGroup from "../shared/TextInputGroup";
 import TimeStamp from "./TimeStamp";
 
@@ -7,6 +8,7 @@ class Challenge extends Component {
     super(props);
     this.state = {
       challenge: "",
+      time: "",
       showCardInfo: true
     };
   }
@@ -27,7 +29,7 @@ class Challenge extends Component {
   };
 
   render() {
-    const { type, showCardInfo } = this.state;
+    const { showCardInfo } = this.state;
     const { challenge } = this.props;
 
     return (
@@ -50,15 +52,15 @@ class Challenge extends Component {
                   value="Add Challange"
                   className="btn btn-outline-warning"
                 />
-                {/* Create Link Modal for editing*/}
+                {/* Input fields are muted until pencil icon is clicked for edit*/}
                 <i className="fas fa-pencil-alt " />
                 <i className="fas fa-trash-alt " />
                 <TimeStamp />
                 <TextInputGroup
                   name="challenge"
-                  type={type}
-                  placeholder="Didn't get enough sleep..."
                   value={challenge}
+                  onChange={this.onChange}
+                  placeholder="Didn't get enough sleep..."
                 />
               </form>
             ) : null}
@@ -71,7 +73,7 @@ class Challenge extends Component {
 
 Challenge.defaultProps = {
   name: "",
-  type: ""
+  time: ""
 };
 
 export default Challenge;

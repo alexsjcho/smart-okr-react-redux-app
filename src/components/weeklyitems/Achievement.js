@@ -8,6 +8,7 @@ class Achievement extends Component {
     super(props);
     this.state = {
       achievement: "",
+      time: "",
       showCardInfo: true
     };
   }
@@ -28,8 +29,9 @@ class Achievement extends Component {
   };
 
   render() {
-    const { showCardInfo, type } = this.state;
+    const { showCardInfo } = this.state;
     const { accomplishment } = this.props;
+
     return (
       <Fragment>
         <div className="card card-body mb-3">
@@ -51,16 +53,16 @@ class Achievement extends Component {
                 value="Add Achievement"
                 className="btn btn-outline-success"
               />
-              {/* Create Link Modal for editing*/}
+              {/* Input fields are muted until pencil icon is clicked for edit*/}
               <i className="fas fa-pencil-alt " />
               <i className="fas fa-trash-alt " />
               <TimeStamp />
               <form>
                 <TextInputGroup
-                  name="objectives"
-                  type={type}
-                  placeholder="Built a React CRUD app in a week!"
+                  name="achievement"
                   value={accomplishment}
+                  onChange={this.onChange}
+                  placeholder="Built a React CRUD app in a week!"
                 />
               </form>
             </div>
@@ -73,7 +75,7 @@ class Achievement extends Component {
 
 Achievement.defaultProps = {
   name: "",
-  type: ""
+  time: ""
 };
 
 export default Achievement;

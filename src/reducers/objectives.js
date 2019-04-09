@@ -1,14 +1,16 @@
 import {
   SET_OBJECTIVE,
   SET_KEY_RESULT,
-  SET_WEEKLY_PLAN
+  SET_WEEKLY_PLAN,
+  SET_WEEKLY_ACHIEVEMENT,
+  SET_WEEKLY_CHALLENGE
 } from "../actions/objectives";
 
 const initialState = {
   objectivesList: []
 };
 
-export default function polls(state = initialState, action) {
+export default function objectives(state = initialState, action) {
   switch (action.type) {
     case SET_OBJECTIVE:
       return {
@@ -44,6 +46,36 @@ export default function polls(state = initialState, action) {
       objective.weeklyPlans = [
         ...objective.weeklyPlans,
         action.payload.weeklyPlan
+      ];
+
+      return {
+        ...state,
+        objectivesList: [...state.objectivesList]
+      };
+    }
+
+    case SET_WEEKLY_ACHIEVEMENT: {
+      const objective =
+        state.objectivesList[action.payload.weeklyAchievement.objectiveId];
+
+      objective.weeklyAchievement = [
+        ...objective.weeklyAchievement,
+        action.payload.weeklyAchievement
+      ];
+
+      return {
+        ...state,
+        objectivesList: [...state.objectivesList]
+      };
+    }
+
+    case SET_WEEKLY_CHALLENGE: {
+      const objective =
+        state.objectivesList[action.payload.weeklyChallenge.objectiveId];
+
+      objective.weeklyChallenge = [
+        ...objective.weeklyChallenge,
+        action.payload.weeklyChallenge
       ];
 
       return {

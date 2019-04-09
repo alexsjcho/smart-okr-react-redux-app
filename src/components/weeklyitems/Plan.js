@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
 import TimeStamp from "./TimeStamp";
@@ -9,6 +8,7 @@ class Plan extends Component {
     super(props);
     this.state = {
       plan: "",
+      time: "",
       showCardInfo: true
     };
   }
@@ -29,12 +29,12 @@ class Plan extends Component {
   };
 
   render() {
-    const { type, showCardInfo } = this.state;
+    const { showCardInfo } = this.state;
     const { plan } = this.props;
 
     return (
       <Fragment>
-        <div key={uuid()} className="card card-body mb-3">
+        <div className="card card-body mb-3">
           <h4>
             <i className="fas fa-edit" /> Plans{" "}
             <i
@@ -47,20 +47,18 @@ class Plan extends Component {
 
           {showCardInfo ? (
             <div className="card-header">
-              {" "}
               <input
                 type="submit"
                 value="Add Weekly Plan"
                 className="btn btn-outline-primary"
               />{" "}
-              {/* Create Link Modal for editing*/}
+              {/* Input fields are muted until pencil icon is clicked for edit*/}
               <i className="fas fa-pencil-alt " />
               <i className="fas fa-trash-alt " />
               <TimeStamp />
               <form onSubmit={this.handleSubmit}>
                 <TextInputGroup
                   name="plan"
-                  type={type}
                   value={plan}
                   onChange={this.onChange}
                   placeholder="Write a blog post by end of this week"
@@ -75,8 +73,8 @@ class Plan extends Component {
 }
 
 Plan.defaultProps = {
-  type: "",
-  name: ""
+  name: "",
+  time: ""
 };
 
 export default Plan;
