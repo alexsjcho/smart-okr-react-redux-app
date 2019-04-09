@@ -33,7 +33,7 @@ class Achievement extends Component {
       <Fragment>
         <div className="card card-body mb-3">
           <h4>
-            <i className="fas fa-grin-squint-tears" /> Accomplishments{" "}
+            <i className="fas fa-grin-squint-tears" /> Achievements{" "}
             <i
               className="fas fa-sort-down"
               onClick={() =>
@@ -47,7 +47,7 @@ class Achievement extends Component {
               {" "}
               <input
                 type="submit"
-                value="Add Accomplishment"
+                value="Add Achievement"
                 className="btn btn-outline-success"
               />
               {/* Create Link Modal for editing*/}

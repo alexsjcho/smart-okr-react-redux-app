@@ -78,6 +78,8 @@ class KeyResult extends Component {
               {/* Create Link Modal for editing*/}
               <i className="fas fa-pencil-alt " />
               <i className="fas fa-trash-alt " />
+
+              {/* KeyResults Metrics Section */}
               <TextInputGroup
                 name="unit"
                 placeholder="Amount"
