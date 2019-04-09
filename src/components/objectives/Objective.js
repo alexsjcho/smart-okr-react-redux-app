@@ -64,7 +64,6 @@ class Objective extends Component {
               <li className="list-group-item">
                 {objectiveName === "" ? (
                   <Fragment>
-                    <i className="fas fa-plus" />
                     <input
                       type="submit"
                       value="Add Objective"

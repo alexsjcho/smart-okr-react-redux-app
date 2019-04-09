@@ -7,10 +7,15 @@ const options = [
   { value: "unit", label: "#" }
 ];
 
-const MetricMenu = () => {
+const MetricMenu = ({ onChange, unitCategory }) => {
   return (
     <Fragment>
-      <Select options={options} />
+      <Select
+        name="unitCategory"
+        value={unitCategory}
+        onChange={onChange}
+        options={options}
+      />
     </Fragment>
   );
 };

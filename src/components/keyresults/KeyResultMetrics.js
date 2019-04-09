@@ -1,18 +1,20 @@
 import React, { Fragment, Component } from "react";
-import InputGroup, { FormControl } from "react-bootstrap/InputGroup";
+import TextInputGroup from "../shared/TextInputGroup";
+import MetricMenu from "./MetricMenu";
 
 class KeyResultMetrics extends Component {
   render() {
+    const { onChange, unit, type } = this.props;
     return (
       <Fragment>
-        <InputGroup className="mb-3">
-          <InputGroup.Append>
-            <InputGroup.Text>
-              <FormControl placeholder="Amount" />
-            </InputGroup.Text>
-            <InputGroup.Text> % </InputGroup.Text>
-          </InputGroup.Append>
-        </InputGroup>
+        <TextInputGroup
+          name="unit"
+          placeholder="Amount"
+          value={unit}
+          onChange={onChange}
+          type={type}
+        />
+        <MetricMenu />
       </Fragment>
     );
   }
