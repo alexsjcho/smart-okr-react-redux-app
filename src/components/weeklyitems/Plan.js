@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
+import TimeStamp from "./TimeStamp";
 
 class Plan extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class Plan extends Component {
               {/* Create Link Modal for editing*/}
               <i className="fas fa-pencil-alt " />
               <i className="fas fa-trash-alt " />
+              <TimeStamp />
               <form onSubmit={this.handleSubmit}>
                 <TextInputGroup
                   name="plan"

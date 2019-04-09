@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import TextInputGroup from "../shared/TextInputGroup";
+import TimeStamp from "./TimeStamp";
 
 class Challenge extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class Challenge extends Component {
                 {/* Create Link Modal for editing*/}
                 <i className="fas fa-pencil-alt " />
                 <i className="fas fa-trash-alt " />
+                <TimeStamp />
                 <TextInputGroup
                   name="challenge"
                   type={type}
