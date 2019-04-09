@@ -9,6 +9,7 @@ import ObjectivesList from "./objectives/ObjectivesList";
 import PlanList from "./weeklyitems/PlanList";
 import ChallengeList from "./weeklyitems/ChallengeList";
 import AchievementList from "./weeklyitems/AchievementList";
+import KeyResult from "./keyresults/KeyResult";
 
 class App extends Component {
   render() {
@@ -19,7 +20,7 @@ class App extends Component {
           <div className="container">
             <Dashboard />
           </div>
-
+          <KeyResult />
           <ObjectivesList />
           <div className="container">
             <PlanList />

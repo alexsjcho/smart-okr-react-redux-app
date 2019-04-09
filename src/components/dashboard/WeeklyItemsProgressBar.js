@@ -10,7 +10,7 @@ class WeeklyItemsProgressBar extends Component {
             <div className="row no-gutters align-items-center">
               <div className="col mr-2">
                 <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                  Weekly Items
+                  All Weekly Items
                 </div>
                 <div className="row no-gutters align-items-center">
                   <div className="col-auto">
