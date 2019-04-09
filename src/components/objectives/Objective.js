@@ -4,6 +4,7 @@ import ObjectiveProgressBar from "./ObjectiveProgressBar";
 import TextInputGroup from "../shared/TextInputGroup";
 import KeyResultsList from "../keyresults/KeyResultsList";
 import ObjectiveCategory from "./ObjectiveCategory";
+import ObjectiveDates from "./ObjectiveDates";
 
 class Objective extends Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class Objective extends Component {
 
     return (
       <div className="card card-body mb-3">
+        <ObjectiveDates />
         <h1>
           <i className="fas fa-bullseye" /> KRs{" "}
           <i className="fas fa-sort-down" />
