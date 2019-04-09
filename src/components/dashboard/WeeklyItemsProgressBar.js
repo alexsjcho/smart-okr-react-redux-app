@@ -2,21 +2,31 @@ import React, { Component, Fragment } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 class WeeklyItemsProgressBar extends Component {
-  render() {
-    const plans = 30;
-    const achievements = 50;
-    const challenges = 25;
-    let weeklyStatus = "🤔";
-
-    weeklyStatus = status => {
-      if (achievements > challenges) {
-        return "😁";
-      } else if (challenges > achievements) {
-        return "😱";
-      } else {
-        return "🤔";
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      plans: "",
+      achievements: "",
+      challenges: "",
+      status: "🤔"
     };
+  }
+
+  // weeklyStatus = () => {
+  //   const {plans, achievements, challenges, status}
+  //   if (achievements > challenges) {
+  //     return "😁";
+  //   } else if (challenges > achievements) {
+  //     return " 😰";
+  //   } else if (plans > achievements){
+  //     return "😱"
+  //   } else {
+  //     return "🤔";
+  //   }
+  // };
+
+  render() {
+    const { plans, achievements, challenges, weeklyStatus } = this.props;
 
     return (
       <Fragment>
@@ -35,7 +45,8 @@ class WeeklyItemsProgressBar extends Component {
                         style={{ fontWeight: "bold-text-gray-800" }}>
                         {weeklyStatus}
                       </div>
-                    </div>
+                    </div>{" "}
+                    {}
                     <div className="col">
                       <ProgressBar
                         animated
@@ -74,5 +85,12 @@ class WeeklyItemsProgressBar extends Component {
     );
   }
 }
+
+WeeklyItemsProgressBar.defaultProps = {
+  plans: 30,
+  achievements: 50,
+  challenges: 25,
+  weeklyStatus: "🤔"
+};
 
 export default WeeklyItemsProgressBar;
