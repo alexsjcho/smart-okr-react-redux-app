@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import ObjectiveProgressBar from "./ObjectiveProgressBar";
 import TextInputGroup from "../shared/TextInputGroup";
@@ -9,21 +9,24 @@ class Objective extends Component {
   constructor(props) {
     super(props);
     const {
-      objective: { name },
+      objective: { name, category },
       objectiveId
     } = this.props;
     this.state = {
       objective: name,
-      id: objectiveId
+      id: objectiveId,
+      category
     };
   }
 
   handleSubmit = e => {
     const { onSubmit } = this.props;
+    const { objective, category } = this.state;
     e.preventDefault();
-    onSubmit(this.state.objective);
+    onSubmit({ objective, category });
     this.setState({
-      objective: ""
+      objective: "",
+      category: null
     });
   };
 
@@ -33,8 +36,14 @@ class Objective extends Component {
     });
   };
 
+  handleCategoryChange = category => {
+    this.setState({
+      category
+    });
+  };
+
   render() {
-    const { type } = this.state;
+    const { category, type } = this.state;
 
     const {
       objective: { name: objectiveName, keyResults },
@@ -53,16 +62,23 @@ class Objective extends Component {
           <form onSubmit={this.handleSubmit}>
             <ul className="list-group">
               <li className="list-group-item">
-                <i className="fas fa-plus" />
-                <input
-                  type="submit"
-                  value="Add Objective"
-                  className="btn btn-primary btn-inline-block"
-                />
+                {objectiveName === "" ? (
+                  <Fragment>
+                    <i className="fas fa-plus" />
+                    <input
+                      type="submit"
+                      value="Add Objective"
+                      className="btn btn-primary btn-inline-block"
+                    />
+                  </Fragment>
+                ) : null}
                 {/* Create Link Modal for editing*/}
                 <i className="fas fa-pencil-alt " />
                 <i className="fas fa-trash-alt " />
-                <ObjectiveCategory />
+                <ObjectiveCategory
+                  category={category}
+                  onChange={this.handleCategoryChange}
+                />
               </li>
             </ul>
             <TextInputGroup
@@ -91,7 +107,8 @@ Objective.defaultProps = {
   objective: {
     name: "",
     keyResults: [],
-    id: null
+    id: null,
+    category: null
   }
 };
 

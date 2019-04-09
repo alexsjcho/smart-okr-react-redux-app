@@ -11,7 +11,11 @@ export default function polls(state = initialState, action) {
         ...state,
         objectivesList: [
           ...state.objectivesList,
-          { name: action.payload, keyResults: [] }
+          {
+            name: action.payload.objective,
+            category: action.payload.category,
+            keyResults: []
+          }
         ]
       };
     case SET_KEY_RESULT: {

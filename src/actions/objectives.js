@@ -1,9 +1,12 @@
 export const SET_OBJECTIVE = "SET_OBJECTIVE";
 export const SET_KEY_RESULT = "SET_KEY_RESULT";
 
-export const setObjective = objective => ({
+export const setObjective = ({ objective, category }) => ({
   type: SET_OBJECTIVE,
-  payload: objective
+  payload: {
+    objective,
+    category
+  }
 });
 
 export const setKeyResult = (keyResult, objectiveId) => ({
