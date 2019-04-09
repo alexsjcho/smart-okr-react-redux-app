@@ -23,6 +23,7 @@ class App extends Component {
           <KeyResult />
           <ObjectivesList />
           <div className="container">
+            <h2>Weekly Items</h2>
             <PlanList />
             <AchievementList />
             <ChallengeList />
