@@ -6,6 +6,17 @@ class WeeklyItemsProgressBar extends Component {
     const plans = 30;
     const achievements = 50;
     const challenges = 25;
+    let weeklyStatus = "🤔";
+
+    weeklyStatus = status => {
+      if (achievements > challenges) {
+        return "😁";
+      } else if (challenges > achievements) {
+        return "😱";
+      } else {
+        return "🤔";
+      }
+    };
 
     return (
       <Fragment>
@@ -22,7 +33,7 @@ class WeeklyItemsProgressBar extends Component {
                       <div
                         className="h5 mb-0 mr-3 "
                         style={{ fontWeight: "bold-text-gray-800" }}>
-                        65%
+                        {weeklyStatus}
                       </div>
                     </div>
                     <div className="col">
@@ -30,7 +41,7 @@ class WeeklyItemsProgressBar extends Component {
                         animated
                         striped
                         variant="primary"
-                        now={10}
+                        now={plans}
                         key={3}
                         label={`#${plans}`}
                       />
@@ -38,14 +49,14 @@ class WeeklyItemsProgressBar extends Component {
                         animated
                         striped
                         variant="success"
-                        now={35}
+                        now={achievements}
                         key={1}
                         label={`#${achievements}`}
                       />
                       <ProgressBar
                         animated
                         variant="warning"
-                        now={20}
+                        now={challenges}
                         key={2}
                         label={`#${challenges}`}
                       />
