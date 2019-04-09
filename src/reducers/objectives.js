@@ -28,7 +28,7 @@ export default function polls(state = initialState, action) {
 
       return {
         ...state,
-        objectivesList: [...state.objectivesList, objective]
+        objectivesList: [...state.objectivesList]
       };
     }
 

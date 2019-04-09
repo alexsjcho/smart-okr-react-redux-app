@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import TextInputGroup from "../shared/TextInputGroup";
 
@@ -8,13 +8,10 @@ import KeyResultsMetrics from "./KeyResultsMetrics";
 class KeyResult extends Component {
   constructor(props) {
     super(props);
-    const {
-      keyResult: { name },
-      objectiveId
-    } = this.props;
+    const { keyResult, objectiveId } = this.props;
 
     this.state = {
-      keyResult: name,
+      keyResult,
       objectiveId: objectiveId
     };
   }
@@ -36,19 +33,23 @@ class KeyResult extends Component {
   };
 
   render() {
-    const { type } = this.props;
+    const { type, keyResult } = this.props;
     return (
       <div className="card-body">
         <KeyResultProgressBar />
         <form onSubmit={this.handleSubmit}>
           <ul className="list-group">
             <li className="list-group-item">
-              <i className="fas fa-ruler" />
-              <input
-                type="submit"
-                value="Add Key Result"
-                className="btn btn-info"
-              />
+              {keyResult === "" ? (
+                <Fragment>
+                  <i className="fas fa-ruler" />
+                  <input
+                    type="submit"
+                    value="Add Key Result"
+                    className="btn btn-info"
+                  />
+                </Fragment>
+              ) : null}
 
               {/* Create Link Modal for editing*/}
               <i className="fas fa-pencil-alt " />
@@ -72,9 +73,7 @@ class KeyResult extends Component {
 }
 
 KeyResult.defaultProps = {
-  keyResult: {
-    name: ""
-  }
+  keyResult: ""
 };
 
 export default KeyResult;
