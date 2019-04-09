@@ -10,24 +10,26 @@ class Objective extends Component {
   constructor(props) {
     super(props);
     const {
-      objective: { name, category },
+      objective: { name, category, date },
       objectiveId
     } = this.props;
     this.state = {
       objective: name,
       id: objectiveId,
-      category
+      category,
+      date
     };
   }
 
   handleSubmit = e => {
     const { onSubmit } = this.props;
-    const { objective, category } = this.state;
+    const { objective, category, date } = this.state;
     e.preventDefault();
-    onSubmit({ objective, category });
+    onSubmit({ objective, category, date });
     this.setState({
       objective: "",
-      category: null
+      category: null,
+      date
     });
   };
 
@@ -49,12 +51,13 @@ class Objective extends Component {
     const {
       objective: { name: objectiveName, keyResults },
       onSubmit,
+      date,
       ...props
     } = this.props;
 
     return (
       <div className="card card-body mb-3">
-        <ObjectiveDates />
+        <ObjectiveDates selected={date} />
         <h1>
           <i className="fas fa-bullseye" /> KRs{" "}
           <i className="fas fa-sort-down" />
@@ -109,7 +112,8 @@ Objective.defaultProps = {
     name: "",
     keyResults: [],
     id: null,
-    category: null
+    category: null,
+    date: ""
   }
 };
 

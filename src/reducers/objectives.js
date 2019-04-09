@@ -18,7 +18,8 @@ export default function polls(state = initialState, action) {
           {
             name: action.payload.objective,
             category: action.payload.category,
-            keyResults: []
+            keyResults: [],
+            date: action.payload.date
           }
         ]
       };
@@ -37,7 +38,8 @@ export default function polls(state = initialState, action) {
     }
 
     case SET_WEEKLY_PLAN: {
-      const objective = state.objectivesList[action.payload.objectiveId];
+      const objective =
+        state.objectivesList[action.payload.weeklyPlan.objectiveId];
 
       objective.weeklyPlans = [
         ...objective.weeklyPlans,
@@ -49,7 +51,6 @@ export default function polls(state = initialState, action) {
         objectivesList: [...state.objectivesList]
       };
     }
-    //Plan
 
     default:
       return state;
