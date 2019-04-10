@@ -5,9 +5,8 @@ import TextInputGroup from "../shared/TextInputGroup";
 import KeyResultProgressBar from "./KeyResultProgressBar";
 
 import InputSelect from "./InputSelect";
-import ToolsImageSelector from "./ToolsImageSelector";
 
-import { toolsImage } from "../../utils/_DATA";
+//Input Option Selector Section
 
 const metricOptions = [
   { value: "dollar", label: "$" },
@@ -80,6 +79,8 @@ const toolOptions = [
   }
 ];
 
+//Input Option Selector Section
+
 class KeyResult extends Component {
   constructor(props) {
     super(props);
@@ -134,7 +135,7 @@ class KeyResult extends Component {
   };
 
   render() {
-    const { keyResult, tool } = this.props;
+    const { keyResult } = this.props;
     const {
       keyResult: { toolOption }
     } = this.state;
