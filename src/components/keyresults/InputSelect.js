@@ -4,14 +4,14 @@ import Select from "react-select";
 const InputSelect = ({ name, onChange, initialValue, options }) => (
   <Select
     name={name}
-    value={initialValue}
+    options={options}
     onChange={selectedOption =>
       onChange({
         name,
         selectedOption
       })
     }
-    options={options}
+    value={initialValue}
   />
 );
 

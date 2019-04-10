@@ -50,14 +50,12 @@ class WeeklyItemsProgressBar extends Component {
                     {}
                     <div className="col">
                       <ProgressBar
-                        striped
                         variant="primary"
                         now={plans}
                         key={3}
                         label={`#${plans}`}
                       />
                       <ProgressBar
-                        striped
                         variant="success"
                         now={achievements}
                         key={1}

@@ -66,7 +66,12 @@ class KeyResult extends Component {
 
     return (
       <div className="card-body">
-        <KeyResultProgressBar />
+        {toolOption ? (
+          <KeyResultProgressBar toolOption={toolOption} />
+        ) : (
+          <KeyResultProgressBar />
+        )}
+
         <form onSubmit={this.handleSubmit}>
           <ul className="list-group">
             <li className="list-group-item">
@@ -80,7 +85,7 @@ class KeyResult extends Component {
                 </Fragment>
               ) : null}
 
-              {/* Create Link Modal for editing*/}
+              {/* Input fields are muted until pencil icon is clicked for edit*/}
               {keyResult.name !== "" ? (
                 <Fragment>
                   <i className="fas fa-pencil-alt " />

@@ -1,18 +1,27 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-const KeyResultProgressBar = () => {
-  const now = 40;
+const KeyResultProgressBar = ({ toolOption, value }) => {
   return (
-    <div>
-      <ProgressBar
-        //   striped animated property only when attached with a tool
-        variant="info"
-        now={now}
-        label={`${now}%`}
-      />
-    </div>
+    <Fragment>
+      {toolOption ? (
+        <ProgressBar
+          striped
+          animated
+          variant="info"
+          value={value}
+          label={`${value}%`}
+        />
+      ) : (
+        <ProgressBar variant="info" now={value} label={`${value}%`} />
+      )}
+    </Fragment>
   );
+};
+
+KeyResultProgressBar.defaultProps = {
+  activated: false,
+  value: 40
 };
 
 export default KeyResultProgressBar;
