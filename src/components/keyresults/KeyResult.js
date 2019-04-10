@@ -5,12 +5,13 @@ import TextInputGroup from "../shared/TextInputGroup";
 import KeyResultProgressBar from "./KeyResultProgressBar";
 
 import MetricMenu from "./MetricMenu";
+import ToolsImageSelector from "./ToolsImageSelector";
 
 class KeyResult extends Component {
   constructor(props) {
     super(props);
     const {
-      keyResult: { name, unit, unitCategory },
+      keyResult: { name, unit, unitCategory, toolOption },
       objectiveId
     } = this.props;
 
@@ -18,7 +19,8 @@ class KeyResult extends Component {
       keyResult: {
         name,
         unit,
-        unitCategory
+        unitCategory,
+        toolOption
       },
       objectiveId: objectiveId
     };
@@ -33,7 +35,8 @@ class KeyResult extends Component {
       keyResult: {
         name: "",
         unit: "",
-        unitCategory: null
+        unitCategory: null,
+        toolOption: null
       },
       objectiveId: null
     });
@@ -56,8 +59,17 @@ class KeyResult extends Component {
     });
   };
 
+  handleToolChange = selectedTool => {
+    this.setState({
+      keyResult: {
+        ...this.state.keyResult,
+        toolOption: selectedTool
+      }
+    });
+  };
+
   render() {
-    const { type, keyResult } = this.props;
+    const { keyResult, tool } = this.props;
     console.log("this.state", this.state.keyResult);
     return (
       <div className="card-body">
@@ -68,8 +80,8 @@ class KeyResult extends Component {
               {keyResult.name === "" ? (
                 <Fragment>
                   <input
-                    type="submit"
                     value="Add Key Result"
+                    onChange={this.onChange}
                     className="btn btn-info"
                   />
                 </Fragment>
@@ -84,12 +96,17 @@ class KeyResult extends Component {
                 name="unit"
                 placeholder="Amount"
                 value={this.state.keyResult.unit}
-                type={type}
                 onChange={this.onChange}
               />
               <MetricMenu
                 onChange={this.handleMetricCategoryChange}
                 unitCategory={this.state.keyResult.unitCategory}
+              />
+              {/* Add Tool Selector Section */}
+              <ToolsImageSelector
+                tool={tool}
+                value={tool}
+                onChange={this.handleToolChange}
               />
             </li>
           </ul>
@@ -98,7 +115,6 @@ class KeyResult extends Component {
             name="name"
             placeholder="Complete 10 customer demos per week!"
             value={this.state.keyResult.name}
-            type={type}
             onChange={this.onChange}
           />
         </form>
@@ -111,7 +127,8 @@ KeyResult.defaultProps = {
   keyResult: {
     name: "",
     unit: "",
-    unitCategory: null
+    unitCategory: null,
+    toolOption: null
   }
 };
 

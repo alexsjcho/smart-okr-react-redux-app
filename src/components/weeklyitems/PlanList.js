@@ -18,6 +18,7 @@ class PlanList extends Component {
     const { setWeeklyPlan } = this.props;
     setWeeklyPlan(submitValue);
   };
+
   render() {
     const { plansList, ...props } = this.props;
     return (

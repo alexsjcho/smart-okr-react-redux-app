@@ -36,7 +36,8 @@ class WeeklyItemsProgressBar extends Component {
               <div className="row no-gutters align-items-center">
                 <div className="col mr-2">
                   <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                    All Weekly Items
+                    All Weekly Items{" "}
+                    <i className="fas fa-clipboard-list fa-2x text-gray-300" />
                   </div>
                   <div className="row no-gutters align-items-center">
                     <div className="col-auto">
@@ -49,7 +50,6 @@ class WeeklyItemsProgressBar extends Component {
                     {}
                     <div className="col">
                       <ProgressBar
-                        animated
                         striped
                         variant="primary"
                         now={plans}
@@ -57,7 +57,6 @@ class WeeklyItemsProgressBar extends Component {
                         label={`#${plans}`}
                       />
                       <ProgressBar
-                        animated
                         striped
                         variant="success"
                         now={achievements}
@@ -65,7 +64,6 @@ class WeeklyItemsProgressBar extends Component {
                         label={`#${achievements}`}
                       />
                       <ProgressBar
-                        animated
                         variant="warning"
                         now={challenges}
                         key={2}
@@ -74,9 +72,7 @@ class WeeklyItemsProgressBar extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-auto">
-                  <i className="fas fa-clipboard-list fa-2x text-gray-300" />
-                </div>
+                <div className="col-auto" />
               </div>
             </div>
           </div>

@@ -30,7 +30,8 @@ export default function objectives(state = initialState, action) {
 
       objective.keyResults = [
         ...objective.keyResults,
-        action.payload.keyResult
+        action.payload.keyResult,
+        action.payload.tool
       ];
 
       return {

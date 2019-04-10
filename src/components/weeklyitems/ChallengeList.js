@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import uuid from "uuid";
+// import uuid from "uuid";
 
 import { setWeeklyChallenge } from "../../actions/objectives.js";
 import Challenge from "./Challenge";

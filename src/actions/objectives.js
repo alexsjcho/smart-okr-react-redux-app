@@ -13,9 +13,9 @@ export const setObjective = ({ objective, category, date }) => ({
   }
 });
 
-export const setKeyResult = (keyResult, objectiveId) => ({
+export const setKeyResult = (keyResult, objectiveId, tool) => ({
   type: SET_KEY_RESULT,
-  payload: { keyResult, objectiveId }
+  payload: { keyResult, objectiveId, tool }
 });
 
 export const setWeeklyPlan = weeklyPlan => ({
