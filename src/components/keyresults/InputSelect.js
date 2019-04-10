@@ -1,12 +1,6 @@
 import React from "react";
 import Select from "react-select";
 
-// const options = [
-//   { value: "dollar", label: "$" },
-//   { value: "percentage", label: "%" },
-//   { value: "unit", label: "#" }
-// ];
-
 const InputSelect = ({ name, onChange, initialValue, options }) => (
   <Select
     name={name}
