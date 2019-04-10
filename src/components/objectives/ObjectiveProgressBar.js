@@ -1,18 +1,22 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 const ObjectiveProgressBar = () => {
-  const now = 60;
+  let value = 60;
   return (
-    <div>
+    <Fragment>
       <ProgressBar
         //  animated striped properties added if Objective has a Key Result with an added tool
         variant="primary"
-        now={now}
-        label={`${now}%`}
+        now={value}
+        label={`${value}%`}
       />
-    </div>
+    </Fragment>
   );
+};
+
+ObjectiveProgressBar.defaultProps = {
+  value: 60
 };
 
 export default ObjectiveProgressBar;

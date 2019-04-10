@@ -9,7 +9,7 @@ const KeyResultProgressBar = ({ toolOption, value }) => {
           striped
           animated
           variant="info"
-          value={value}
+          now={value}
           label={`${value}%`}
         />
       ) : (
@@ -20,7 +20,6 @@ const KeyResultProgressBar = ({ toolOption, value }) => {
 };
 
 KeyResultProgressBar.defaultProps = {
-  activated: false,
   value: 40
 };
 
