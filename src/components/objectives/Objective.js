@@ -18,6 +18,7 @@ class Objective extends Component {
       objectiveId
     } = this.props;
     this.state = {
+      showCardInfo: true,
       objective: name,
       id: objectiveId,
       category,
@@ -74,7 +75,7 @@ class Objective extends Component {
   };
 
   render() {
-    const { category, type, date } = this.state;
+    const { category, type, date, showCardInfo } = this.state;
 
     const {
       objective: { name: objectiveName, keyResults },
@@ -84,56 +85,73 @@ class Objective extends Component {
     } = this.props;
 
     return (
-      <div className="card card-body mb-3">
-        <ObjectiveDates
-          saveStartDate={this.handleStartDate}
-          saveEndDate={this.handleEndDate}
-          selected={date}
-        />
-        <h1>
-          <i className="fas fa-bullseye" /> KRs{" "}
-          <i className="fas fa-sort-down" />
-          <ObjectiveProgressBar />
-        </h1>
-        <div className="card-header">
-          <form onSubmit={this.handleSubmit}>
-            <ul className="list-group">
-              <li className="list-group-item">
-                {objectiveName === "" ? (
-                  <Fragment>
-                    <input
-                      type="submit"
-                      value="Add Objective"
-                      className="btn btn-primary btn-inline-block"
-                    />
-                  </Fragment>
-                ) : null}
-                {/* Create Link Modal for editing*/}
-                <i className="fas fa-pencil-alt " />
-                <i className="fas fa-trash-alt " />
-                <ObjectiveCategory
-                  category={category}
-                  onChange={this.handleCategoryChange}
-                />
-              </li>
-            </ul>
-            <TextInputGroup
-              name="objective"
-              type={type}
-              placeholder="Overachieve quota this quarter!"
-              value={this.state.objective}
-              onChange={this.onChange}
+      <Fragment>
+        <div className="card card-body mb-3">
+          <h1>
+            <i className="fas fa-bullseye" /> KRs{" "}
+            <i
+              className="fas fa-sort-down"
+              onClick={() =>
+                this.setState({ showCardInfo: !this.state.showCardInfo })
+              }
             />
-          </form>
-        </div>
-        {objectiveName ? (
-          <KeyResultsList
-            objectiveId={this.state.id}
-            keyResults={keyResults}
-            {...props}
+            <ObjectiveProgressBar />
+          </h1>
+
+          <ObjectiveDates
+            saveStartDate={this.handleStartDate}
+            saveEndDate={this.handleEndDate}
+            selected={date}
           />
-        ) : null}
-      </div>
+
+          {showCardInfo ? (
+            <div className="card-header">
+              <form onSubmit={this.handleSubmit}>
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    {objectiveName === "" ? (
+                      <Fragment>
+                        <input
+                          type="submit"
+                          value="Add Objective"
+                          className="btn btn-primary btn-inline-block"
+                        />
+                      </Fragment>
+                    ) : null}
+
+                    {/* Input fields are muted until pencil icon is clicked for edit*/}
+                    {objectiveName !== "" ? (
+                      <Fragment>
+                        <i className="fas fa-pencil-alt " />
+                        <i className="fas fa-trash-alt " />
+                      </Fragment>
+                    ) : null}
+                    <ObjectiveCategory
+                      category={category}
+                      onChange={this.handleCategoryChange}
+                    />
+                  </li>
+                </ul>
+                <TextInputGroup
+                  name="objective"
+                  type={type}
+                  placeholder="Overachieve quota this quarter!"
+                  value={this.state.objective}
+                  onChange={this.onChange}
+                />
+              </form>
+            </div>
+          ) : null}
+
+          {objectiveName ? (
+            <KeyResultsList
+              objectiveId={this.state.id}
+              keyResults={keyResults}
+              {...props}
+            />
+          ) : null}
+        </div>
+      </Fragment>
     );
   }
 }

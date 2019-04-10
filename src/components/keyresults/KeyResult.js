@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from "react";
 
 import TextInputGroup from "../shared/TextInputGroup";
-
 import KeyResultProgressBar from "./KeyResultProgressBar";
-
 import InputSelect from "./InputSelect";
-
 import { metricOptions, toolOptions } from "../../utils/option_data";
 
 class KeyResult extends Component {
@@ -84,8 +81,12 @@ class KeyResult extends Component {
               ) : null}
 
               {/* Create Link Modal for editing*/}
-              <i className="fas fa-pencil-alt " />
-              <i className="fas fa-trash-alt " />
+              {keyResult.name !== "" ? (
+                <Fragment>
+                  <i className="fas fa-pencil-alt " />
+                  <i className="fas fa-trash-alt " />
+                </Fragment>
+              ) : null}
 
               {toolOption ? (
                 <img
