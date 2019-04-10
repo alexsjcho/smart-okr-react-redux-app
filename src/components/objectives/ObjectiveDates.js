@@ -13,12 +13,6 @@ class ObjectiveDates extends Component {
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
-  onChange = e => {
-    this.setState({
-      [e.target.selected]: e.target.value
-    });
-  };
-
   handleChangeStart(date) {
     this.setState({
       startDate: date
@@ -32,27 +26,28 @@ class ObjectiveDates extends Component {
   }
 
   render() {
+    const { saveStartDate, saveEndDate, selected } = this.props;
     return (
       <Fragment>
         <div className="container">
           Start Date
           <DatePicker
-            selected={this.state.startDate}
+            selected={selected.startDate}
             selectsStart
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onChange={this.handleChangeStart}
+            startDate={selected.startDate}
+            endDate={selected.endDate}
+            onChange={saveStartDate}
           />
         </div>
 
         <div className="container">
           End Date
           <DatePicker
-            selected={this.state.endDate}
+            selected={selected.endDate}
             selectsEnd
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onChange={this.handleChangeEnd}
+            startDate={selected.startDate}
+            endDate={selected.endDate}
+            onChange={saveEndDate}
           />
         </div>
       </Fragment>

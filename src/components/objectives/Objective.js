@@ -10,14 +10,21 @@ class Objective extends Component {
   constructor(props) {
     super(props);
     const {
-      objective: { name, category, date },
+      objective: {
+        name,
+        category,
+        date: { startDate, endDate }
+      },
       objectiveId
     } = this.props;
     this.state = {
       objective: name,
       id: objectiveId,
       category,
-      date
+      date: {
+        startDate,
+        endDate
+      }
     };
   }
 
@@ -29,7 +36,10 @@ class Objective extends Component {
     this.setState({
       objective: "",
       category: null,
-      date
+      date: {
+        startDate: null,
+        endDate: null
+      }
     });
   };
 
@@ -45,19 +55,41 @@ class Objective extends Component {
     });
   };
 
+  handleStartDate = startDate => {
+    this.setState({
+      date: {
+        ...this.state.date,
+        startDate
+      }
+    });
+  };
+
+  handleEndDate = endDate => {
+    this.setState({
+      date: {
+        ...this.state.date,
+        endDate
+      }
+    });
+  };
+
   render() {
-    const { category, type } = this.state;
+    const { category, type, date } = this.state;
 
     const {
       objective: { name: objectiveName, keyResults },
       onSubmit,
-      date,
+
       ...props
     } = this.props;
 
     return (
       <div className="card card-body mb-3">
-        <ObjectiveDates selected={date} />
+        <ObjectiveDates
+          saveStartDate={this.handleStartDate}
+          saveEndDate={this.handleEndDate}
+          selected={date}
+        />
         <h1>
           <i className="fas fa-bullseye" /> KRs{" "}
           <i className="fas fa-sort-down" />
@@ -113,7 +145,10 @@ Objective.defaultProps = {
     keyResults: [],
     id: null,
     category: null,
-    date: ""
+    date: {
+      startDate: null,
+      endDate: null
+    }
   }
 };
 
