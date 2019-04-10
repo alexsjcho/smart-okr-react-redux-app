@@ -47,14 +47,21 @@ class Challenge extends Component {
           <div className="card-header">
             {showCardInfo ? (
               <form>
-                <input
-                  type="submit"
-                  value="Add Challange"
-                  className="btn btn-outline-warning"
-                />
-                {/* Input fields are muted until pencil icon is clicked for edit*/}
-                <i className="fas fa-pencil-alt " />
-                <i className="fas fa-trash-alt " />
+                {challenge !== "" ? (
+                  <input
+                    type="submit"
+                    value="Add Challange"
+                    className="btn btn-outline-warning"
+                  />
+                ) : null}
+                {challenge === "" ? (
+                  <Fragment>
+                    {/* Input fields are muted until pencil icon is clicked for edit*/}
+                    <i className="fas fa-pencil-alt " />
+                    <i className="fas fa-trash-alt " />
+                  </Fragment>
+                ) : null}
+
                 <TimeStamp />
                 <TextInputGroup
                   name="challenge"

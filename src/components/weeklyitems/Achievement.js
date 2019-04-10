@@ -30,7 +30,7 @@ class Achievement extends Component {
 
   render() {
     const { showCardInfo } = this.state;
-    const { accomplishment } = this.props;
+    const { achievement } = this.props;
 
     return (
       <Fragment>
@@ -47,20 +47,27 @@ class Achievement extends Component {
 
           {showCardInfo ? (
             <div className="card-header">
-              {" "}
-              <input
-                type="submit"
-                value="Add Achievement"
-                className="btn btn-outline-success"
-              />
-              {/* Input fields are muted until pencil icon is clicked for edit*/}
-              <i className="fas fa-pencil-alt " />
-              <i className="fas fa-trash-alt " />
+              {achievement !== "" ? (
+                <input
+                  type="submit"
+                  value="Add Achievement"
+                  className="btn btn-outline-success"
+                />
+              ) : null}
+
+              {achievement === "" ? (
+                <Fragment>
+                  {/* Input fields are muted until pencil icon is clicked for edit*/}
+                  <i className="fas fa-pencil-alt " />
+                  <i className="fas fa-trash-alt " />
+                </Fragment>
+              ) : null}
+
               <TimeStamp />
               <form>
                 <TextInputGroup
                   name="achievement"
-                  value={accomplishment}
+                  value={achievement}
                   onChange={this.onChange}
                   placeholder="Built a React CRUD app in a week!"
                 />

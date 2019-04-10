@@ -47,14 +47,22 @@ class Plan extends Component {
 
           {showCardInfo ? (
             <div className="card-header">
-              <input
-                type="submit"
-                value="Add Weekly Plan"
-                className="btn btn-outline-primary"
-              />{" "}
+              {plan !== "" ? (
+                <input
+                  type="submit"
+                  value="Add Weekly Plan"
+                  className="btn btn-outline-primary"
+                />
+              ) : null}
+
               {/* Input fields are muted until pencil icon is clicked for edit*/}
-              <i className="fas fa-pencil-alt " />
-              <i className="fas fa-trash-alt " />
+              {plan === "" ? (
+                <Fragment>
+                  <i className="fas fa-pencil-alt " />
+                  <i className="fas fa-trash-alt " />
+                </Fragment>
+              ) : null}
+
               <TimeStamp />
               <form onSubmit={this.handleSubmit}>
                 <TextInputGroup
