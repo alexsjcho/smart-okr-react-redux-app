@@ -8,7 +8,7 @@ const AppNavBar = props => {
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-3 py-0">
       <div className="nav-link navbar-brand"> {branding} </div>
       <Link to="/"> Home </Link>
-      <Link to="/dashboard"> Dashboard </Link>
+      <Link to="/demo"> Demo </Link>
     </nav>
   );
 };

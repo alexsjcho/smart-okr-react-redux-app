@@ -37,8 +37,6 @@ class ObjectivesList extends Component {
 
   render() {
     const { objectivesList, ...props } = this.props;
-    console.log("objectivesList", objectivesList);
-
     return (
       <Fragment>
         {objectivesList.map((obj, i) => (

@@ -20,7 +20,7 @@ ReactDOM.render(
       <AppNavBar />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route exact path="/dashboard" component={App} />
+        <Route exact path="/demo" component={App} />
         <Route component={NotFound} />
       </Switch>
     </Router>

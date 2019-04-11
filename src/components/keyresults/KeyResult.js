@@ -114,10 +114,8 @@ class KeyResult extends Component {
                 </Fragment>
               ) : null}
 
-              {/* Input fields are muted until pencil icon is clicked for edit*/}
               {keyResult.name !== "" ? (
                 <Fragment>
-                  <i className="fas fa-pencil-alt " />
                   <i className="fas fa-trash-alt " />
                 </Fragment>
               ) : null}

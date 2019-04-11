@@ -156,7 +156,6 @@ class Objective extends Component {
                     {/* Input fields are muted until pencil icon is clicked for edit*/}
                     {objectiveName !== "" ? (
                       <Fragment>
-                        <i className="fas fa-pencil-alt " />
                         <a href="#delete" onClick={this.handleDelete}>
                           <i className="fas fa-trash-alt " />
                         </a>

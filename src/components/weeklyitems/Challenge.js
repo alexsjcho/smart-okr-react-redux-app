@@ -56,8 +56,6 @@ class Challenge extends Component {
                 ) : null}
                 {challenge === "" ? (
                   <Fragment>
-                    {/* Input fields are muted until pencil icon is clicked for edit*/}
-                    <i className="fas fa-pencil-alt " />
                     <i className="fas fa-trash-alt " />
                   </Fragment>
                 ) : null}

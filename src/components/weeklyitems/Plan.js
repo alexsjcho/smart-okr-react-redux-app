@@ -56,10 +56,8 @@ class Plan extends Component {
                   />
                 ) : null}
 
-                {/* Input fields are muted until pencil icon is clicked for edit*/}
                 {plan === "" ? (
                   <Fragment>
-                    <i className="fas fa-pencil-alt " />
                     <i className="fas fa-trash-alt " />
                   </Fragment>
                 ) : null}
