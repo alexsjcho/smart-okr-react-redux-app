@@ -20,7 +20,7 @@ class PlanList extends Component {
   };
 
   render() {
-    const { plansList, ...props } = this.props;
+    const { plansList, objectiveId, ...props } = this.props;
     return (
       <Fragment>
         {plansList.map((plan, i) => (
@@ -33,7 +33,7 @@ class PlanList extends Component {
           />
         ))}
 
-        <Plan onSubmit={this.onSubmit} {...props} />
+        <Plan onSubmit={this.onSubmit} objectiveId {...props} />
       </Fragment>
     );
   }

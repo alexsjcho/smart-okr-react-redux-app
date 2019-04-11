@@ -25,14 +25,32 @@ class Objective extends Component {
       date: {
         startDate,
         endDate
-      }
+      },
+      errors: {}
     };
   }
 
   handleSubmit = e => {
+    e.preventDefault();
+
     const { onSubmit } = this.props;
     const { objective, category, date } = this.state;
-    e.preventDefault();
+
+    //Check for Errors, Form Validation
+    if (objective === "") {
+      this.setState({
+        errors: { objective: "Objective description is required" }
+      });
+      return;
+    }
+
+    if (date === "") {
+      this.setState({
+        errors: { date: "Objective start and end date required" }
+      });
+      return;
+    }
+
     onSubmit({ objective, category, date });
     this.setState({
       objective: "",
@@ -40,7 +58,8 @@ class Objective extends Component {
       date: {
         startDate: null,
         endDate: null
-      }
+      },
+      errors: {}
     });
   };
 
@@ -75,7 +94,7 @@ class Objective extends Component {
   };
 
   render() {
-    const { category, type, date, showCardInfo } = this.state;
+    const { category, type, date, errors, showCardInfo } = this.state;
 
     const {
       objective: { name: objectiveName, keyResults },
@@ -102,6 +121,7 @@ class Objective extends Component {
             saveStartDate={this.handleStartDate}
             saveEndDate={this.handleEndDate}
             selected={date}
+            error={errors.date}
           />
 
           {showCardInfo ? (
@@ -138,6 +158,7 @@ class Objective extends Component {
                   placeholder="Overachieve quota this quarter!"
                   value={this.state.objective}
                   onChange={this.onChange}
+                  error={errors.objective}
                 />
               </form>
             </div>

@@ -7,7 +7,6 @@ const TextInputGroup = ({
   name,
   value,
   placeholder,
-  type,
   onChange,
   error
 }) => {
@@ -20,7 +19,6 @@ const TextInputGroup = ({
               "is-invalid": error
             })}
             name={name}
-            type={type}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
@@ -28,9 +26,7 @@ const TextInputGroup = ({
         </li>
       </ul>
 
-      {error && (
-        <div className="invalid-feedback">Please enter something valid</div>
-      )}
+      {error && <div className="invalid-feedback">{error}</div>}
     </div>
   );
 };
@@ -38,7 +34,6 @@ const TextInputGroup = ({
 TextInputGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   error: PropTypes.string
 };
 
