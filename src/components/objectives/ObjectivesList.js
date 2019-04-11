@@ -10,7 +10,8 @@ import {
   setObjective,
   setKeyResult,
   setWeeklyPlan,
-  deleteObjective
+  deleteObjective,
+  deleteKeyResult
 } from "../../actions/objectives.js";
 import Objective from "./Objective";
 
@@ -20,7 +21,7 @@ const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { setObjective, deleteObjective, setKeyResult, setWeeklyPlan },
+    { setObjective, deleteObjective, setKeyResult, setWeeklyPlan, deleteKeyResult },
     dispatch
   );
 

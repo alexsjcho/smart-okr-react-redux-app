@@ -10,7 +10,7 @@ class KeyResult extends Component {
   constructor(props) {
     super(props);
     const {
-      keyResult: { name, unit, target, unitCategory, toolOption },
+      keyResult: { id, name, unit, target, unitCategory, toolOption },
       objectiveId
     } = this.props;
 
@@ -21,7 +21,7 @@ class KeyResult extends Component {
         unit,
         unitCategory,
         toolOption,
-        id: uuid(),
+        id: id || uuid(),
         objectiveId
       },
       objectiveId: objectiveId,
@@ -85,8 +85,8 @@ class KeyResult extends Component {
     const {
       keyResult: { id, objectiveId }
     } = this.state;
-    const { onDelete } = this.props;
-    onDelete(id, objectiveId);
+    const { onKeyDelete } = this.props;
+    onKeyDelete(id, objectiveId);
   };
 
   handleSelectChange = ({ name, selectedOption }) => {
