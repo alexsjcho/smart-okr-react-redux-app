@@ -20,14 +20,39 @@ class KeyResult extends Component {
         unitCategory,
         toolOption
       },
-      objectiveId: objectiveId
+      objectiveId: objectiveId,
+      errors: {}
     };
   }
 
   handleSubmit = e => {
-    const { onSubmit } = this.props;
-    const { keyResult, objectiveId } = this.state;
     e.preventDefault();
+
+    const { onSubmit } = this.props;
+    const { keyResult, objectiveId, name, unit, unitCategory } = this.state;
+
+    //Check for Errors, Form Validation
+    if (name === "") {
+      this.setState({
+        errors: { name: "Key Result description is required" }
+      });
+      return;
+    }
+
+    if (unit === "") {
+      this.setState({
+        errors: { unit: "Unit description is required" }
+      });
+      return;
+    }
+
+    if (unitCategory === "") {
+      this.setState({
+        errors: { unitCategory: "unitCategory description is required" }
+      });
+      return;
+    }
+
     onSubmit(keyResult, objectiveId);
     this.setState({
       keyResult: {
@@ -36,7 +61,8 @@ class KeyResult extends Component {
         unitCategory: null,
         toolOption: null
       },
-      objectiveId: null
+      objectiveId: null,
+      errors: {}
     });
   };
 
@@ -61,7 +87,8 @@ class KeyResult extends Component {
   render() {
     const { keyResult } = this.props;
     const {
-      keyResult: { toolOption }
+      keyResult: { toolOption },
+      errors
     } = this.state;
 
     return (
@@ -107,12 +134,14 @@ class KeyResult extends Component {
                 placeholder="Amount"
                 value={this.state.keyResult.unit}
                 onChange={this.onChange}
+                error={errors.unit}
               />
               <InputSelect
                 name="unitCategory"
                 options={metricOptions}
                 onChange={this.handleSelectChange}
                 initialValue={this.state.keyResult.unitCategory}
+                error={errors.unitCategory}
               />
               {/* Add Tool Selector Section */}
               <InputSelect
@@ -129,6 +158,7 @@ class KeyResult extends Component {
             placeholder="Complete 10 customer demos per week!"
             value={this.state.keyResult.name}
             onChange={this.onChange}
+            error={errors.name}
           />
         </form>
       </div>
@@ -141,7 +171,8 @@ KeyResult.defaultProps = {
     name: "",
     unit: "",
     unitCategory: null,
-    toolOption: null
+    toolOption: null,
+    error: {}
   }
 };
 

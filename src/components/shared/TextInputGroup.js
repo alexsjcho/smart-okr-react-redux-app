@@ -2,14 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const TextInputGroup = ({
-  label,
-  name,
-  value,
-  placeholder,
-  onChange,
-  error
-}) => {
+const TextInputGroup = ({ name, value, placeholder, onChange, error }) => {
   return (
     <div className="form-group">
       <ul className="list-group">

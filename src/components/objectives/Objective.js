@@ -19,6 +19,7 @@ class Objective extends Component {
     } = this.props;
     this.state = {
       showCardInfo: true,
+      showCardKeyResultInfo: true,
       objective: name,
       id: objectiveId,
       category,
@@ -94,7 +95,14 @@ class Objective extends Component {
   };
 
   render() {
-    const { category, type, date, errors, showCardInfo } = this.state;
+    const {
+      category,
+      type,
+      date,
+      errors,
+      showCardInfo,
+      showCardKeyResultInfo
+    } = this.state;
 
     const {
       objective: { name: objectiveName, keyResults },
@@ -164,12 +172,31 @@ class Objective extends Component {
             </div>
           ) : null}
 
-          {objectiveName ? (
-            <KeyResultsList
-              objectiveId={this.state.id}
-              keyResults={keyResults}
-              {...props}
-            />
+          {objectiveName !== "" ? (
+            <Fragment>
+              <h3>
+                Key Results
+                <i
+                  className="fas fa-sort-down"
+                  onClick={() =>
+                    this.setState({
+                      showCardKeyResultInfo: !this.state.showCardKeyResultInfo
+                    })
+                  }
+                />
+              </h3>
+              {showCardKeyResultInfo ? (
+                <Fragment>
+                  {objectiveName ? (
+                    <KeyResultsList
+                      objectiveId={this.state.id}
+                      keyResults={keyResults}
+                      {...props}
+                    />
+                  ) : null}
+                </Fragment>
+              ) : null}
+            </Fragment>
           ) : null}
         </div>
       </Fragment>
@@ -187,7 +214,8 @@ Objective.defaultProps = {
     date: {
       startDate: null,
       endDate: null
-    }
+    },
+    error: {}
   }
 };
 
