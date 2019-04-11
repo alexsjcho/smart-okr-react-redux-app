@@ -26,9 +26,12 @@ export const setKeyResult = (keyResult, objectiveId, tool) => ({
   payload: { keyResult, objectiveId, tool }
 });
 
-export const setWeeklyPlan = weeklyPlan => ({
+export const setWeeklyPlan = (weeklyPlan, index) => ({
   type: SET_WEEKLY_PLAN,
-  payload: weeklyPlan
+  payload: {
+    index,
+    weeklyPlan
+  }
 });
 
 export const setWeeklyAchievement = weeklyAchievement => ({

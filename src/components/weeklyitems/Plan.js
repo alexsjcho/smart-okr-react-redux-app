@@ -21,9 +21,8 @@ class Plan extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { onSubmit } = this.props;
-
-    onSubmit(this.state.plan);
+    const { objectiveId, onSubmit } = this.props;
+    onSubmit(this.state.plan, objectiveId);
     this.setState({
       plan: ""
     });
@@ -84,7 +83,8 @@ class Plan extends Component {
 
 Plan.defaultProps = {
   name: "",
-  time: ""
+  time: "",
+  objectiveId: 0
 };
 
 export default Plan;

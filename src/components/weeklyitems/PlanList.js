@@ -14,18 +14,19 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({ setWeeklyPlan }, dispatch);
 
 class PlanList extends Component {
-  onSubmit = submitValue => {
+  onSubmit = (submitValue, index) => {
     const { setWeeklyPlan } = this.props;
-    setWeeklyPlan(submitValue);
+    setWeeklyPlan(submitValue, index);
   };
 
   render() {
     const { plansList, objectiveId, ...props } = this.props;
+    console.log("objectiveId", objectiveId);
     return (
       <Fragment>
         {plansList.map((plan, i) => (
           <Plan
-            objectiveId={i}
+            objectiveId={objectiveId}
             key={uuid()}
             plan={plan}
             onSubmit={this.onSubmit}

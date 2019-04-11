@@ -2,6 +2,9 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import uuid from "uuid";
+import PlanList from "../weeklyitems/PlanList";
+import ChallengeList from "../weeklyitems/ChallengeList";
+import AchievementList from "../weeklyitems/AchievementList";
 
 import {
   setObjective,
@@ -39,14 +42,21 @@ class ObjectivesList extends Component {
     return (
       <Fragment>
         {objectivesList.map((obj, i) => (
-          <Objective
-            objectiveId={i}
-            key={uuid()}
-            objective={obj}
-            onSubmit={this.onSubmit}
-            onDelete={this.onDelete}
-            {...props}
-          />
+          <Fragment key={uuid()}>
+            <Objective
+              objectiveId={i}
+              objective={obj}
+              onSubmit={this.onSubmit}
+              onDelete={this.onDelete}
+              {...props}
+            />
+            <div className="container">
+              <h2>Weekly Items</h2>
+              <PlanList objectiveId={i} />
+              <AchievementList />
+              <ChallengeList />
+            </div>
+          </Fragment>
         ))}
 
         <Objective onSubmit={this.onSubmit} {...props} />

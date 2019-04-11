@@ -23,6 +23,11 @@ export default function objectives(state = initialState, action) {
             name: action.payload.objective,
             category: action.payload.category,
             keyResults: [],
+            weeklyItems: {
+              plans: [],
+              achivements: [],
+              challenges: []
+            },
             date: action.payload.date
           }
         ]
@@ -52,7 +57,26 @@ export default function objectives(state = initialState, action) {
     }
 
     case SET_WEEKLY_PLAN: {
-      const objective =
+      const { objectivesList } = state;
+      const {
+        payload: { weeklyPlan, index }
+      } = action;
+      const currentObjective = objectivesList[index];
+      const updatedObjective = Object.assign({}, currentObjective, {
+        weeklyItems: {
+          ...currentObjective.weeklyItems,
+          plans: currentObjective.weeklyItems.plans.concat(weeklyPlan)
+        }
+      });
+
+      return Object.assign({}, state, {
+        objectivesList: [
+          ...objectivesList.slice(0, index),
+          updatedObjective,
+          ...objectivesList.slice(index + 1)
+        ]
+      });
+      /*const objective =
         state.objectivesList[action.payload.weeklyPlan.objectiveId];
 
       objective.weeklyPlans = [
@@ -63,7 +87,7 @@ export default function objectives(state = initialState, action) {
       return {
         ...state,
         objectivesList: [...state.objectivesList]
-      };
+      };*/
     }
 
     case SET_WEEKLY_ACHIEVEMENT: {
