@@ -2,6 +2,7 @@ import {
   SET_OBJECTIVE,
   DELETE_OBJECTIVE,
   SET_KEY_RESULT,
+  DELETE_KEYRESULT,
   SET_WEEKLY_PLAN,
   SET_WEEKLY_ACHIEVEMENT,
   SET_WEEKLY_CHALLENGE
@@ -53,6 +54,30 @@ export default function objectives(state = initialState, action) {
       return {
         ...state,
         objectivesList: [...state.objectivesList]
+      };
+    }
+
+    case DELETE_KEYRESULT: {
+      const { objectivesList } = state;
+      const {
+        payload: { keyResultId, objectiveId }
+      } = action;
+      const objective = objectivesList[objectiveId];
+      let keyResultsArray = objective.keyResults.slice();
+      let targetKeyResultIndex = keyResultsArray.findIndex(keyResult => {
+        return keyResult.id === keyResultId;
+      });
+      keyResultsArray = removeFromArrayAtIndex(
+        keyResultsArray,
+        targetKeyResultIndex
+      );
+      const newObjective = { ...objective };
+      newObjective.keyResults = keyResultsArray;
+      const newObjectivesList = objectivesList.slice();
+      newObjectivesList[objectiveId] = newObjective;
+      return {
+        ...state,
+        objectivesList: newObjectivesList
       };
     }
 

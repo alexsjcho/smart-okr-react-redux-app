@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
 import KeyResultProgressBar from "./KeyResultProgressBar";
@@ -19,7 +20,9 @@ class KeyResult extends Component {
         target,
         unit,
         unitCategory,
-        toolOption
+        toolOption,
+        id: uuid(),
+        objectiveId
       },
       objectiveId: objectiveId,
       errors: {}
@@ -77,6 +80,15 @@ class KeyResult extends Component {
     });
   };
 
+  handleDelete = e => {
+    e.preventDefault();
+    const {
+      keyResult: { id, objectiveId }
+    } = this.state;
+    const { onDelete } = this.props;
+    onDelete(id, objectiveId);
+  };
+
   handleSelectChange = ({ name, selectedOption }) => {
     this.setState({
       keyResult: {
@@ -116,7 +128,10 @@ class KeyResult extends Component {
 
               {keyResult.name !== "" ? (
                 <Fragment>
-                  <i className="fas fa-trash-alt " />
+                  <a href="#delete" onClick={this.handleDelete}>
+                    {" "}
+                    <i className="fas fa-trash-alt " />{" "}
+                  </a>
                 </Fragment>
               ) : null}
 
