@@ -9,13 +9,14 @@ class KeyResult extends Component {
   constructor(props) {
     super(props);
     const {
-      keyResult: { name, unit, unitCategory, toolOption },
+      keyResult: { name, unit, target, unitCategory, toolOption },
       objectiveId
     } = this.props;
 
     this.state = {
       keyResult: {
         name,
+        target,
         unit,
         unitCategory,
         toolOption
@@ -29,7 +30,14 @@ class KeyResult extends Component {
     e.preventDefault();
 
     const { onSubmit } = this.props;
-    const { keyResult, objectiveId, name, unit, unitCategory } = this.state;
+    const {
+      keyResult,
+      objectiveId,
+      name,
+      unit,
+      target,
+      unitCategory
+    } = this.state;
 
     //Check for Errors, Form Validation
     if (name === "") {
@@ -57,6 +65,7 @@ class KeyResult extends Component {
     this.setState({
       keyResult: {
         name: "",
+        target: "",
         unit: "",
         unitCategory: null,
         toolOption: null
@@ -121,20 +130,34 @@ class KeyResult extends Component {
               ) : null}
 
               {toolOption ? (
-                <img
-                  style={{ width: "30px", height: "30px" }}
-                  src={toolOption.imageURL}
-                  alt="new"
-                />
+                <Fragment>
+                  <span>
+                    <p>
+                      {" "}
+                      <b>Your KeyResult is Automated with</b>{" "}
+                    </p>
+                    <img
+                      style={{ width: "30px", height: "30px" }}
+                      src={toolOption.imageURL}
+                      alt="new"
+                    />
+                  </span>
+                </Fragment>
               ) : null}
 
               {/* KeyResults Metrics Section */}
               <TextInputGroup
                 name="unit"
-                placeholder="Amount"
+                placeholder="Current Amount"
                 value={this.state.keyResult.unit}
                 onChange={this.onChange}
                 error={errors.unit}
+              />
+              <TextInputGroup
+                name="target"
+                placeholder="Target Amount"
+                value={this.state.keyResult.unit}
+                onChange={this.onChange}
               />
               <InputSelect
                 name="unitCategory"

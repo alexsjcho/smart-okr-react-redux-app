@@ -20,8 +20,9 @@ class Plan extends Component {
   };
 
   handleSubmit = e => {
-    const { onSubmit } = this.props;
     e.preventDefault();
+    const { onSubmit } = this.props;
+
     onSubmit(this.state.plan);
     this.setState({
       plan: ""

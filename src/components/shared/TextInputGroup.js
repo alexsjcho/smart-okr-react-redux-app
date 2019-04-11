@@ -30,7 +30,4 @@ TextInputGroup.propTypes = {
   error: PropTypes.string
 };
 
-TextInputGroup.defaultProps = {
-  type: "text"
-};
 export default TextInputGroup;

@@ -174,7 +174,7 @@ class Objective extends Component {
 
           {objectiveName !== "" ? (
             <Fragment>
-              <h3>
+              <h4>
                 Key Results
                 <i
                   className="fas fa-sort-down"
@@ -184,7 +184,7 @@ class Objective extends Component {
                     })
                   }
                 />
-              </h3>
+              </h4>
               {showCardKeyResultInfo ? (
                 <Fragment>
                   {objectiveName ? (

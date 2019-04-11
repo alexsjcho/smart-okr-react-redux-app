@@ -5,3 +5,15 @@ body,
   background: #eee;
   padding: 1em;
 }
+a {
+  color: #ffffff;
+  margin: 0 10px;
+}
+
+a:hover {
+  color: #e3e3e3;
+}
+
+a i {
+  color: #000000;
+}
