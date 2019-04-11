@@ -64,6 +64,12 @@ class Objective extends Component {
     });
   };
 
+  handleDelete = e => {
+    e.preventDefault();
+    const { onDelete, objectiveId } = this.props;
+    onDelete(objectiveId);
+  };
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -151,7 +157,9 @@ class Objective extends Component {
                     {objectiveName !== "" ? (
                       <Fragment>
                         <i className="fas fa-pencil-alt " />
-                        <i className="fas fa-trash-alt " />
+                        <a href="#delete" onClick={this.handleDelete}>
+                          <i className="fas fa-trash-alt " />
+                        </a>
                       </Fragment>
                     ) : null}
                     <ObjectiveCategory

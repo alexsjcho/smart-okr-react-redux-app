@@ -1,4 +1,5 @@
 export const SET_OBJECTIVE = "SET_OBJECTIVE";
+export const DELETE_OBJECTIVE = "DELETE_OBJECTIVE";
 export const SET_KEY_RESULT = "SET_KEY_RESULT";
 export const SET_WEEKLY_PLAN = "SET_WEEKLY_PLAN";
 export const SET_WEEKLY_ACHIEVEMENT = "SET_WEEKLY_ACHIEVEMENT";
@@ -10,6 +11,13 @@ export const setObjective = ({ objective, category, date }) => ({
     objective,
     category,
     date
+  }
+});
+
+export const deleteObjective = index => ({
+  type: DELETE_OBJECTIVE,
+  payload: {
+    index
   }
 });
 

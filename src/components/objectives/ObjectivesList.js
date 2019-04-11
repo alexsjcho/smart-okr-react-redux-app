@@ -6,7 +6,8 @@ import uuid from "uuid";
 import {
   setObjective,
   setKeyResult,
-  setWeeklyPlan
+  setWeeklyPlan,
+  deleteObjective
 } from "../../actions/objectives.js";
 import Objective from "./Objective";
 
@@ -15,12 +16,20 @@ const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setObjective, setKeyResult, setWeeklyPlan }, dispatch);
+  bindActionCreators(
+    { setObjective, deleteObjective, setKeyResult, setWeeklyPlan },
+    dispatch
+  );
 
 class ObjectivesList extends Component {
   onSubmit = submitValue => {
     const { setObjective } = this.props;
     setObjective(submitValue);
+  };
+
+  onDelete = index => {
+    const { deleteObjective } = this.props;
+    deleteObjective(index);
   };
 
   render() {
@@ -35,6 +44,7 @@ class ObjectivesList extends Component {
             key={uuid()}
             objective={obj}
             onSubmit={this.onSubmit}
+            onDelete={this.onDelete}
             {...props}
           />
         ))}

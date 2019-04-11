@@ -30,14 +30,7 @@ class KeyResult extends Component {
     e.preventDefault();
 
     const { onSubmit } = this.props;
-    const {
-      keyResult,
-      objectiveId,
-      name,
-      unit,
-      target,
-      unitCategory
-    } = this.state;
+    const { keyResult, objectiveId, name, unit, unitCategory } = this.state;
 
     //Check for Errors, Form Validation
     if (name === "") {
