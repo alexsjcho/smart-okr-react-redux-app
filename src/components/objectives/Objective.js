@@ -117,6 +117,15 @@ class Objective extends Component {
       ...props
     } = this.props;
 
+    let targetObjectiveProgressStatus = keyResults.reduce(
+      (accumulator, keyResult) => accumulator + parseInt(keyResult.targetUnit),
+      0
+    );
+    let currentObjectiveProgressStatus = keyResults.reduce(
+      (accumulator, keyResult) => accumulator + parseInt(keyResult.unit),
+      0
+    );
+
     return (
       <Fragment>
         <div className="card card-body mb-3">
@@ -128,7 +137,10 @@ class Objective extends Component {
                 this.setState({ showCardInfo: !this.state.showCardInfo })
               }
             />
-            <ObjectiveProgressBar />
+            <ObjectiveProgressBar
+              value={currentObjectiveProgressStatus}
+              targetValue={targetObjectiveProgressStatus}
+            />
           </h1>
 
           <ObjectiveDates

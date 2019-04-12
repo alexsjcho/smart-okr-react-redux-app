@@ -2,10 +2,11 @@ import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 const KeyResultProgressBar = ({ toolOption, value, targetValue }) => {
+  let labelValue = (value / targetValue) * 100 || 0;
   let progressBarProps = {
     variant: "info",
     now: value,
-    label: `${value}%`,
+    label: `${labelValue.toFixed(2)}%`,
     max: targetValue
   };
   if (toolOption) {
