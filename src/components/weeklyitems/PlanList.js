@@ -12,11 +12,9 @@ class PlanList extends Component {
   render() {
     const { plansList, objectiveId, ...props } = this.props;
 
-    console.log("plansList", plansList);
     return (
       <Fragment>
         {plansList.map((plan, i) => {
-          console.log("plan", plan);
           return (
             <Plan
               planId={i}

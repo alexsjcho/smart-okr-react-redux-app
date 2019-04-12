@@ -32,6 +32,13 @@ const mapDispatchToProps = dispatch =>
   );
 
 class ObjectivesList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showWeeklyItems: true
+    };
+  }
+
   onSubmit = submitValue => {
     const { setObjective } = this.props;
     setObjective(submitValue);
@@ -44,6 +51,8 @@ class ObjectivesList extends Component {
 
   render() {
     const { objectivesList, setWeeklyPlan, ...props } = this.props;
+    const { showWeeklyItems } = this.state;
+
     return (
       <Fragment>
         {objectivesList.map((obj, i) => {
@@ -58,14 +67,28 @@ class ObjectivesList extends Component {
                 {...props}
               />
               <div className="container">
-                <h2>Weekly Items</h2>
-                <PlanList
-                  setWeeklyPlan={setWeeklyPlan}
-                  plansList={obj.weeklyItems.plans}
-                  objectiveId={i}
-                />
-                <AchievementList />
-                <ChallengeList />
+                <h5>
+                  Weekly Items
+                  <i
+                    className="fas fa-sort-down"
+                    onClick={() =>
+                      this.setState({
+                        showWeeklyItems: !this.state.showWeeklyItems
+                      })
+                    }
+                  />
+                </h5>
+                {showWeeklyItems ? (
+                  <Fragment>
+                    <PlanList
+                      setWeeklyPlan={setWeeklyPlan}
+                      plansList={obj.weeklyItems.plans}
+                      objectiveId={i}
+                    />
+                    <AchievementList />
+                    <ChallengeList />
+                  </Fragment>
+                ) : null}
               </div>
             </Fragment>
           );
