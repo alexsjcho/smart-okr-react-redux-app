@@ -1,7 +1,18 @@
 import React, { Fragment } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-const AllObjectiveProgressBar = allObjective => {
+const AllObjectiveProgressBar = ({
+  allObjectiveValue,
+  allObjectiveTargetValue
+}) => {
+  let labelValue = (allObjectiveValue / allObjectiveTargetValue) * 100 || 0;
+  let allObjectiveProgressBarProps = {
+    variant: "primary",
+    now: allObjectiveValue,
+    label: `${labelValue.toFixed(0)}%`,
+    max: allObjectiveTargetValue
+  };
+
   return (
     <Fragment>
       <div className="col-xl-10 col-md-12 mb-5">
@@ -22,12 +33,7 @@ const AllObjectiveProgressBar = allObjective => {
                   </div>{" "}
                   {}
                   <div className="col">
-                    <ProgressBar
-                      variant="primary"
-                      now={allObjective}
-                      key={3}
-                      label={`#${allObjective}`}
-                    />
+                    <ProgressBar {...allObjectiveProgressBarProps} />
                   </div>
                 </div>
               </div>
@@ -37,6 +43,10 @@ const AllObjectiveProgressBar = allObjective => {
       </div>
     </Fragment>
   );
+};
+
+AllObjectiveProgressBar.defaultProps = {
+  allObjectiveValue: 0
 };
 
 export default AllObjectiveProgressBar;
