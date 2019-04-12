@@ -6,7 +6,7 @@ const ObjectiveProgressBar = ({ value, targetValue }) => {
   let objectiveBarProps = {
     variant: "primary",
     now: value,
-    label: `${labelValue.toFixed(2)}%`,
+    label: `${labelValue.toFixed(0)}%`,
     max: targetValue
   };
 

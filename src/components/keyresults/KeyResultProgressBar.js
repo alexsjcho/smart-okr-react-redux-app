@@ -6,7 +6,7 @@ const KeyResultProgressBar = ({ toolOption, value, targetValue }) => {
   let progressBarProps = {
     variant: "info",
     now: value,
-    label: `${labelValue.toFixed(2)}%`,
+    label: `${labelValue.toFixed(0)}%`,
     max: targetValue
   };
   if (toolOption) {

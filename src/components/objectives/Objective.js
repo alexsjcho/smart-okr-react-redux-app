@@ -162,6 +162,14 @@ class Objective extends Component {
                           value="Add Objective"
                           className="btn btn-primary btn-inline-block"
                         />
+                        <TextInputGroup
+                          name="objective"
+                          type={type}
+                          placeholder="Overachieve quota this quarter!"
+                          value={this.state.objective}
+                          onChange={this.onChange}
+                          error={errors.objective}
+                        />
                       </Fragment>
                     ) : null}
 
@@ -179,14 +187,6 @@ class Objective extends Component {
                     />
                   </li>
                 </ul>
-                <TextInputGroup
-                  name="objective"
-                  type={type}
-                  placeholder="Overachieve quota this quarter!"
-                  value={this.state.objective}
-                  onChange={this.onChange}
-                  error={errors.objective}
-                />
               </form>
             </div>
           ) : null}
