@@ -10,15 +10,15 @@ class KeyResult extends Component {
   constructor(props) {
     super(props);
     const {
-      keyResult: { id, name, unit, target, unitCategory, toolOption },
+      keyResult: { id, name, unit, targetUnit, unitCategory, toolOption },
       objectiveId
     } = this.props;
 
     this.state = {
       keyResult: {
         name,
-        target,
         unit,
+        targetUnit,
         unitCategory,
         toolOption,
         id: id || uuid(),
@@ -61,7 +61,7 @@ class KeyResult extends Component {
     this.setState({
       keyResult: {
         name: "",
-        target: "",
+        targetUnit: "",
         unit: "",
         unitCategory: null,
         toolOption: null
@@ -107,11 +107,11 @@ class KeyResult extends Component {
 
     return (
       <div className="card-body">
-        {toolOption ? (
-          <KeyResultProgressBar toolOption={toolOption} />
-        ) : (
-          <KeyResultProgressBar />
-        )}
+        <KeyResultProgressBar
+          toolOption={toolOption}
+          value={parseInt(this.state.keyResult.unit || 0)}
+          targetValue={parseInt(this.state.keyResult.targetUnit)}
+        />
 
         <form onSubmit={this.handleSubmit}>
           <ul className="list-group">
@@ -159,9 +159,9 @@ class KeyResult extends Component {
                 error={errors.unit}
               />
               <TextInputGroup
-                name="target"
+                name="targetUnit"
                 placeholder="Target Amount"
-                value={this.state.keyResult.unit}
+                value={this.state.keyResult.targetUnit}
                 onChange={this.onChange}
               />
               <InputSelect
@@ -197,6 +197,7 @@ class KeyResult extends Component {
 KeyResult.defaultProps = {
   keyResult: {
     name: "",
+    targetUnit: "",
     unit: "",
     unitCategory: null,
     toolOption: null,
