@@ -10,7 +10,7 @@ class PlanList extends Component {
   };
 
   render() {
-    const { plansList, objectiveId, ...props } = this.props;
+    const { plansList, objectiveId, deleteWeeklyPlan, ...props } = this.props;
 
     return (
       <Fragment>
@@ -22,6 +22,7 @@ class PlanList extends Component {
               key={uuid()}
               plan={plan}
               onSubmit={this.onSubmit}
+              deleteWeeklyPlan={deleteWeeklyPlan}
               {...props}
             />
           );

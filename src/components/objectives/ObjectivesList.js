@@ -11,7 +11,8 @@ import {
   setKeyResult,
   setWeeklyPlan,
   deleteObjective,
-  deleteKeyResult
+  deleteKeyResult,
+  deleteWeeklyPlan
 } from "../../actions/objectives.js";
 import Objective from "./Objective";
 
@@ -26,7 +27,8 @@ const mapDispatchToProps = dispatch =>
       deleteObjective,
       setKeyResult,
       setWeeklyPlan,
-      deleteKeyResult
+      deleteKeyResult,
+      deleteWeeklyPlan
     },
     dispatch
   );
@@ -84,6 +86,7 @@ class ObjectivesList extends Component {
                       setWeeklyPlan={setWeeklyPlan}
                       plansList={obj.weeklyItems.plans}
                       objectiveId={i}
+                      deleteWeeklyPlan={this.props.deleteWeeklyPlan}
                     />
                     <AchievementList />
                     <ChallengeList />

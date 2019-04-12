@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
 import TimeStamp from "./TimeStamp";
@@ -7,15 +8,22 @@ class Plan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      plan: "",
+      plan: props.plan || { id: uuid(), value: "" },
       time: "",
       showCardInfo: true
     };
   }
 
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  //Asychronous function because of callback
+  onPlanChange = e => {
+    const value = e.target.value;
+    this.setState(prevState => {
+      const newPlan = prevState.plan;
+      newPlan.value = value;
+      return {
+        ...prevState,
+        plan: newPlan
+      };
     });
   };
 
@@ -24,8 +32,17 @@ class Plan extends Component {
     const { objectiveId, onSubmit } = this.props;
     onSubmit(this.state.plan, objectiveId);
     this.setState({
-      plan: ""
+      plan: {
+        id: uuid(),
+        value: ""
+      }
     });
+  };
+
+  handleDelete = e => {
+    e.preventDefault();
+    const { deleteWeeklyPlan, objectiveId } = this.props;
+    deleteWeeklyPlan(objectiveId, this.state.plan.id);
   };
 
   onUpdate = e => {
@@ -33,8 +50,7 @@ class Plan extends Component {
   };
 
   render() {
-    const { showCardInfo } = this.state;
-    const { plan } = this.props;
+    const { showCardInfo, plan } = this.state;
 
     return (
       <Fragment>
@@ -52,7 +68,7 @@ class Plan extends Component {
           {showCardInfo ? (
             <div className="card-header">
               <form onSubmit={this.handleSubmit}>
-                {plan !== "" ? (
+                {plan.value === "" ? (
                   <input
                     type="submit"
                     value="Add Weekly Plan"
@@ -60,18 +76,21 @@ class Plan extends Component {
                   />
                 ) : null}
 
-                {plan === "" ? (
-                  <Fragment>
-                    <i className="fas fa-trash-alt " />
-                  </Fragment>
+                {plan.value !== "" ? (
+                  <a href="#delete">
+                    <i
+                      className="fas fa-trash-alt "
+                      onClick={this.handleDelete}
+                    />
+                  </a>
                 ) : null}
 
                 <TimeStamp />
 
                 <TextInputGroup
                   name="plan"
-                  value={plan}
-                  onChange={this.onChange}
+                  value={plan.value}
+                  onChange={this.onPlanChange}
                   placeholder="Write a blog post by end of this week"
                 />
               </form>

@@ -3,6 +3,7 @@ export const DELETE_OBJECTIVE = "DELETE_OBJECTIVE";
 export const SET_KEY_RESULT = "SET_KEY_RESULT";
 export const DELETE_KEYRESULT = "DELETE_KEYRESULT";
 export const SET_WEEKLY_PLAN = "SET_WEEKLY_PLAN";
+export const DELETE_WEEKLY_PLAN = "DELETE_WEEKLY_PLAN";
 export const SET_WEEKLY_ACHIEVEMENT = "SET_WEEKLY_ACHIEVEMENT";
 export const SET_WEEKLY_CHALLENGE = "SET_WEEKLY_CHALLENGE";
 
@@ -40,6 +41,14 @@ export const setWeeklyPlan = (weeklyPlan, index) => ({
   payload: {
     index,
     weeklyPlan
+  }
+});
+
+export const deleteWeeklyPlan = (objectiveId, planId) => ({
+  type: DELETE_WEEKLY_PLAN,
+  payload: {
+    planId,
+    objectiveId
   }
 });
 

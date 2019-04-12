@@ -4,6 +4,7 @@ import {
   SET_KEY_RESULT,
   DELETE_KEYRESULT,
   SET_WEEKLY_PLAN,
+  DELETE_WEEKLY_PLAN,
   SET_WEEKLY_ACHIEVEMENT,
   SET_WEEKLY_CHALLENGE
 } from "../actions/objectives";
@@ -103,38 +104,32 @@ export default function objectives(state = initialState, action) {
           ...objectivesList.slice(index + 1)
         ]
       });
-
-      /*const objective =
-        state.objectivesList[action.payload.weeklyPlan.objectiveId];
-
-      objective.weeklyPlans = [
-        ...objective.weeklyPlans,
-        action.payload.weeklyPlan
-      ];
-
-      return {
-        ...state,
-        objectivesList: [...state.objectivesList]
-      };*/
     }
 
-    // case UPDATE_WEEKLY_PLAN: {
-    //   const { objectivesList } = state;
-
-    //   const {
-    //     payload: { updatedValue, objectiveId, planId }
-    //   } = action;
-
-    //   const currentObjective = objectivesList[index];
-    //   const currentPlan = currentObjective.weeklyItems.plans[planId];
-
-    //   currentPlan.name = updatedValue;
-
-    //   return {
-    //     ...state,
-    //     objectiveList: [...state.objectivesList]
-    //   };
-    // }
+    case DELETE_WEEKLY_PLAN: {
+      const { objectivesList } = state;
+      const {
+        payload: { planId, objectiveId }
+      } = action;
+      const objective = objectivesList[objectiveId];
+      let weeklyPlanArray = objective.weeklyItems.plans.slice();
+      let targetWeeklyPlanIndex = weeklyPlanArray.findIndex(plan => {
+        return plan.id === planId;
+      });
+      weeklyPlanArray = removeFromArrayAtIndex(
+        weeklyPlanArray,
+        targetWeeklyPlanIndex
+      );
+      const newObjective = { ...objective };
+      newObjective.weeklyItems = { ...objective.weeklyItem };
+      newObjective.weeklyItems.plans = weeklyPlanArray;
+      const newObjectiveList = objectivesList.slice();
+      newObjectiveList[objectiveId] = newObjective;
+      return {
+        ...state,
+        objectivesList: newObjectiveList
+      };
+    }
 
     case SET_WEEKLY_ACHIEVEMENT: {
       const objective =
