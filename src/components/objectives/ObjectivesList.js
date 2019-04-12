@@ -21,7 +21,13 @@ const mapStateToProps = ({ objectives: { objective, objectivesList } }) => ({
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { setObjective, deleteObjective, setKeyResult, setWeeklyPlan, deleteKeyResult },
+    {
+      setObjective,
+      deleteObjective,
+      setKeyResult,
+      setWeeklyPlan,
+      deleteKeyResult
+    },
     dispatch
   );
 
@@ -37,26 +43,33 @@ class ObjectivesList extends Component {
   };
 
   render() {
-    const { objectivesList, ...props } = this.props;
+    const { objectivesList, setWeeklyPlan, ...props } = this.props;
     return (
       <Fragment>
-        {objectivesList.map((obj, i) => (
-          <Fragment key={uuid()}>
-            <Objective
-              objectiveId={i}
-              objective={obj}
-              onSubmit={this.onSubmit}
-              onDelete={this.onDelete}
-              {...props}
-            />
-            <div className="container">
-              <h2>Weekly Items</h2>
-              <PlanList objectiveId={i} />
-              <AchievementList />
-              <ChallengeList />
-            </div>
-          </Fragment>
-        ))}
+        {objectivesList.map((obj, i) => {
+          console.log("obj", obj.weeklyItems.plans);
+          return (
+            <Fragment key={uuid()}>
+              <Objective
+                objectiveId={i}
+                objective={obj}
+                onSubmit={this.onSubmit}
+                onDelete={this.onDelete}
+                {...props}
+              />
+              <div className="container">
+                <h2>Weekly Items</h2>
+                <PlanList
+                  setWeeklyPlan={setWeeklyPlan}
+                  plansList={obj.weeklyItems.plans}
+                  objectiveId={i}
+                />
+                <AchievementList />
+                <ChallengeList />
+              </div>
+            </Fragment>
+          );
+        })}
 
         <Objective onSubmit={this.onSubmit} {...props} />
       </Fragment>

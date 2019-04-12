@@ -28,6 +28,10 @@ class Plan extends Component {
     });
   };
 
+  onUpdate = e => {
+    e.preventDefault();
+  };
+
   render() {
     const { showCardInfo } = this.state;
     const { plan } = this.props;
@@ -82,7 +86,7 @@ class Plan extends Component {
 Plan.defaultProps = {
   name: "",
   time: "",
-  objectiveId: 0
+  objectiveId: null
 };
 
 export default Plan;

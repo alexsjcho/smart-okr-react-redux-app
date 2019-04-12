@@ -139,7 +139,6 @@ class KeyResult extends Component {
                 <Fragment>
                   <span>
                     <p>
-                      {" "}
                       <b>Your KeyResult is Automated with</b>{" "}
                     </p>
                     <img

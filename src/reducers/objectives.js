@@ -86,6 +86,8 @@ export default function objectives(state = initialState, action) {
       const {
         payload: { weeklyPlan, index }
       } = action;
+
+      console.log("inex", index);
       const currentObjective = objectivesList[index];
       const updatedObjective = Object.assign({}, currentObjective, {
         weeklyItems: {
@@ -101,6 +103,7 @@ export default function objectives(state = initialState, action) {
           ...objectivesList.slice(index + 1)
         ]
       });
+
       /*const objective =
         state.objectivesList[action.payload.weeklyPlan.objectiveId];
 
@@ -114,6 +117,24 @@ export default function objectives(state = initialState, action) {
         objectivesList: [...state.objectivesList]
       };*/
     }
+
+    // case UPDATE_WEEKLY_PLAN: {
+    //   const { objectivesList } = state;
+
+    //   const {
+    //     payload: { updatedValue, objectiveId, planId }
+    //   } = action;
+
+    //   const currentObjective = objectivesList[index];
+    //   const currentPlan = currentObjective.weeklyItems.plans[planId];
+
+    //   currentPlan.name = updatedValue;
+
+    //   return {
+    //     ...state,
+    //     objectiveList: [...state.objectivesList]
+    //   };
+    // }
 
     case SET_WEEKLY_ACHIEVEMENT: {
       const objective =
