@@ -6,8 +6,9 @@ import {
   SET_WEEKLY_PLAN,
   DELETE_WEEKLY_PLAN,
   SET_WEEKLY_ACHIEVEMENT,
+  DELETE_WEEKLY_ACHIEVEMENT,
   SET_WEEKLY_CHALLENGE,
-  DELETE_WEEKLY_ACHIEVEMENT
+  DELETE_WEEKLY_CHALLENGE
 } from "../actions/objectives";
 import { removeFromArrayAtIndex } from "../utils/helper";
 
@@ -172,31 +173,6 @@ export default function objectives(state = initialState, action) {
       });
     }
 
-    // case DELETE_WEEKLY_PLAN: {
-    //   const { objectivesList } = state;
-    //   const {
-    //     payload: { planId, objectiveId }
-    //   } = action;
-    //   const objective = objectivesList[objectiveId];
-    //   let weeklyPlanArray = objective.weeklyItems.plans.slice();
-    //   let targetWeeklyPlanIndex = weeklyPlanArray.findIndex(plan => {
-    //     return plan.id === planId;
-    //   });
-    //   weeklyPlanArray = removeFromArrayAtIndex(
-    //     weeklyPlanArray,
-    //     targetWeeklyPlanIndex
-    //   );
-    //   const newObjective = { ...objective };
-    //   newObjective.weeklyItems = { ...objective.weeklyItem };
-    //   newObjective.weeklyItems.plans = weeklyPlanArray;
-    //   const newObjectiveList = objectivesList.slice();
-    //   newObjectiveList[objectiveId] = newObjective;
-    //   return {
-    //     ...state,
-    //     objectivesList: newObjectiveList
-    //   };
-    // }
-
     case DELETE_WEEKLY_ACHIEVEMENT: {
       const { objectivesList } = state;
       const {
@@ -226,19 +202,74 @@ export default function objectives(state = initialState, action) {
       };
     }
 
-    case SET_WEEKLY_CHALLENGE: {
-      const objective =
-        state.objectivesList[action.payload.weeklyChallenge.objectiveId];
+    case DELETE_WEEKLY_CHALLENGE: {
+      const { objectivesList } = state;
+      const {
+        payload: { challengeId, objectiveId }
+      } = action;
 
-      objective.weeklyChallenge = [
-        ...objective.weeklyChallenge,
-        action.payload.weeklyChallenge
-      ];
+      const objective = objectivesList[objectiveId];
+      let weeklyChallengeArray = objective.weeklyItems.challenges.slice();
+      let targetWeeklyChallengeIndex = weeklyChallengeArray.findIndex(
+        challenge => {
+          return challenge.id === challengeId;
+        }
+      );
+
+      weeklyChallengeArray = removeFromArrayAtIndex(
+        weeklyChallengeArray,
+        targetWeeklyChallengeIndex
+      );
+
+      const newObjective = { ...objective };
+      newObjective.weeklyItems = { ...objective.weeklyItem };
+      newObjective.weeklyItems.challenges = weeklyChallengeArray;
+      const newObjectiveList = objectivesList.slice();
+      newObjectiveList[objectiveId] = newObjective;
 
       return {
         ...state,
-        objectivesList: [...state.objectivesList]
+        objectivesList: newObjectiveList
       };
+    }
+
+    // case SET_WEEKLY_CHALLENGE: {
+    //   const objective =
+    //     state.objectivesList[action.payload.weeklyChallenge.objectiveId];
+
+    //   objective.weeklyChallenge = [
+    //     ...objective.weeklyChallenge,
+    //     action.payload.weeklyChallenge
+    //   ];
+
+    //   return {
+    //     ...state,
+    //     objectivesList: [...state.objectivesList]
+    //   };
+    // }
+
+    case SET_WEEKLY_CHALLENGE: {
+      const { objectivesList } = state;
+      const {
+        payload: { weeklyChallenge, index }
+      } = action;
+
+      const currentObjective = objectivesList[index];
+      const updatedObjective = Object.assign({}, currentObjective, {
+        weeklyItems: {
+          ...currentObjective.weeklyItems,
+          challenges: currentObjective.weeklyItems.challenges.concat(
+            weeklyChallenge
+          )
+        }
+      });
+      return Object.assign({}, state, {
+        objectivesList: [
+          ...objectivesList.slice(0, index),
+          updatedObjective,
+          ...objectivesList.slice(index + 1)
+        ]
+      });
     }
 
     default:
