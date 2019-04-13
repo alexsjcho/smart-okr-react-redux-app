@@ -1,16 +1,13 @@
 import React, { Fragment } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-const AllObjectiveProgressBar = ({
-  allObjectiveValue,
-  allObjectiveTargetValue
-}) => {
-  let labelValue = (allObjectiveValue / allObjectiveTargetValue) * 100 || 0;
+const AllObjectiveProgressBar = ({ value, targetValue }) => {
+  let labelValue = (value / targetValue) * 100 || 0;
   let allObjectiveProgressBarProps = {
     variant: "primary",
-    now: allObjectiveValue,
+    now: value,
     label: `${labelValue.toFixed(0)}%`,
-    max: allObjectiveTargetValue
+    max: targetValue
   };
 
   return (

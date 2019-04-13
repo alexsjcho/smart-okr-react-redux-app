@@ -8,6 +8,19 @@ import WeeklyItemsProgressBar from "./WeeklyItemsProgressBar";
 import AllObjectiveProgressBar from "./AllObjectiveProgressBar";
 
 const Dashboard = () => {
+  // const { objectivesList } = this.props;
+
+  // let currentAllObjectiveProgressValue = objectivesList.reduce(
+  //   (accumulator, objectivesList) =>
+  //     accumulator + parseInt(objectiveList.currentSumUnit),
+  //   0
+  // );
+  // let targetAllObjectiveProgressValue = objectiveList.reduce(
+  //   (accumulator, objectivesList) =>
+  //     accumulator + parseInt(objectiveList.sumTargetUnit),
+  //   0
+  // );
+
   return (
     <Container>
       <Row>
@@ -16,7 +29,10 @@ const Dashboard = () => {
         </Col>
 
         <Col>
-          <AllObjectiveProgressBar />
+          <AllObjectiveProgressBar
+          // value={currentAllObjectiveProgressValue}
+          // targetValue={targetAllObjectiveProgressValue}
+          />
         </Col>
       </Row>
     </Container>
