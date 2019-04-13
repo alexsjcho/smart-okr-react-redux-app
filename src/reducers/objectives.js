@@ -6,7 +6,8 @@ import {
   SET_WEEKLY_PLAN,
   DELETE_WEEKLY_PLAN,
   SET_WEEKLY_ACHIEVEMENT,
-  SET_WEEKLY_CHALLENGE
+  SET_WEEKLY_CHALLENGE,
+  DELETE_WEEKLY_ACHIEVEMENT
 } from "../actions/objectives";
 import { removeFromArrayAtIndex } from "../utils/helper";
 
@@ -44,6 +45,7 @@ export default function objectives(state = initialState, action) {
           action.payload.index
         )
       });
+
     case SET_KEY_RESULT: {
       const objective = state.objectivesList[action.payload.objectiveId];
 
@@ -88,7 +90,6 @@ export default function objectives(state = initialState, action) {
         payload: { weeklyPlan, index }
       } = action;
 
-      console.log("inex", index);
       const currentObjective = objectivesList[index];
       const updatedObjective = Object.assign({}, currentObjective, {
         weeklyItems: {
@@ -131,18 +132,97 @@ export default function objectives(state = initialState, action) {
       };
     }
 
+    // case SET_WEEKLY_ACHIEVEMENT: {
+    //   const objective =
+    //     state.objectivesList[action.payload.weeklyAchievement.objectiveId];
+
+    //   objective.weeklyAchievement = [
+    //     ...objective.weeklyAchievement,
+    //     action.payload.weeklyAchievement
+    //   ];
+
+    //   return {
+    //     ...state,
+    //     objectivesList: [...state.objectivesList]
+    //   };
+    // }
+
     case SET_WEEKLY_ACHIEVEMENT: {
-      const objective =
-        state.objectivesList[action.payload.weeklyAchievement.objectiveId];
+      const { objectivesList } = state;
+      const {
+        payload: { weeklyAchievement, index }
+      } = action;
 
-      objective.weeklyAchievement = [
-        ...objective.weeklyAchievement,
-        action.payload.weeklyAchievement
-      ];
+      const currentObjective = objectivesList[index];
+      const updatedObjective = Object.assign({}, currentObjective, {
+        weeklyItems: {
+          ...currentObjective.weeklyItems,
+          achievements: currentObjective.weeklyItems.achievements.concat(
+            weeklyAchievement
+          )
+        }
+      });
 
+      return Object.assign({}, state, {
+        objectivesList: [
+          ...objectivesList.slice(0, index),
+          updatedObjective,
+          ...objectivesList.slice(index + 1)
+        ]
+      });
+    }
+
+    // case DELETE_WEEKLY_PLAN: {
+    //   const { objectivesList } = state;
+    //   const {
+    //     payload: { planId, objectiveId }
+    //   } = action;
+    //   const objective = objectivesList[objectiveId];
+    //   let weeklyPlanArray = objective.weeklyItems.plans.slice();
+    //   let targetWeeklyPlanIndex = weeklyPlanArray.findIndex(plan => {
+    //     return plan.id === planId;
+    //   });
+    //   weeklyPlanArray = removeFromArrayAtIndex(
+    //     weeklyPlanArray,
+    //     targetWeeklyPlanIndex
+    //   );
+    //   const newObjective = { ...objective };
+    //   newObjective.weeklyItems = { ...objective.weeklyItem };
+    //   newObjective.weeklyItems.plans = weeklyPlanArray;
+    //   const newObjectiveList = objectivesList.slice();
+    //   newObjectiveList[objectiveId] = newObjective;
+    //   return {
+    //     ...state,
+    //     objectivesList: newObjectiveList
+    //   };
+    // }
+
+    case DELETE_WEEKLY_ACHIEVEMENT: {
+      const { objectivesList } = state;
+      const {
+        payload: { achievementId, objectiveId }
+      } = action;
+
+      const objective = objectivesList[objectiveId];
+      let weeklyAchievementArray = objective.weeklyItems.achievements.slice();
+      let targetWeeklyAchievementIndex = weeklyAchievementArray.findIndex(
+        achievement => {
+          return achievement.id === achievementId;
+        }
+      );
+      weeklyAchievementArray = removeFromArrayAtIndex(
+        weeklyAchievementArray,
+        targetWeeklyAchievementIndex
+      );
+
+      const newObjective = { ...objective };
+      newObjective.weeklyItems = { ...objective.weeklyItem };
+      newObjective.weeklyItems.achievements = weeklyAchievementArray;
+      const newObjectiveList = objectivesList.slice();
+      newObjectiveList[objectiveId] = newObjective;
       return {
         ...state,
-        objectivesList: [...state.objectivesList]
+        objectiveList: newObjectiveList
       };
     }
 
