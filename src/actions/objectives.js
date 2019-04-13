@@ -5,6 +5,7 @@ export const DELETE_KEYRESULT = "DELETE_KEYRESULT";
 export const SET_WEEKLY_PLAN = "SET_WEEKLY_PLAN";
 export const DELETE_WEEKLY_PLAN = "DELETE_WEEKLY_PLAN";
 export const SET_WEEKLY_ACHIEVEMENT = "SET_WEEKLY_ACHIEVEMENT";
+export const DELETE_WEEKLY_ACHIEVEMENT = "DELETE_WEEKLY_ACHIEVEMENT";
 export const SET_WEEKLY_CHALLENGE = "SET_WEEKLY_CHALLENGE";
 
 export const setObjective = ({ objective, category, date }) => ({
@@ -52,9 +53,18 @@ export const deleteWeeklyPlan = (objectiveId, planId) => ({
   }
 });
 
-export const setWeeklyAchievement = weeklyAchievement => ({
+export const setWeeklyAchievement = (weeklyAchievement, index) => ({
   type: SET_WEEKLY_ACHIEVEMENT,
-  payload: weeklyAchievement
+  payload: index,
+  weeklyAchievement
+});
+
+export const deleteWeeklyAchievement = (objectiveId, achievementId) => ({
+  type: DELETE_WEEKLY_ACHIEVEMENT,
+  payload: {
+    achievementId,
+    objectiveId
+  }
 });
 
 export const setWeeklyChallenge = weeklyChallenge => ({
