@@ -20,22 +20,16 @@ function mapStateToProps(state) {
         }
       );
 
-      //objectiveSum = {value: 250, targetValue: 300}
       accumulator.value += objectiveSum.value;
       accumulator.targetValue += objectiveSum.targetValue;
       return accumulator;
-      // accumulator = {value: 250, targetValue: 300 }
-      // objectiveSum = {value: 50, targetValue: 100}
-      // accumulator = {value: 300, targetValue: 400}
-      // int 2 + int 3 = int 5
-      // string '2' + string '3' = '23'''0017234'
     },
     {
       value: 0,
       targetValue: 0
     }
   );
-  // progressSum: {value: 300, targetValue: 400}
+
   return {
     value: progressSum.value,
     targetValue: progressSum.targetValue

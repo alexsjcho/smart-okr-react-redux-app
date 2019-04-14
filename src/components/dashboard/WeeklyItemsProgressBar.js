@@ -49,6 +49,7 @@ class WeeklyItemsProgressBar extends Component {
       }
     } = this.props;
 
+    // There are more achievements
     if (achievementsProgress > Math.max(challengesProgress, plansProgress)) {
       return "😁";
     } else if (
@@ -60,6 +61,7 @@ class WeeklyItemsProgressBar extends Component {
     ) {
       return "😱";
     } else {
+      // All values are tied
       return "🤔";
     }
   };

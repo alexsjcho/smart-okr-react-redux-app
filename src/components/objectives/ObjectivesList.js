@@ -72,7 +72,6 @@ class ObjectivesList extends Component {
     return (
       <Fragment>
         {objectivesList.map((obj, i) => {
-          console.log("obj", obj.weeklyItems.plans);
           return (
             <Fragment key={uuid()}>
               <Objective

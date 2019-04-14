@@ -130,7 +130,8 @@ class Objective extends Component {
       <Fragment>
         <div className="card card-body mb-3">
           <h1>
-            KRs{" "}
+            <i className="fas fa-bullseye fa-2x text-gray-300" />
+            bjectives
             <i
               className="fas fa-sort-down"
               onClick={() =>
