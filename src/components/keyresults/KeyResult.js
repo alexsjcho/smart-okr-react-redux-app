@@ -185,6 +185,7 @@ class KeyResult extends Component {
                 initialValue={this.state.keyResult.toolOption}
                 options={toolOptions}
                 onChange={this.handleSelectChange}
+                style={{ fontSize: "12px" }}
               />
             </li>
           </ul>

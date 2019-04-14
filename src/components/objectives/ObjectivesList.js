@@ -68,8 +68,9 @@ class ObjectivesList extends Component {
                 onDelete={this.onDelete}
                 {...props}
               />
+
               <div className="container">
-                <h5>
+                <h5 className="d-flex justify-content-center bg-light">
                   Weekly Items
                   <i
                     className="fas fa-sort-down"

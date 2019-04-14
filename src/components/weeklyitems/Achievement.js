@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import uuid from "uuid";
 import TextInputGroup from "../shared/TextInputGroup";
 import TimeStamp from "./TimeStamp";
 
@@ -7,7 +7,7 @@ class Achievement extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      achievement: "",
+      achievement: props.achievement || { id: uuid(), value: "" },
       time: "",
       showCardInfo: true
     };
@@ -29,8 +29,7 @@ class Achievement extends Component {
   };
 
   render() {
-    const { showCardInfo } = this.state;
-    const { achievement } = this.props;
+    const { showCardInfo, achievement } = this.state;
 
     return (
       <Fragment>

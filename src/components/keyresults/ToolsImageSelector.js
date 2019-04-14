@@ -15,6 +15,7 @@ const ToolsImageSelector = (onChange, toolOption) => {
   return (
     <Fragment>
       <Select
+        style={{ fontSize: "12px" }}
         name="toolOption"
         value={toolOption}
         onChange={onChange}
