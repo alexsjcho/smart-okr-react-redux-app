@@ -32,33 +32,33 @@ export default class Intro extends Component {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="https://www.businessmagazinegainesville.com/wp-content/uploads/2018/03/How-to-Achieve-Your-Goals-Within-a-Specific-Timeframe.jpg"
-              alt="goal-no-plan-wish"
+              src="https://s19386.pcdn.co/wp-content/uploads/2017/05/Automate-Devops-1024x538.jpg"
+              alt="automate-goals"
             />
             <Carousel.Caption>
-              <h3>Automate Goals</h3>
+              <h3 className="bg-dark">Automate Goals</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100 "
               src="https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q1/smart-goals/smart-goals-header@2x.png"
-              alt="what-are-okrs"
+              alt="take-action"
             />
 
             <Carousel.Caption>
-              <h3>Take Action</h3>
+              <h3 className="bg-dark">Take Action</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100 "
               src="https://cdn-images-1.medium.com/max/2600/1*HvlZayCeipATnffD1V1n1g.png"
-              alt="Third slide"
+              alt="achieve-goals"
             />
 
             <Carousel.Caption>
-              <h3>Achieve Your Goals</h3>
+              <h3 className="bg-dark">Achieve Your Goals</h3>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
