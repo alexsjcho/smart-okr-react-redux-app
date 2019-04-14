@@ -71,10 +71,9 @@ const Info = () => {
                   project
                 </Card.Text>
                 <Button variant="success">
-                  {" "}
                   <a href="https://github.com/alexsjcho/smart-okr-react-app">
                     GitHub Repo
-                  </a>{" "}
+                  </a>
                 </Button>
               </Card.Body>
             </Card>
@@ -102,7 +101,6 @@ const Info = () => {
             </Card>
           </Col>
         </Row>
-        <br />
       </Container>
       <br />
     </Fragment>

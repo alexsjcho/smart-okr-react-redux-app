@@ -113,6 +113,21 @@ class KeyResult extends Component {
           targetValue={parseInt(this.state.keyResult.targetUnit)}
         />
 
+        {toolOption ? (
+          <Fragment>
+            <span>
+              <p style={{ fontSize: "12px" }}>
+                <b>Your KeyResult is Automated with</b>{" "}
+              </p>
+              <img
+                style={{ width: "30px", height: "30px" }}
+                src={toolOption.imageURL}
+                alt="new"
+              />
+            </span>
+          </Fragment>
+        ) : null}
+
         <form onSubmit={this.handleSubmit}>
           <ul className="list-group">
             <li className="list-group-item">
@@ -125,6 +140,13 @@ class KeyResult extends Component {
                   />
                 </Fragment>
               ) : null}
+              <TextInputGroup
+                name="name"
+                placeholder="Complete 10 customer demos per week!"
+                value={this.state.keyResult.name}
+                onChange={this.onChange}
+                error={errors.name}
+              />
 
               {keyResult.name !== "" ? (
                 <Fragment>
@@ -135,35 +157,7 @@ class KeyResult extends Component {
                 </Fragment>
               ) : null}
 
-              {toolOption ? (
-                <Fragment>
-                  <span>
-                    <p>
-                      <b>Your KeyResult is Automated with</b>{" "}
-                    </p>
-                    <img
-                      style={{ width: "30px", height: "30px" }}
-                      src={toolOption.imageURL}
-                      alt="new"
-                    />
-                  </span>
-                </Fragment>
-              ) : null}
-
               {/* KeyResults Metrics Section */}
-              <TextInputGroup
-                name="unit"
-                placeholder="Current Amount"
-                value={this.state.keyResult.unit}
-                onChange={this.onChange}
-                error={errors.unit}
-              />
-              <TextInputGroup
-                name="targetUnit"
-                placeholder="Target Amount"
-                value={this.state.keyResult.targetUnit}
-                onChange={this.onChange}
-              />
               <InputSelect
                 name="unitCategory"
                 options={metricOptions}
@@ -171,6 +165,20 @@ class KeyResult extends Component {
                 initialValue={this.state.keyResult.unitCategory}
                 error={errors.unitCategory}
               />
+              <TextInputGroup
+                name="targetUnit"
+                placeholder="Target Amount"
+                value={this.state.keyResult.targetUnit}
+                onChange={this.onChange}
+              />
+              <TextInputGroup
+                name="unit"
+                placeholder="Current Amount"
+                value={this.state.keyResult.unit}
+                onChange={this.onChange}
+                error={errors.unit}
+              />
+
               {/* Add Tool Selector Section */}
               <InputSelect
                 name="toolOption"
@@ -180,14 +188,6 @@ class KeyResult extends Component {
               />
             </li>
           </ul>
-
-          <TextInputGroup
-            name="name"
-            placeholder="Complete 10 customer demos per week!"
-            value={this.state.keyResult.name}
-            onChange={this.onChange}
-            error={errors.name}
-          />
         </form>
       </div>
     );

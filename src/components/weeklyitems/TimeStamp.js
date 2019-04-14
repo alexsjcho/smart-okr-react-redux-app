@@ -7,7 +7,9 @@ class TimeStamp extends Component {
 
     return (
       <Fragment>
-        <Moment format="dddd MM/DD/YYYY HH:mm">{todayTimeStamp}</Moment>
+        <Moment style={{ fontSize: "12px" }} format="dddd MM/DD/YYYY HH:mm">
+          {todayTimeStamp}
+        </Moment>
       </Fragment>
     );
   }

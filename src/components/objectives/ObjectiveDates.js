@@ -29,7 +29,7 @@ class ObjectiveDates extends Component {
     const { saveStartDate, saveEndDate, selected } = this.props;
     return (
       <Fragment>
-        <div className="container">
+        <div className="container" style={{ fontSize: "12px" }}>
           Start Date
           <DatePicker
             selected={selected.startDate}
@@ -40,7 +40,7 @@ class ObjectiveDates extends Component {
           />
         </div>
 
-        <div className="container">
+        <div className="container" style={{ fontSize: "12px" }}>
           End Date
           <DatePicker
             selected={selected.endDate}

@@ -18,7 +18,6 @@ class App extends Component {
             <div className="container">
               <Dashboard />
             </div>
-            {/* <KeyResult /> */}
             <ObjectivesList />
           </div>
         </Container>
