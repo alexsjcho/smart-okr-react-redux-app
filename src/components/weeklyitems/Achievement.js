@@ -8,14 +8,20 @@ class Achievement extends Component {
     super(props);
     this.state = {
       achievement: props.achievement || { id: uuid(), value: "" },
-      time: "",
       showCardInfo: true
     };
   }
 
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  //Asychronous function because of callback
+  onAchievementChange = e => {
+    const value = e.target.value;
+    this.setState(prevState => {
+      const newAchievement = prevState.achievement;
+      newAchievement.value = value;
+      return {
+        ...prevState,
+        achievement: newAchievement
+      };
     });
   };
 
@@ -24,8 +30,17 @@ class Achievement extends Component {
     e.preventDefault();
     onSubmit(this.state.achievement);
     this.setState({
-      achievement: ""
+      achievement: {
+        id: uuid(),
+        value: ""
+      }
     });
+  };
+
+  handleDelete = e => {
+    e.preventDefault();
+    const { deleteWeeklyAchievement, objectiveId } = this.props;
+    deleteWeeklyAchievement(objectiveId, this.state.achievement.id);
   };
 
   render() {
@@ -56,7 +71,13 @@ class Achievement extends Component {
 
               {achievement === "" ? (
                 <Fragment>
-                  <i className="fas fa-trash-alt " />
+                  <a href="#delete">
+                    {" "}
+                    <i
+                      className="fas fa-trash-alt "
+                      onClick={this.handleDelete}
+                    />
+                  </a>
                 </Fragment>
               ) : null}
 
@@ -65,7 +86,7 @@ class Achievement extends Component {
                 <TextInputGroup
                   name="achievement"
                   value={achievement}
-                  onChange={this.onChange}
+                  onChange={this.onAchievementChange}
                   placeholder="Built a React CRUD app in a week!"
                 />
               </form>
@@ -79,7 +100,7 @@ class Achievement extends Component {
 
 Achievement.defaultProps = {
   name: "",
-  time: ""
+  objectiveId: null
 };
 
 export default Achievement;

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import uuid from "uuid";
 import TextInputGroup from "../shared/TextInputGroup";
 import TimeStamp from "./TimeStamp";
 
@@ -7,15 +7,21 @@ class Challenge extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      challenge: "",
-      time: "",
+      challenge: props.challenge || { id: uuid(), value: "" },
       showCardInfo: true
     };
   }
 
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  //Asychronous function because of callback
+  onChallengeChange = e => {
+    const value = e.target.value;
+    this.setState(prevState => {
+      const newChallenge = prevState.challenge;
+      newChallenge.value = value;
+      return {
+        ...prevState,
+        challenge: newChallenge
+      };
     });
   };
 
@@ -26,6 +32,12 @@ class Challenge extends Component {
     this.setState({
       challenge: ""
     });
+  };
+
+  handleDelete = e => {
+    e.preventDefault();
+    const { deleteWeeklyChallenge, objectiveId } = this.props;
+    deleteWeeklyChallenge(objectiveId, this.state.challenge.id);
   };
 
   render() {
@@ -47,16 +59,22 @@ class Challenge extends Component {
           <div className="card-header">
             {showCardInfo ? (
               <form>
-                {challenge !== "" ? (
+                {challenge === "" ? (
                   <input
                     type="submit"
                     value="Add Challange"
                     className="btn btn-outline-warning"
                   />
                 ) : null}
-                {challenge === "" ? (
+                {challenge !== "" ? (
                   <Fragment>
-                    <i className="fas fa-trash-alt " />
+                    <a href="#delete">
+                      {" "}
+                      <i
+                        className="fas fa-trash-alt "
+                        onClick={this.handleDelete}
+                      />
+                    </a>
                   </Fragment>
                 ) : null}
 
@@ -64,7 +82,7 @@ class Challenge extends Component {
                 <TextInputGroup
                   name="challenge"
                   value={challenge}
-                  onChange={this.onChange}
+                  onChange={this.onChallengeChange}
                   placeholder="Didn't get enough sleep..."
                 />
               </form>
@@ -78,7 +96,7 @@ class Challenge extends Component {
 
 Challenge.defaultProps = {
   name: "",
-  time: ""
+  objectiveId: null
 };
 
 export default Challenge;

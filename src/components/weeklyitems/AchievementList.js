@@ -4,26 +4,37 @@ import React, { Component, Fragment } from "react";
 import Achievement from "./Achievement";
 
 class AchievementList extends Component {
-  onSubmit = submitValue => {
+  onSubmit = (submitValue, index) => {
     const { setWeeklyAchievement } = this.props;
-    setWeeklyAchievement(submitValue);
+    setWeeklyAchievement(submitValue, index);
   };
 
   render() {
-    const { achievementsList, ...props } = this.props;
+    const {
+      achievementsList,
+      objectiveId,
+      deleteWeeklyAchievement,
+      ...props
+    } = this.props;
     return (
       <Fragment>
         {/* {achievementsList.map((achievement, i) => (
           <Achievement
-            objectiveId={i}
+            achievementId={i}
+            objectiveId={objectiveId}
             key={uuid()}
             achievement={achievement}
             onSubmit={this.onSubmit}
+            deleteWeeklyAchievement={deleteWeeklyAchievement}
             {...props}
           />
         ))} */}
 
-        <Achievement onSubmit={this.onSubmit} {...props} />
+        <Achievement
+          onSubmit={this.onSubmit}
+          objectiveId={objectiveId}
+          {...props}
+        />
       </Fragment>
     );
   }
