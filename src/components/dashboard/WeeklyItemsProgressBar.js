@@ -1,18 +1,50 @@
 import React, { Component, Fragment } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { connect } from "react-redux";
+
+function mapStateToProps(state) {
+  const {
+    objectives: { objectivesList }
+  } = state;
+  const allWeeklyItemsSum = objectivesList.reduce(
+    (accumulator, objective) => {
+      const plansQty = objective.weeklyItems.plans.length;
+      const achievementsQty = objective.weeklyItems.achievements.length;
+      const challengesQty = objective.weeklyItems.challenges.length;
+
+      accumulator.plans += plansQty;
+      accumulator.achievements += achievementsQty;
+      accumulator.challenges += challengesQty;
+      accumulator.targetValue += plansQty + achievementsQty + challengesQty;
+
+      return accumulator;
+    },
+    {
+      plans: 0,
+      achievements: 0,
+      challenges: 0,
+      targetValue: 0
+    }
+  );
+  return {
+    weeklyItemsProgress: {
+      targetValue: allWeeklyItemsSum.targetValue,
+
+      plansProgress: {
+        value: allWeeklyItemsSum.plans
+      },
+      achievementsProgress: {
+        value: allWeeklyItemsSum.achievements
+      },
+      challengesProgress: {
+        value: allWeeklyItemsSum.challenges
+      }
+    }
+  };
+}
 
 class WeeklyItemsProgressBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      plans: "",
-      achievements: "",
-      challenges: "",
-      status: "🤔"
-    };
-  }
-
-  // weeklyStatus = () => {
+  // weeklyStatusEmoji = () => {
   //   const {plans, achievements, challenges, status}
   //   if (achievements > challenges) {
   //     return "😁";
@@ -26,7 +58,14 @@ class WeeklyItemsProgressBar extends Component {
   // };
 
   render() {
-    const { plans, achievements, challenges, weeklyStatus } = this.props;
+    const {
+      weeklyItemsProgress: {
+        plansProgress,
+        achievementsProgress,
+        challengesProgress,
+        targetValue
+      }
+    } = this.props;
 
     return (
       <Fragment>
@@ -43,29 +82,28 @@ class WeeklyItemsProgressBar extends Component {
                     <div className="col-auto">
                       <div
                         className="h5 mb-0 mr-3 "
-                        style={{ fontWeight: "bold-text-gray-800" }}>
-                        {weeklyStatus}
-                      </div>
+                        style={{ fontWeight: "bold-text-gray-800" }}
+                      />
                     </div>{" "}
                     {}
                     <div className="col">
                       <ProgressBar
                         variant="primary"
-                        now={plans}
-                        key={3}
-                        label={`#${plans}`}
+                        now={plansProgress.value}
+                        label={`#${plansProgress.value}`}
+                        max={targetValue}
                       />
                       <ProgressBar
                         variant="success"
-                        now={achievements}
-                        key={1}
-                        label={`#${achievements}`}
+                        now={achievementsProgress.value}
+                        label={`#${achievementsProgress.value}`}
+                        max={targetValue}
                       />
                       <ProgressBar
                         variant="warning"
-                        now={challenges}
-                        key={2}
-                        label={`#${challenges}`}
+                        now={challengesProgress.value}
+                        label={`#${challengesProgress.value}`}
+                        max={targetValue}
                       />
                     </div>
                   </div>
@@ -79,11 +117,4 @@ class WeeklyItemsProgressBar extends Component {
   }
 }
 
-WeeklyItemsProgressBar.defaultProps = {
-  plans: 30,
-  achievements: 50,
-  challenges: 25,
-  weeklyStatus: "🤔"
-};
-
-export default WeeklyItemsProgressBar;
+export default connect(mapStateToProps)(WeeklyItemsProgressBar);
