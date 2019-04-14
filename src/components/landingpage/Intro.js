@@ -62,6 +62,7 @@ export default class Intro extends Component {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+        <br />
       </Container>
     );
   }

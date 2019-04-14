@@ -9,7 +9,11 @@ import Button from "react-bootstrap/Button";
 const Info = () => {
   return (
     <Container>
-      <br />
+      <Container className="d-flex justify-content-center bg-light">
+        <br />
+        <h3>About This Project</h3>
+        <br />
+      </Container>
       <Row>
         <Col>
           <Card style={{ width: "15rem" }}>
