@@ -8,10 +8,9 @@ const Solution = () => {
   return (
     <Container>
       <Container className="d-flex justify-content-center bg-success">
-        <br />
         <h3>SOKR Solution</h3>
-        <br />
       </Container>
+      <br />
       <Row>
         <Col>
           <Card>

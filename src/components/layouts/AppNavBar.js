@@ -1,13 +1,33 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 const AppNavBar = () => {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-3 py-0 navbar-fixed-top">
-      <div className="nav-link navbar-brand"> SOKR </div>
-      <Link to="/"> Home </Link>
-      <Link to="/demo"> Demo </Link>
-    </nav>
+    <Fragment>
+      <br />
+      <br />
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="primary"
+        variant="dark"
+        fixed="top">
+        <Navbar.Brand>SOKR</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">
+              <Link to="/"> Home </Link>
+            </Nav.Link>
+            <Nav.Link href="#demo">
+              <Link to="/demo"> Demo </Link>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Fragment>
   );
 };
 

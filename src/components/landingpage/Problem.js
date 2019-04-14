@@ -9,10 +9,9 @@ const Problem = () => {
   return (
     <Container>
       <Container className="d-flex justify-content-center bg-warning">
-        <br />
         <h3>Common Challenges</h3>
-        <br />
       </Container>
+      <br />
       <Row>
         <Col>
           <Card className="p-3">

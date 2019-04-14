@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Container from "react-bootstrap/Container";
 
 import "./App.css";
 import Dashboard from "./dashboard/Dashboard";
@@ -10,13 +11,17 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
+        <br />
+        <br />
+        <Container>
           <div className="container">
-            <Dashboard />
+            <div className="container">
+              <Dashboard />
+            </div>
+            {/* <KeyResult /> */}
+            <ObjectivesList />
           </div>
-          {/* <KeyResult /> */}
-          <ObjectivesList />
-        </div>
+        </Container>
       </React.Fragment>
     );
   }
