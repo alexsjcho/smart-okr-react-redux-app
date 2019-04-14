@@ -30,32 +30,39 @@ function mapStateToProps(state) {
     weeklyItemsProgress: {
       targetValue: allWeeklyItemsSum.targetValue,
 
-      plansProgress: {
-        value: allWeeklyItemsSum.plans
-      },
-      achievementsProgress: {
-        value: allWeeklyItemsSum.achievements
-      },
-      challengesProgress: {
-        value: allWeeklyItemsSum.challenges
-      }
+      plansProgress: allWeeklyItemsSum.plans,
+
+      achievementsProgress: allWeeklyItemsSum.achievements,
+
+      challengesProgress: allWeeklyItemsSum.challenges
     }
   };
 }
 
 class WeeklyItemsProgressBar extends Component {
-  // weeklyStatusEmoji = () => {
-  //   const {plans, achievements, challenges, status}
-  //   if (achievements > challenges) {
-  //     return "😁";
-  //   } else if (challenges > achievements) {
-  //     return " 😰";
-  //   } else if (plans > achievements){
-  //     return "😱"
-  //   } else {
-  //     return "🤔";
-  //   }
-  // };
+  weeklyStatusEmoji = () => {
+    const {
+      weeklyItemsProgress: {
+        plansProgress,
+        achievementsProgress,
+        challengesProgress
+      }
+    } = this.props;
+
+    if (achievementsProgress > Math.max(challengesProgress, plansProgress)) {
+      return "😁";
+    } else if (
+      challengesProgress > Math.max(achievementsProgress, plansProgress)
+    ) {
+      return " 😰";
+    } else if (
+      plansProgress > Math.max(achievementsProgress, challengesProgress)
+    ) {
+      return "😱";
+    } else {
+      return "🤔";
+    }
+  };
 
   render() {
     const {
@@ -84,25 +91,26 @@ class WeeklyItemsProgressBar extends Component {
                         className="h5 mb-0 mr-3 "
                         style={{ fontWeight: "bold-text-gray-800" }}
                       />
-                    </div>{" "}
-                    {}
+                      {this.weeklyStatusEmoji()}
+                    </div>
+
                     <div className="col">
                       <ProgressBar
                         variant="primary"
-                        now={plansProgress.value}
-                        label={`#${plansProgress.value}`}
+                        now={plansProgress}
+                        label={`#${plansProgress}`}
                         max={targetValue}
                       />
                       <ProgressBar
                         variant="success"
-                        now={achievementsProgress.value}
-                        label={`#${achievementsProgress.value}`}
+                        now={achievementsProgress}
+                        label={`#${achievementsProgress}`}
                         max={targetValue}
                       />
                       <ProgressBar
                         variant="warning"
-                        now={challengesProgress.value}
-                        label={`#${challengesProgress.value}`}
+                        now={challengesProgress}
+                        label={`#${challengesProgress}`}
                         max={targetValue}
                       />
                     </div>
