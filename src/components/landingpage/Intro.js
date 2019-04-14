@@ -42,7 +42,7 @@ export default class Intro extends Component {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q1/smart-goals/smart-goals-header@2x.png"
+              src="https://cdn-images-1.medium.com/max/2600/1*HvlZayCeipATnffD1V1n1g.png"
               alt="take-action"
             />
 
@@ -53,7 +53,7 @@ export default class Intro extends Component {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="https://cdn-images-1.medium.com/max/2600/1*HvlZayCeipATnffD1V1n1g.png"
+              src="https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q1/smart-goals/smart-goals-header@2x.png"
               alt="achieve-goals"
             />
 
