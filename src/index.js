@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import middleware from "./middleware";
+import Container from "react-bootstrap/Container";
 
 import Home from "./components/landingpage/Home";
 import AppNavBar from "./components/layouts/AppNavBar";
@@ -17,7 +18,9 @@ console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <AppNavBar />
+      <Container>
+        <AppNavBar />
+      </Container>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route exact path="/demo" component={App} />
