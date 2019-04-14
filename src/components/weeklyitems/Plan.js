@@ -9,7 +9,6 @@ class Plan extends Component {
     super(props);
     this.state = {
       plan: props.plan || { id: uuid(), value: "" },
-      time: "",
       showCardInfo: true
     };
   }
@@ -104,7 +103,6 @@ class Plan extends Component {
 
 Plan.defaultProps = {
   name: "",
-  time: "",
   objectiveId: null
 };
 

@@ -26,9 +26,9 @@ class Achievement extends Component {
   };
 
   handleSubmit = e => {
-    const { onSubmit } = this.props;
+    const { onSubmit, objectiveId } = this.props;
     e.preventDefault();
-    onSubmit(this.state.achievement);
+    onSubmit(this.state.achievement, objectiveId);
     this.setState({
       achievement: {
         id: uuid(),
@@ -45,6 +45,7 @@ class Achievement extends Component {
 
   render() {
     const { showCardInfo, achievement } = this.state;
+    const { isNew } = this.props;
 
     return (
       <Fragment>
@@ -61,15 +62,17 @@ class Achievement extends Component {
 
           {showCardInfo ? (
             <div className="card-header">
-              {achievement !== "" ? (
-                <input
-                  type="submit"
-                  value="Add Achievement"
+              {isNew ? (
+                <button
+                  type="button"
                   className="btn btn-outline-success"
-                />
+                  onClick={this.handleSubmit}>
+                  {" "}
+                  Add Achievement{" "}
+                </button>
               ) : null}
 
-              {achievement === "" ? (
+              {!isNew && achievement.value !== "" ? (
                 <Fragment>
                   <a href="#delete">
                     {" "}
@@ -85,7 +88,7 @@ class Achievement extends Component {
               <form>
                 <TextInputGroup
                   name="achievement"
-                  value={achievement}
+                  value={achievement.value}
                   onChange={this.onAchievementChange}
                   placeholder="Built a React CRUD app in a week!"
                 />

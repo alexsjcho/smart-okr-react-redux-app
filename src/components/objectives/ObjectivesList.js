@@ -12,7 +12,11 @@ import {
   setWeeklyPlan,
   deleteObjective,
   deleteKeyResult,
-  deleteWeeklyPlan
+  deleteWeeklyPlan,
+  setWeeklyAchievement,
+  deleteWeeklyAchievement,
+  setWeeklyChallenge,
+  deleteWeeklyChallenge
 } from "../../actions/objectives.js";
 import Objective from "./Objective";
 
@@ -28,7 +32,11 @@ const mapDispatchToProps = dispatch =>
       setKeyResult,
       setWeeklyPlan,
       deleteKeyResult,
-      deleteWeeklyPlan
+      deleteWeeklyPlan,
+      setWeeklyAchievement,
+      deleteWeeklyAchievement,
+      setWeeklyChallenge,
+      deleteWeeklyChallenge
     },
     dispatch
   );
@@ -52,7 +60,13 @@ class ObjectivesList extends Component {
   };
 
   render() {
-    const { objectivesList, setWeeklyPlan, ...props } = this.props;
+    const {
+      objectivesList,
+      setWeeklyPlan,
+      setWeeklyAchievement,
+      setWeeklyChallenge,
+      ...props
+    } = this.props;
     const { showWeeklyItems } = this.state;
 
     return (
@@ -89,8 +103,20 @@ class ObjectivesList extends Component {
                       objectiveId={i}
                       deleteWeeklyPlan={this.props.deleteWeeklyPlan}
                     />
-                    <AchievementList />
-                    <ChallengeList />
+                    <AchievementList
+                      setWeeklyAchievement={setWeeklyAchievement}
+                      achievementsList={obj.weeklyItems.achievements}
+                      objectiveId={i}
+                      deleteWeeklyAchievement={
+                        this.props.deleteWeeklyAchievement
+                      }
+                    />
+                    <ChallengeList
+                      setWeeklyChallenge={setWeeklyChallenge}
+                      challengesList={obj.weeklyItems.challenges}
+                      objectiveId={i}
+                      deleteWeeklyChallange={this.props.deleteWeeklyChallange}
+                    />
                   </Fragment>
                 ) : null}
               </div>

@@ -29,7 +29,7 @@ export default function objectives(state = initialState, action) {
             keyResults: [],
             weeklyItems: {
               plans: [],
-              achivements: [],
+              achievements: [],
               challenges: []
             },
             date: action.payload.date
@@ -192,13 +192,13 @@ export default function objectives(state = initialState, action) {
       );
 
       const newObjective = { ...objective };
-      newObjective.weeklyItems = { ...objective.weeklyItem };
+      newObjective.weeklyItems = { ...objective.weeklyItems };
       newObjective.weeklyItems.achievements = weeklyAchievementArray;
       const newObjectiveList = objectivesList.slice();
       newObjectiveList[objectiveId] = newObjective;
       return {
         ...state,
-        objectiveList: newObjectiveList
+        objectivesList: newObjectiveList
       };
     }
 

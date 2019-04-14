@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 
-// import uuid from "uuid";
+import uuid from "uuid";
 import Achievement from "./Achievement";
 
 class AchievementList extends Component {
@@ -13,26 +13,28 @@ class AchievementList extends Component {
     const {
       achievementsList,
       objectiveId,
+      setWeeklyAchievement,
       deleteWeeklyAchievement,
       ...props
     } = this.props;
     return (
       <Fragment>
-        {/* {achievementsList.map((achievement, i) => (
+        {achievementsList.map((achievement, i) => (
           <Achievement
             achievementId={i}
             objectiveId={objectiveId}
             key={uuid()}
             achievement={achievement}
-            onSubmit={this.onSubmit}
+            onSubmit={setWeeklyAchievement}
             deleteWeeklyAchievement={deleteWeeklyAchievement}
             {...props}
           />
-        ))} */}
+        ))}
 
         <Achievement
-          onSubmit={this.onSubmit}
           objectiveId={objectiveId}
+          onSubmit={setWeeklyAchievement}
+          isNew
           {...props}
         />
       </Fragment>
