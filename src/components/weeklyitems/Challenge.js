@@ -26,11 +26,14 @@ class Challenge extends Component {
   };
 
   handleSubmit = e => {
-    const { onSubmit } = this.props;
+    const { onSubmit, objectiveId } = this.props;
     e.preventDefault();
-    onSubmit(this.state.challenge);
+    onSubmit(this.state.challenge, objectiveId);
     this.setState({
-      challenge: ""
+      challenge: {
+        id: uuid(),
+        value: ""
+      }
     });
   };
 
@@ -41,8 +44,8 @@ class Challenge extends Component {
   };
 
   render() {
-    const { showCardInfo } = this.state;
-    const { challenge } = this.props;
+    const { showCardInfo, challenge } = this.state;
+    const { isNew } = this.props;
 
     return (
       <Fragment>
@@ -59,14 +62,16 @@ class Challenge extends Component {
           <div className="card-header">
             {showCardInfo ? (
               <form>
-                {challenge === "" ? (
-                  <input
+                {isNew ? (
+                  <button
                     type="submit"
-                    value="Add Challange"
                     className="btn btn-outline-warning"
-                  />
+                    onClick={this.handleSubmit}>
+                    {" "}
+                    Add Challenge{" "}
+                  </button>
                 ) : null}
-                {challenge !== "" ? (
+                {!isNew && challenge.value !== "" ? (
                   <Fragment>
                     <a href="#delete">
                       {" "}
@@ -81,7 +86,7 @@ class Challenge extends Component {
                 <TimeStamp />
                 <TextInputGroup
                   name="challenge"
-                  value={challenge}
+                  value={challenge.value}
                   onChange={this.onChallengeChange}
                   placeholder="Didn't get enough sleep..."
                 />

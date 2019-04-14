@@ -222,7 +222,7 @@ export default function objectives(state = initialState, action) {
       );
 
       const newObjective = { ...objective };
-      newObjective.weeklyItems = { ...objective.weeklyItem };
+      newObjective.weeklyItems = { ...objective.weeklyItems };
       newObjective.weeklyItems.challenges = weeklyChallengeArray;
       const newObjectiveList = objectivesList.slice();
       newObjectiveList[objectiveId] = newObjective;

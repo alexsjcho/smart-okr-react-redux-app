@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-// import uuid from "uuid";
+import uuid from "uuid";
 import Challenge from "./Challenge";
 
 class ChallengeList extends Component {
@@ -18,7 +18,7 @@ class ChallengeList extends Component {
 
     return (
       <Fragment>
-        {/* {challengesList.map((challenge, i) => (
+        {challengesList.map((challenge, i) => (
           <Challenge
             challengeId={i}
             objectiveId={objectiveId}
@@ -28,11 +28,12 @@ class ChallengeList extends Component {
             deleteWeeklyChallenge={deleteWeeklyChallenge}
             {...props}
           />
-        ))} */}
+        ))}
 
         <Challenge
           onSubmit={this.onSubmit}
           objectiveId={objectiveId}
+          isNew
           {...props}
         />
       </Fragment>

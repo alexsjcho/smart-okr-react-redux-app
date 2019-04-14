@@ -115,7 +115,7 @@ class ObjectivesList extends Component {
                       setWeeklyChallenge={setWeeklyChallenge}
                       challengesList={obj.weeklyItems.challenges}
                       objectiveId={i}
-                      deleteWeeklyChallange={this.props.deleteWeeklyChallange}
+                      deleteWeeklyChallenge={this.props.deleteWeeklyChallenge}
                     />
                   </Fragment>
                 ) : null}
