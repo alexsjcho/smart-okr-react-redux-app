@@ -17,33 +17,25 @@ class Achievement extends Component {
   onAchievementChange = e => {
     e.preventDefault();
 
-    const { achievement } = this.state;
-    let achievementError = "";
-    if (achievement === "") {
-      achievementError = "Achievement description is required. Yo";
-    } else {
-      achievementError = "";
-    }
-    this.setState({ errors: achievementError });
-
-    if (achievementError === "") {
-      const value = e.target.value;
-      this.setState(prevState => {
-        const newAchievement = prevState.achievement;
-        newAchievement.value = value;
-        return {
-          ...prevState,
-          achievement: newAchievement
-        };
-      });
-    }
+    const value = e.target.value;
+    this.setState(prevState => {
+      const newAchievement = prevState.achievement;
+      newAchievement.value = value;
+      return {
+        ...prevState,
+        achievement: newAchievement
+      };
+    });
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    const { isNew } = this.props;
+    if (!isNew) return;
+
     const { achievement } = this.state;
     let achievementError = "";
-    if (achievement === "") {
+    if (achievement.value === "") {
       achievementError = "Achievement description is required. Yo";
     } else {
       achievementError = "";
@@ -118,7 +110,7 @@ class Achievement extends Component {
                   value={achievement.value}
                   onChange={this.onAchievementChange}
                   placeholder="Built a React CRUD app in a week!"
-                  errors={errors}
+                  error={errors}
                 />
               </form>
             </div>

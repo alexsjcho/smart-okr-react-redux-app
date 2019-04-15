@@ -31,8 +31,10 @@ class Plan extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { plan } = this.state;
+    const { isNew } = this.props;
+    if (!isNew) return;
     let planError = "";
-    if (plan === "") {
+    if (plan.value === "") {
       planError = "Plan description is required. Yo";
     } else {
       planError = "";
@@ -104,7 +106,7 @@ class Plan extends Component {
                   value={plan.value}
                   onChange={this.onPlanChange}
                   placeholder="Write a blog post by end of this week"
-                  errors={errors}
+                  error={errors}
                 />
               </form>
             </div>
