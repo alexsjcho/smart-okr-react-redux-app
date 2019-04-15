@@ -24,43 +24,43 @@ This project only reflects the proof of concept from the UI perspective, in the 
 ## 1 Objectives
 
 Start by creating an objective with a start and end date, objective statement, and goal category
-<img src= "images/objectives.png" width ="400" height="400">
+<img src= "../../images/objectives.png" width ="400" height="400">
 
 ## 2 Key Results
 
 Set Key Results related to your Objective, give them specific measurable metrics, and a measuable statement
-<img src= "images/keyresults.png" width ="400" height="400">
+<img src= "../../images/keyresults.png" width ="400" height="400">
 
 ## 3 Autmoate Your Key Results via Tools
 
 Attach a Key Result with a software tool you would use to accomplish that goal and automate your efforts
-<img src= "images/automatekr.png" width ="400" height="400">
+<img src= "../images/automatekr.png" width ="400" height="400">
 
 ## 4 Weekly Items
 
 Log tasks associated with your Objectives, Key Results with Weekly Items (Plans, Achievements, Challenges)
-<img src= "images/weeklyitems.png" width ="400" height="400">
+<img src= "../../images/weeklyitems.png" width ="400" height="400">
 
 ## 5 Weekly Items Dashboard
 
 Track all your Weekly Items and see different emoji faces reflect your progress
 
 Weekly Items Dash
-<img src= "images/weeklyitemsdash.png" width ="400" height="400">
+<img src= "../../images/weeklyitemsdash.png" width ="400" height="400">
 
 Weekly Plans
-<img src= "images/plans.png" width ="400" height="400">
+<img src= "../../images/plans.png" width ="400" height="400">
 
 Weekly Achievements
-<img src= "images/achievements.png" width ="400" height="400">
+<img src= "../../images/achievements.png" width ="400" height="400">
 
 Weekly Challenges
-<img src= "images/challenges.png" width ="400" height="400">
+<img src= "../../images/challenges.png" width ="400" height="400">
 
 ## 6 All Objective Dashboard
 
 Track the progress of all your Objectives
-<img src= "images/challengesdash.png" width ="400" height="400">
+<img src= "../../images/challengesdash.png" width ="400" height="400">
 
 ## TECHNOLOGIES USED
 
