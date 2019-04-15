@@ -77,7 +77,7 @@ class Challenge extends Component {
           </h4>
           <div className="card-header">
             {showCardInfo ? (
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 {isNew ? (
                   <button
                     type="submit"
