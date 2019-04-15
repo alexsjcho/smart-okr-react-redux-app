@@ -101,19 +101,19 @@ class WeeklyItemsProgressBar extends Component {
                       <ProgressBar
                         variant="primary"
                         now={plansProgress}
-                        label={`#${plansProgress}`}
+                        label={`#${plansProgress} plans`}
                         max={targetValue}
                       />
                       <ProgressBar
                         variant="success"
                         now={achievementsProgress}
-                        label={`#${achievementsProgress}`}
+                        label={`#${achievementsProgress} achievements`}
                         max={targetValue}
                       />
                       <ProgressBar
                         variant="warning"
                         now={challengesProgress}
-                        label={`#${challengesProgress}`}
+                        label={`#${challengesProgress} challenges`}
                         max={targetValue}
                       />
                     </div>

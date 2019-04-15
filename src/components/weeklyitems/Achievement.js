@@ -14,6 +14,7 @@ class Achievement extends Component {
 
   //Asychronous function because of callback
   onAchievementChange = e => {
+    e.preventDefault();
     const value = e.target.value;
     this.setState(prevState => {
       const newAchievement = prevState.achievement;
@@ -26,8 +27,8 @@ class Achievement extends Component {
   };
 
   handleSubmit = e => {
-    const { onSubmit, objectiveId } = this.props;
     e.preventDefault();
+    const { onSubmit, objectiveId } = this.props;
     onSubmit(this.state.achievement, objectiveId);
     this.setState({
       achievement: {

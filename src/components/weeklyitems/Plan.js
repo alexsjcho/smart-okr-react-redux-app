@@ -9,12 +9,14 @@ class Plan extends Component {
     super(props);
     this.state = {
       plan: props.plan || { id: uuid(), value: "" },
-      showCardInfo: true
+      showCardInfo: true,
+      errors: ""
     };
   }
 
   //Asychronous function because of callback
   onPlanChange = e => {
+    e.preventDefault();
     const value = e.target.value;
     this.setState(prevState => {
       const newPlan = prevState.plan;
@@ -28,14 +30,26 @@ class Plan extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { objectiveId, onSubmit } = this.props;
-    onSubmit(this.state.plan, objectiveId);
-    this.setState({
-      plan: {
-        id: uuid(),
-        value: ""
-      }
-    });
+    const { plan } = this.state;
+    let planError = "";
+    if (plan === "") {
+      planError = "Plan description is required. Yo";
+    } else {
+      planError = "";
+    }
+
+    this.setState({ errors: planError });
+
+    if (planError === "") {
+      const { objectiveId, onSubmit } = this.props;
+      onSubmit(plan, objectiveId);
+      this.setState({
+        plan: {
+          id: uuid(),
+          value: ""
+        }
+      });
+    }
   };
 
   handleDelete = e => {
@@ -49,7 +63,8 @@ class Plan extends Component {
   };
 
   render() {
-    const { showCardInfo, plan } = this.state;
+    const { showCardInfo, plan, errors } = this.state;
+    const { isNew } = this.props;
 
     return (
       <Fragment>
@@ -67,15 +82,17 @@ class Plan extends Component {
           {showCardInfo ? (
             <div className="card-header">
               <form onSubmit={this.handleSubmit}>
-                {plan.value === "" ? (
-                  <input
+                {isNew ? (
+                  <button
                     type="submit"
-                    value="Add Weekly Plan"
                     className="btn btn-outline-primary"
-                  />
+                    onClick={this.handleSubmit}>
+                    {" "}
+                    Add Weekly Plan{" "}
+                  </button>
                 ) : null}
 
-                {plan.value !== "" ? (
+                {!isNew && plan.value !== "" ? (
                   <a href="#delete">
                     <i
                       className="fas fa-trash-alt "
@@ -91,6 +108,7 @@ class Plan extends Component {
                   value={plan.value}
                   onChange={this.onPlanChange}
                   placeholder="Write a blog post by end of this week"
+                  errors={errors}
                 />
               </form>
             </div>

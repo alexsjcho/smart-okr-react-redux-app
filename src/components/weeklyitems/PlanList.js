@@ -28,7 +28,12 @@ class PlanList extends Component {
           );
         })}
 
-        <Plan onSubmit={this.onSubmit} objectiveId={objectiveId} {...props} />
+        <Plan
+          onSubmit={this.onSubmit}
+          objectiveId={objectiveId}
+          isNew
+          {...props}
+        />
       </Fragment>
     );
   }
