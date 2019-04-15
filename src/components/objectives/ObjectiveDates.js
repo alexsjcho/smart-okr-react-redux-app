@@ -26,7 +26,7 @@ class ObjectiveDates extends Component {
   }
 
   render() {
-    const { saveStartDate, saveEndDate, selected } = this.props;
+    const { saveStartDate, saveEndDate, selected, error } = this.props;
     return (
       <Fragment>
         <div className="container" style={{ fontSize: "12px" }}>
@@ -50,6 +50,12 @@ class ObjectiveDates extends Component {
             onChange={saveEndDate}
           />
         </div>
+
+        {error && (
+          <div className="invalid-feedback" style={{ display: "inline-block" }}>
+            {error}
+          </div>
+        )}
       </Fragment>
     );
   }

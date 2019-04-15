@@ -38,16 +38,26 @@ class Objective extends Component {
     const { objective, category, date } = this.state;
 
     //Check for Errors, Form Validation
+    let objectiveError = "";
+    let dateError = "";
     if (objective === "") {
-      this.setState({
-        errors: { objective: "Objective description is required" }
-      });
-      return;
+      objectiveError = "Objective description is required";
+    } else {
+      objectiveError = "";
     }
 
     if (date === "") {
+      dateError = "Objective start and end date required";
+    } else {
+      dateError = "";
+    }
+
+    if (objectiveError.length > 0 || dateError.length > 0) {
       this.setState({
-        errors: { date: "Objective start and end date required" }
+        errors: {
+          objective: objectiveError,
+          date: dateError
+        }
       });
       return;
     }
@@ -109,7 +119,7 @@ class Objective extends Component {
       showCardInfo,
       showCardKeyResultInfo
     } = this.state;
-
+    console.log(errors.date);
     const {
       objective: { name: objectiveName, keyResults },
       onSubmit,
@@ -157,31 +167,26 @@ class Objective extends Component {
                 <ul className="list-group">
                   <li className="list-group-item">
                     {objectiveName === "" ? (
-                      <Fragment>
-                        <input
-                          type="submit"
-                          value="Add Objective"
-                          className="btn btn-primary btn-inline-block"
-                        />
-                        <TextInputGroup
-                          name="objective"
-                          type={type}
-                          placeholder="Overachieve quota this quarter!"
-                          value={this.state.objective}
-                          onChange={this.onChange}
-                          error={errors.objective}
-                        />
-                      </Fragment>
-                    ) : null}
+                      <input
+                        type="submit"
+                        value="Add Objective"
+                        className="btn btn-primary btn-inline-block"
+                      />
+                    ) : (
+                      <a href="#delete" onClick={this.handleDelete}>
+                        <i className="fas fa-trash-alt " />
+                      </a>
+                    )}
+                    <TextInputGroup
+                      name="objective"
+                      type={type}
+                      placeholder="Overachieve quota this quarter!"
+                      value={this.state.objective}
+                      onChange={this.onChange}
+                      error={errors.objective}
+                    />
 
                     {/* Input fields are muted until pencil icon is clicked for edit*/}
-                    {objectiveName !== "" ? (
-                      <Fragment>
-                        <a href="#delete" onClick={this.handleDelete}>
-                          <i className="fas fa-trash-alt " />
-                        </a>
-                      </Fragment>
-                    ) : null}
                     <ObjectiveCategory
                       category={category}
                       onChange={this.handleCategoryChange}

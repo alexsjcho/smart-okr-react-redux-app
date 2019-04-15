@@ -19,7 +19,11 @@ const TextInputGroup = ({ name, value, placeholder, onChange, error }) => {
         </li>
       </ul>
 
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && (
+        <div className="invalid-feedback" style={{ display: "inline-block" }}>
+          {error}
+        </div>
+      )}
     </div>
   );
 };

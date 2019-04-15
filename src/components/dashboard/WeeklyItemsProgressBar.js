@@ -55,6 +55,7 @@ class WeeklyItemsProgressBar extends Component {
     } else if (
       challengesProgress > Math.max(achievementsProgress, plansProgress)
     ) {
+      // There are more challenges
       return " 😰";
     } else if (
       plansProgress > Math.max(achievementsProgress, challengesProgress)

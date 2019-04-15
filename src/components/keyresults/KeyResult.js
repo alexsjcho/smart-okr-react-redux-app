@@ -33,24 +33,24 @@ class KeyResult extends Component {
     e.preventDefault();
 
     const { onSubmit } = this.props;
-    const { keyResult, objectiveId, name, unit, unitCategory } = this.state;
+    const { keyResult, objectiveId } = this.state;
 
     //Check for Errors, Form Validation
-    if (name === "") {
+    if (keyResult.name === "") {
       this.setState({
         errors: { name: "Key Result description is required" }
       });
       return;
     }
 
-    if (unit === "") {
+    if (keyResult.unit === "") {
       this.setState({
         errors: { unit: "Unit description is required" }
       });
       return;
     }
 
-    if (unitCategory === "") {
+    if (keyResult.unitCategory === "") {
       this.setState({
         errors: { unitCategory: "unitCategory description is required" }
       });
