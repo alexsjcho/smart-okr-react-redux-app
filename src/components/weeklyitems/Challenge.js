@@ -26,15 +26,31 @@ class Challenge extends Component {
   };
 
   handleSubmit = e => {
-    const { onSubmit, objectiveId } = this.props;
     e.preventDefault();
-    onSubmit(this.state.challenge, objectiveId);
-    this.setState({
-      challenge: {
-        id: uuid(),
-        value: ""
-      }
-    });
+    const { challenge } = this.state;
+    const { onSubmit, objectiveId } = this.props;
+
+    const { isNew } = this.props;
+    if (!isNew) return;
+
+    let challengeError = "";
+    if (challenge.value === "") {
+      challengeError = "Challenge description is required. yo";
+    } else {
+      challengeError = "";
+    }
+
+    this.setState({ errors: challengeError });
+
+    if (challengeError === "") {
+      onSubmit(this.state.challenge, objectiveId);
+      this.setState({
+        challenge: {
+          id: uuid(),
+          value: ""
+        }
+      });
+    }
   };
 
   handleDelete = e => {
@@ -44,7 +60,7 @@ class Challenge extends Component {
   };
 
   render() {
-    const { showCardInfo, challenge } = this.state;
+    const { showCardInfo, challenge, errors } = this.state;
     const { isNew } = this.props;
 
     return (
@@ -89,6 +105,7 @@ class Challenge extends Component {
                   value={challenge.value}
                   onChange={this.onChallengeChange}
                   placeholder="Didn't get enough sleep..."
+                  error={errors}
                 />
               </form>
             ) : null}
