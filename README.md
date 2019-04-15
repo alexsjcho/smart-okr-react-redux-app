@@ -1,6 +1,6 @@
 ## SMART OKRS (SOKR) MVP BACKSTORY
 
-[Link to Live Demo App](https://github.com/alexsjcho/smart-okr-react-app)
+[Link to Live Demo App](https://friendly-wiles-9707cf.netlify.com/)
 
 This project was a start-up idea I had inspired by my work exerience at 15Five and IFTTT.
 
@@ -16,7 +16,7 @@ This project only reflects the proof of concept from the UI perspective, in the 
 
 ## PROJECT JOURNEY INSIGHTS
 
-1. [Link to Live Demo App](https://github.com/alexsjcho/smart-okr-react-app)
+1. [Link to Live Demo App](https://friendly-wiles-9707cf.netlify.com/)
 2. [SOKR Product Development Roadmap Google Sheet ](https://docs.google.com/spreadsheets/d/1TXtMZzuoYQbTcidbsaGsN8lnYE67iHUw5Hx8yiXkN7E/edit?usp=sharing)
 3. [Trello Board: Project Management](https://trello.com/b/aQDwaNUn/smartokrs)
 4. [My Rendition of OKRs Blog](https://www.mraddoil.com/2019/02/10/okrs-goal-management-framework/)
