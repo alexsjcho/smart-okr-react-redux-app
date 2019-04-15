@@ -57,10 +57,10 @@ Weekly Achievements
 Weekly Challenges
 <img src= "images/challenges.png" width ="400" height="400">
 
-## 5 All Objective Dashboard
+## 6 All Objective Dashboard
 
 Track the progress of all your Objectives
-<img src= "images/objectivesdash.png" width ="400" height="400">
+<img src= "images/challengesdash.png" width ="400" height="400">
 
 ## TECHNOLOGIES USED
 
