@@ -69,7 +69,7 @@ Weekly Challenges
 
 Track the progress of all your Objectives
 
-<img src= "images/challengesdash.png" width ="400" height="400">
+<img src= "images/objectivesdash.png" width ="400" height="400">
 
 ## TECHNOLOGIES USED
 
