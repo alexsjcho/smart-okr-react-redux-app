@@ -119,7 +119,7 @@ class Objective extends Component {
       showCardInfo,
       showCardKeyResultInfo
     } = this.state;
-    console.log(errors.date);
+
     const {
       objective: { name: objectiveName, keyResults },
       onSubmit,

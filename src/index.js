@@ -13,8 +13,6 @@ import reducer from "./reducers";
 import NotFound from "./components/shared/NotFound";
 
 const store = createStore(reducer, middleware);
-console.log(store.getState());
-
 ReactDOM.render(
   <Provider store={store}>
     <Router>

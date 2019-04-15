@@ -35,9 +35,6 @@ export default function objectives(state = initialState, action) {
             date: action.payload.date
           }
         ]
-
-        //Different way versus spread operator
-        // objectiveLists: state.objectivesList.concat({ /* your object */ })
       };
     case DELETE_OBJECTIVE:
       return Object.assign({}, state, {
@@ -133,21 +130,6 @@ export default function objectives(state = initialState, action) {
       };
     }
 
-    // case SET_WEEKLY_ACHIEVEMENT: {
-    //   const objective =
-    //     state.objectivesList[action.payload.weeklyAchievement.objectiveId];
-
-    //   objective.weeklyAchievement = [
-    //     ...objective.weeklyAchievement,
-    //     action.payload.weeklyAchievement
-    //   ];
-
-    //   return {
-    //     ...state,
-    //     objectivesList: [...state.objectivesList]
-    //   };
-    // }
-
     case SET_WEEKLY_ACHIEVEMENT: {
       const { objectivesList } = state;
       const {
@@ -232,21 +214,6 @@ export default function objectives(state = initialState, action) {
         objectivesList: newObjectiveList
       };
     }
-
-    // case SET_WEEKLY_CHALLENGE: {
-    //   const objective =
-    //     state.objectivesList[action.payload.weeklyChallenge.objectiveId];
-
-    //   objective.weeklyChallenge = [
-    //     ...objective.weeklyChallenge,
-    //     action.payload.weeklyChallenge
-    //   ];
-
-    //   return {
-    //     ...state,
-    //     objectivesList: [...state.objectivesList]
-    //   };
-    // }
 
     case SET_WEEKLY_CHALLENGE: {
       const { objectivesList } = state;
