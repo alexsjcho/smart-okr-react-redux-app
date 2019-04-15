@@ -1,5 +1,7 @@
 ## SMART OKRS (SOKR) MVP BACKSTORY
 
+[Link to Live Demo App](https://github.com/alexsjcho/smart-okr-react-app)
+
 This project was a start-up idea I had inspired by my work exerience at 15Five and IFTTT.
 
 When I was introduced to OKRs at 15Five, it just made so much sense to me and resonated with my own goal-oriented personality.
@@ -33,7 +35,7 @@ Set Key Results related to your Objective, give them specific measurable metrics
 
 <img src= "images/keyresults.png" width ="400" height="400">
 
-## 3. Autmoate Your Key Results via Tools
+## 3. Automate Your Key Results via Tools
 
 Attach a Key Result with a software tool you would use to accomplish that goal and automate your efforts
 

@@ -58,10 +58,6 @@ class Plan extends Component {
     deleteWeeklyPlan(objectiveId, this.state.plan.id);
   };
 
-  onUpdate = e => {
-    e.preventDefault();
-  };
-
   render() {
     const { showCardInfo, plan, errors } = this.state;
     const { isNew } = this.props;
