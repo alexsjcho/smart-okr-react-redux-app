@@ -96,4 +96,3 @@ Track the progress of all your Objectives
 2. Redux Chrome Extension
 3. Chrome Dev Tools
 4. Jest
-5. Enzyme
