@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import uuid from "uuid";
 
 import TextInputGroup from "../shared/TextInputGroup";
@@ -60,59 +60,56 @@ class Plan extends Component {
     deleteWeeklyPlan(objectiveId, this.state.plan.id);
   };
 
+  toggleShowCardInfo = () => {
+    this.setState({ showCardInfo: !this.state.showCardInfo });
+  };
+
   render() {
     const { showCardInfo, plan, errors } = this.state;
     const { isNew } = this.props;
 
     return (
-      <Fragment>
-        <div className="card card-body mb-3">
-          <h4>
-            <i className="fas fa-edit" /> Plans{" "}
-            <i
-              className="fas fa-sort-down"
-              onClick={() =>
-                this.setState({ showCardInfo: !this.state.showCardInfo })
-              }
-            />
-          </h4>
+      <div className="card card-body mb-3">
+        <h4>
+          <i className="fas fa-edit" /> Plans{" "}
+          <i className="fas fa-sort-down" onClick={this.toggleShowCardInfo} />
+        </h4>
 
-          {showCardInfo ? (
-            <div className="card-header">
-              <form onSubmit={this.handleSubmit}>
-                {isNew ? (
-                  <button
-                    type="submit"
-                    className="btn btn-outline-primary"
-                    onClick={this.handleSubmit}>
-                    {" "}
-                    Add Weekly Plan{" "}
-                  </button>
-                ) : null}
+        {showCardInfo ? (
+          <div className="card-header">
+            <form onSubmit={this.handleSubmit}>
+              {isNew ? (
+                <button
+                  type="submit"
+                  className="btn btn-outline-primary"
+                  onClick={this.handleSubmit}>
+                  {" "}
+                  Add Weekly Plan{" "}
+                </button>
+              ) : null}
 
-                {!isNew && plan.value !== "" ? (
-                  <a href="#delete">
-                    <i
-                      className="fas fa-trash-alt "
-                      onClick={this.handleDelete}
-                    />
-                  </a>
-                ) : null}
+              {!isNew && plan.value !== "" ? (
+                <a href="#delete">
+                  <i
+                    className="fas fa-trash-alt "
+                    onClick={this.handleDelete}
+                  />
+                </a>
+              ) : null}
 
-                <TimeStamp />
+              <TimeStamp />
 
-                <TextInputGroup
-                  name="plan"
-                  value={plan.value}
-                  onChange={this.onPlanChange}
-                  placeholder="Write a blog post by end of this week"
-                  error={errors}
-                />
-              </form>
-            </div>
-          ) : null}
-        </div>
-      </Fragment>
+              <TextInputGroup
+                name="plan"
+                value={plan.value}
+                onChange={this.onPlanChange}
+                placeholder="Write a blog post by end of this week"
+                error={errors}
+              />
+            </form>
+          </div>
+        ) : null}
+      </div>
     );
   }
 }
