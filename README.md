@@ -95,4 +95,4 @@ Track the progress of all your Objectives
 1. React Chrome Extension
 2. Redux Chrome Extension
 3. Chrome Dev Tools
-4. Jest
+4. Jest, Enzyme
