@@ -96,3 +96,17 @@ Track the progress of all your Objectives
 2. Redux Chrome Extension
 3. Chrome Dev Tools
 4. Jest, Enzyme
+
+## CHALLENGES
+
+1. Priority Management: Figuring out which features are worth the time and core to product. Ex. decided to stimulate automated Key Results using a JSON file that stores software tool images
+2. Time Management: Keeping app within 2 weeks scope
+3. Focus: Dedicating more time on one particular skill, specifically, JavaScript over other technologies. Therefore, for styling and other features, delegate it to other libraries or frameworks.
+4. Ignorance and Inexperience: Unsure of what actual technologies, time, and effort is needed to create an MVP that is sufficient for a proof of concept
+
+## FUTURE IMPROVEMENTS
+
+1. Database: Add database to allow for unique user profiles
+2. Authentication: To allow users to login via Google OAuth, etc
+3. 3rd Party API Integration: Build integration with IFTTT or Zapier to stimulate automating goals via integrated software tools
+4. Create Full Stack: Build an actual backend
