@@ -110,3 +110,9 @@ Track the progress of all your Objectives
 2. Authentication: To allow users to login via Google OAuth, etc
 3. 3rd Party API Integration: Build integration with IFTTT or Zapier to stimulate automating goals via integrated software tools
 4. Create Full Stack: Build an actual backend
+
+# MENTORS
+
+1. [Justin Tieu - Software Engineer Eversight](https://www.linkedin.com/in/justintieu/)
+2. [Mario Retana Rojas - Software Engineer Eversight](https://www.linkedin.com/in/marioretana/)
+3. [Steve Novosel - Software Engineer Cadent](https://www.linkedin.com/in/steve-novosel1183/)
